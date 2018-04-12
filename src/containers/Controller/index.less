@@ -1,0 +1,60 @@
+@import "~src/assets/less/var.less";
+
+.audio-controller {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 60px;
+  z-index: 10;
+  background-color: #fcfcfc;
+  .play-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    width: 240px;
+    font-size: 36px;
+    i {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  }
+  .slider-wrapper {
+    width: 100%;
+    p {
+      margin: 0;
+      /* 歌曲名称只显示在一行，超出部分显示为省略号 */
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;   
+    }
+  }
+  .slider-runway {
+    position: relative;
+    height: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #d9d9d9;
+  }
+  .slider-bar {
+    width: 100%;
+    height: 100%;
+    background-color: @primary-color;
+    transform: translateX(-100%);
+    transition: transform .3s linear;
+    pointer-events: none;
+  }
+  .audio-time {
+    overflow: hidden;
+    margin-top: -1px;
+    .total {
+      float: right;
+      font-size: 12px;
+    }
+    .current {
+      float: left;
+      font-size: 12px;
+    }
+  }
+}

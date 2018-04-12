@@ -1,0 +1,207 @@
+{
+    "code": 200,
+    "artist": {
+        "img1v1Id": 18686200114669624,
+        "topicPerson": 0,
+        "alias": [
+            "Jay Chou"
+        ],
+        "albumSize": 32,
+        "img1v1Url": "http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+        "picId": 109951163111196200,
+        "picUrl": "http://p3.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+        "trans": "",
+        "musicSize": 469,
+        "briefDesc": "",
+        "name": "周杰伦",
+        "id": 6452,
+        "picId_str": "109951163111196186",
+        "img1v1Id_str": "18686200114669622"
+    },
+    "hotAlbums": [
+        {
+            "songs": [],
+            "paid": false,
+            "onSale": false,
+            "pic": 109951163110962030,
+            "tags": "",
+            "blurPicUrl": "http://p3.music.126.net/A8qicH14toObbLpPMiKmBw==/109951163110962030.jpg",
+            "alias": [],
+            "companyId": 0,
+            "status": 3,
+            "copyrightId": 1007,
+            "artists": [
+                {
+                    "img1v1Id": 18686200114669624,
+                    "topicPerson": 0,
+                    "alias": [],
+                    "albumSize": 0,
+                    "img1v1Url": "http://p3.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                    "picId": 0,
+                    "picUrl": "http://p4.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "trans": "",
+                    "musicSize": 0,
+                    "briefDesc": "",
+                    "name": "周杰伦",
+                    "id": 6452,
+                    "img1v1Id_str": "18686200114669622"
+                }
+            ],
+            "publishTime": 1516204800007,
+            "company": "杰威尔",
+            "commentThreadId": "R_AL_3_37251353",
+            "picId": 109951163110962030,
+            "artist": {
+                "img1v1Id": 18686200114669624,
+                "topicPerson": 0,
+                "alias": [
+                    "Jay Chou"
+                ],
+                "albumSize": 32,
+                "img1v1Url": "http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                "picId": 109951163111196200,
+                "picUrl": "http://p3.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+                "trans": "",
+                "musicSize": 469,
+                "briefDesc": "",
+                "name": "周杰伦",
+                "id": 6452,
+                "picId_str": "109951163111196186",
+                "img1v1Id_str": "18686200114669622"
+            },
+            "picUrl": "http://p3.music.126.net/A8qicH14toObbLpPMiKmBw==/109951163110962030.jpg",
+            "briefDesc": "",
+            "description": "",
+            "subType": "录音室版",
+            "name": "等你下课",
+            "id": 37251353,
+            "type": "EP/Single",
+            "size": 1,
+            "picId_str": "109951163110962030",
+            "isSub": false
+        },
+        {
+            "songs": [],
+            "paid": false,
+            "onSale": false,
+            "pic": 3265549553028224,
+            "tags": "",
+            "blurPicUrl": "http://p4.music.126.net/cUTk0ewrQtYGP2YpPZoUng==/3265549553028224.jpg",
+            "alias": [
+                "Jay Chou's Bedtime Stories"
+            ],
+            "companyId": 0,
+            "status": 3,
+            "copyrightId": 1007,
+            "artists": [
+                {
+                    "img1v1Id": 18686200114669624,
+                    "topicPerson": 0,
+                    "alias": [],
+                    "albumSize": 0,
+                    "img1v1Url": "http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                    "picId": 0,
+                    "picUrl": "http://p4.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "trans": "",
+                    "musicSize": 0,
+                    "briefDesc": "",
+                    "name": "周杰伦",
+                    "id": 6452,
+                    "img1v1Id_str": "18686200114669622"
+                }
+            ],
+            "publishTime": 1466697600007,
+            "company": "杰威尔",
+            "commentThreadId": "R_AL_3_34720827",
+            "picId": 3265549553028224,
+            "artist": {
+                "img1v1Id": 18686200114669624,
+                "topicPerson": 0,
+                "alias": [
+                    "Jay Chou"
+                ],
+                "albumSize": 32,
+                "img1v1Url": "http://p3.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                "picId": 109951163111196200,
+                "picUrl": "http://p3.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+                "trans": "",
+                "musicSize": 469,
+                "briefDesc": "",
+                "name": "周杰伦",
+                "id": 6452,
+                "picId_str": "109951163111196186",
+                "img1v1Id_str": "18686200114669622"
+            },
+            "picUrl": "http://p3.music.126.net/cUTk0ewrQtYGP2YpPZoUng==/3265549553028224.jpg",
+            "briefDesc": "",
+            "description": "",
+            "subType": "录音室版",
+            "name": "周杰伦的床边故事",
+            "id": 34720827,
+            "type": "专辑",
+            "size": 10,
+            "isSub": false
+        },
+        {
+            "songs": [],
+            "paid": false,
+            "onSale": false,
+            "pic": 1398578800308223,
+            "tags": "",
+            "blurPicUrl": "http://p3.music.126.net/7z8fYsT325G8-KdpWtHd5Q==/1398578800308223.jpg",
+            "alias": [],
+            "companyId": 0,
+            "status": 3,
+            "copyrightId": 1007,
+            "artists": [
+                {
+                    "img1v1Id": 18686200114669624,
+                    "topicPerson": 0,
+                    "alias": [],
+                    "albumSize": 0,
+                    "img1v1Url": "http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                    "picId": 0,
+                    "picUrl": "http://p3.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                    "trans": "",
+                    "musicSize": 0,
+                    "briefDesc": "",
+                    "name": "周杰伦",
+                    "id": 6452,
+                    "img1v1Id_str": "18686200114669622"
+                }
+            ],
+            "publishTime": 1462809600007,
+            "company": "杰威尔",
+            "commentThreadId": "R_AL_3_34685590",
+            "picId": 1398578800308223,
+            "artist": {
+                "img1v1Id": 18686200114669624,
+                "topicPerson": 0,
+                "alias": [
+                    "Jay Chou"
+                ],
+                "albumSize": 32,
+                "img1v1Url": "http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg",
+                "picId": 109951163111196200,
+                "picUrl": "http://p3.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+                "trans": "",
+                "musicSize": 469,
+                "briefDesc": "",
+                "name": "周杰伦",
+                "id": 6452,
+                "picId_str": "109951163111196186",
+                "img1v1Id_str": "18686200114669622"
+            },
+            "picUrl": "http://p3.music.126.net/7z8fYsT325G8-KdpWtHd5Q==/1398578800308223.jpg",
+            "briefDesc": "",
+            "description": "",
+            "subType": "现场版",
+            "name": "魔天伦 世界巡回演唱会",
+            "id": 34685590,
+            "type": "专辑",
+            "size": 22,
+            "isSub": false
+        }
+    ],
+    "more": true
+}
