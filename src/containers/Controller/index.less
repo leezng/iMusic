@@ -7,7 +7,7 @@
   align-items: center;
   padding: 10px 60px;
   z-index: 10;
-  background-color: #fcfcfc;
+  background-color: #fff1f6;
   .play-wrapper {
     display: flex;
     align-items: center;
@@ -17,10 +17,16 @@
     i {
       margin: 0 10px;
       cursor: pointer;
+      transition: all .3s;
+      &:hover {
+        color: @primary-color;
+        text-shadow: 0 0 4px @primary-color;
+      }
     }
   }
   .slider-wrapper {
     width: 100%;
+    color: @primary-color;
     p {
       margin: 0;
       /* 歌曲名称只显示在一行，超出部分显示为省略号 */

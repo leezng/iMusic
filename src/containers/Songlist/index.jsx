@@ -1,5 +1,5 @@
 import React from 'react'
-import { getSonglist, getSonglistDetail } from 'src/actions'
+import { getSonglist, getSonglistDetail, setPlaylist, setPlaying } from 'src/actions'
 import { List, Icon } from 'antd'
 import { connectListHoc } from '../ListHoc'
 import "./index.less"
@@ -8,6 +8,10 @@ function ListItemRender (item, dispatch) {
   return <List.Item extra={<Icon className="play" type="play-circle-o" onClick={() => {
     if (!item.detail) {
       dispatch(getSonglistDetail(item.id))
+    } else {
+      let playlist = item.detail.tracks || []
+      dispatch(setPlaylist(playlist))
+      dispatch(setPlaying(playlist[0]))
     }
   }} />}>
     <List.Item.Meta

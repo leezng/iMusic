@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { Layout, Input, message } from 'antd'
+import { Layout, message } from 'antd'
 import PropTypes from 'prop-types'
 import Sidebar from '../Sidebar'
 import MusicCenter from '../MusicCenter'
 import Controller from '../Controller'
 import Playlist from '../Playlist'
 import Searchlist from '../Searchlist'
-import { search, addToPlaylist, setPlaying } from 'src/actions'
+import { addToPlaylist, setPlaying } from 'src/actions'
 import "./index.less"
 
-const { Header, Footer, Sider, Content } = Layout
+const { Footer, Sider, Content } = Layout
 
 const mapStateToProps = (state, ownProps) => ({
   playlist: state.playlist
@@ -24,16 +24,6 @@ class App extends Component {
 
   static defaultProps = {
     playlist: []
-  }
-
-  onSearch = text => {
-    const keywords = text.trim()
-    if (!keywords) return
-    const { location, history, dispatch } = this.props
-    dispatch(search(keywords, 15, 0))
-    // 跳转到搜索结果页
-    const newPath = '/searchlist'
-    if (location.pathname !== newPath) history.push(newPath)
   }
 
   preventDefault = e => {
@@ -67,12 +57,6 @@ class App extends Component {
           <Sidebar/>
         </Sider>
         <Layout>
-          <Header className="app-header">
-            <Input.Search
-              placeholder="input search text"
-              onSearch={this.onSearch}
-              style={{ width: 200 }}/>
-          </Header>
           <Content className="app-content">
             <Switch>
               <Route exact path="/" component={() => <Redirect to="/musicCenter" />} />
