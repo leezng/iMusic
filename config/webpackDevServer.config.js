@@ -1,6 +1,7 @@
 'use strict';
 
 var topArtists = require('../mock/topArtists.json');
+var artist = require('../mock/artist.json');
 var playlist = require('../mock/playlist.json');
 var playlistDetail = require('../mock/playlistDetail.json');
 var search = require('../mock/search.json');

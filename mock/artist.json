@@ -1,0 +1,583 @@
+{
+    "code": 200,
+    "artist": {
+        "img1v1Id": 109951163111191410,
+        "topicPerson": 0,
+        "briefDesc": "著名歌手，音乐人，词曲创作人，编曲及制作人，MV及电影导演。新世纪华语歌坛领军人物，中国风歌曲始祖，被时代周刊誉为“亚洲猫王”，是2000年后亚洲流行乐坛最具革命性与指标性的创作歌手，亚洲销量超过3100万张，有“亚洲流行天王”之称，开启华语乐坛“R&B时代”与“流行乐中国风”的先河，周杰伦的出现打破了亚洲流行乐坛长年停滞不前的局面，为亚洲流行乐坛翻开了新的一页，是华语乐坛真正把R&B提升到主流高度的人物，引领华语乐坛革命整十年，改写了华语乐坛的流行方向。",
+        "alias": [
+            "Jay Chou"
+        ],
+        "trans": "",
+        "picUrl": "http://p3.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+        "albumSize": 32,
+        "img1v1Url": "http://p4.music.126.net/o-FjCrUlhyFC96xiVvJZ8g==/109951163111191410.jpg",
+        "musicSize": 469,
+        "picId": 109951163111196200,
+        "name": "周杰伦",
+        "id": 6452,
+        "publishTime": 1516594084751,
+        "picId_str": "109951163111196186",
+        "img1v1Id_str": "109951163111191410",
+        "mvSize": 67,
+        "followed": false
+    },
+    "more": true,
+    "hotSongs": [
+        {
+            "al": {
+                "id": 29597,
+                "name": "有点野",
+                "picUrl": "http://p3.music.126.net/vu3Cdo_dPq8HKOPI6_YXfA==/74766790689775.jpg",
+                "pic_str": "74766790689775",
+                "pic": 74766790689775
+            },
+            "name": "屋顶",
+            "id": 298317
+        },
+        {
+            "al": {
+                "id": 21349,
+                "name": "看我72变",
+                "picUrl": "http://p3.music.126.net/E0EzqaDjjok8P8Gp0Es1eQ==/109951163188721828.jpg",
+                "tns": [
+                    "Magic"
+                ],
+                "pic_str": "109951163188721828",
+                "pic": 109951163188721820
+            },
+            "name": "布拉格广场",
+            "id": 210049
+        },
+        {
+            "al": {
+                "id": 512853,
+                "name": "用音乐加油！！手牵手大合唱",
+                "picUrl": "http://p3.music.126.net/IeRywZSGfWP1Ggfszn3FgQ==/124244813956662.jpg",
+                "pic_str": "124244813956662",
+                "pic": 124244813956662
+            },
+            "name": "手牵手",
+            "id": 5268423
+        },
+        {
+            "al": {
+                "id": 37579061,
+                "name": "2018年中央电视台春节联欢晚会",
+                "picUrl": "http://p4.music.126.net/uIFI3Zx-3aiMNsFlAMBxBQ==/109951163142162226.jpg",
+                "pic_str": "109951163142162226",
+                "pic": 109951163142162220
+            },
+            "name": "魔术与歌曲：告白气球",
+            "id": 536570450
+        },
+        {
+            "al": {
+                "id": 25475,
+                "name": "Promise",
+                "picUrl": "http://p3.music.126.net/VHDbZQgZCHARiug9uJffng==/18851126858255884.jpg",
+                "pic_str": "18851126858255884",
+                "pic": 18851126858255884
+            },
+            "name": "刀马旦",
+            "id": 255020
+        },
+        {
+            "al": {
+                "id": 29585,
+                "name": "爱回温 新歌+精选",
+                "picUrl": "http://p3.music.126.net/-SVQQKgKJTYV-HYcsf00kw==/74766790701566.jpg",
+                "pic_str": "74766790701566",
+                "pic": 74766790701566
+            },
+            "name": "祝我生日快乐",
+            "id": 298101
+        },
+        {
+            "al": {
+                "id": 21349,
+                "name": "看我72变",
+                "picUrl": "http://p4.music.126.net/E0EzqaDjjok8P8Gp0Es1eQ==/109951163188721828.jpg",
+                "tns": [
+                    "Magic"
+                ],
+                "pic_str": "109951163188721828",
+                "pic": 109951163188721820
+            },
+            "name": "骑士精神",
+            "id": 210062
+        },
+        {
+            "al": {
+                "id": 2662137,
+                "name": "周杰伦2013《魔天伦》台北小巨蛋演唱会",
+                "picUrl": "http://p3.music.126.net/XqTsXB8Fl7Iu9Lq_w_BE6A==/5741649720332972.jpg",
+                "pic_str": "5741649720332972",
+                "pic": 5741649720332972
+            },
+            "name": "你怎么说+红尘客栈+千里之外",
+            "id": 27698922
+        },
+        {
+            "al": {
+                "id": 34559090,
+                "name": "玻璃情缘 (对唱篇) Vol.One",
+                "picUrl": "http://p4.music.126.net/6ycRJdzRVPc2pLI8nRleFA==/1378787583916322.jpg",
+                "pic_str": "1378787583916322",
+                "pic": 1378787583916322
+            },
+            "name": "海盗",
+            "id": 406346416
+        },
+        {
+            "al": {
+                "id": 28609,
+                "name": "台北小巨蛋音乐会",
+                "picUrl": "http://p3.music.126.net/5aSOzeCS8paNhYzbDE6A-g==/112150186051141.jpg",
+                "pic_str": "112150186051141",
+                "pic": 112150186051141
+            },
+            "name": "康定情歌",
+            "id": 288382
+        },
+        {
+            "al": {
+                "id": 3081217,
+                "name": "夜店咖",
+                "picUrl": "http://p3.music.126.net/fBZ_MDdH1ksSqC8ZzvxUUg==/2540971374163956.jpg",
+                "pic_str": "2540971374163956",
+                "pic": 2540971374163956
+            },
+            "name": "夜店咖",
+            "id": 29808783
+        },
+        {
+            "al": {
+                "id": 3271338,
+                "name": "热门华语278",
+                "picUrl": "http://p4.music.126.net/SDYKlOH5UTUYRlM-Bo9l3g==/3411784581986489.jpg",
+                "pic_str": "3411784581986489",
+                "pic": 3411784581986489
+            },
+            "name": "眼泪成诗(Live)",
+            "id": 34167344
+        },
+        {
+            "al": {
+                "id": 28609,
+                "name": "台北小巨蛋音乐会",
+                "picUrl": "http://p3.music.126.net/5aSOzeCS8paNhYzbDE6A-g==/112150186051141.jpg",
+                "pic_str": "112150186051141",
+                "pic": 112150186051141
+            },
+            "name": "黄浦江深",
+            "id": 288371
+        },
+        {
+            "al": {
+                "id": 28650,
+                "name": "中国北京鸟巢夏季音乐会",
+                "picUrl": "http://p4.music.126.net/_O0ErSGUeALi-4jvzDoj8Q==/871912720826764.jpg",
+                "pic_str": "871912720826764",
+                "pic": 871912720826764
+            },
+            "name": "山歌好比春江水.多谢了(Live)",
+            "id": 288750
+        },
+        {
+            "al": {
+                "id": 28650,
+                "name": "中国北京鸟巢夏季音乐会",
+                "picUrl": "http://p4.music.126.net/_O0ErSGUeALi-4jvzDoj8Q==/871912720826764.jpg",
+                "pic_str": "871912720826764",
+                "pic": 871912720826764
+            },
+            "name": "结尾曲-友谊地久天长(Live)",
+            "id": 288820
+        },
+        {
+            "al": {
+                "id": 35201393,
+                "name": "镇站之宝",
+                "picUrl": "http://p3.music.126.net/IASLLpE-9yYhtg7nIx87eQ==/109951162864875781.jpg",
+                "pic_str": "109951162864875781",
+                "pic": 109951162864875780
+            },
+            "name": "可爱小公举",
+            "id": 462853756
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "惊叹号",
+            "id": 185613
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p3.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "跨时代",
+            "id": 185666
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "迷魂曲",
+            "id": 185614
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "说了再见",
+            "id": 185667
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p3.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "Mine Mine",
+            "id": 185615
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "烟花易冷",
+            "id": 185668
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "公主病",
+            "id": 185616
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p3.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "你好吗",
+            "id": 185617
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "雨下一整晚",
+            "id": 185672
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "疗伤烧肉粽",
+            "id": 185618
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "嘻哈空姐",
+            "id": 185674
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "琴伤",
+            "id": 185619
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p3.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "我落泪 情绪零碎",
+            "id": 185676
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "水手怕水",
+            "id": 185620
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p3.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "爱的飞行日记",
+            "id": 185678
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p3.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "世界未末日",
+            "id": 185621
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "自导自演",
+            "id": 185680
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p4.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "皮影戏",
+            "id": 185622
+        },
+        {
+            "al": {
+                "id": 18870,
+                "name": "The Era 2010 超时代演唱会",
+                "picUrl": "http://p3.music.126.net/skfZhIyEKls5U0ohTxGDMA==/71468255818341.jpg",
+                "pic_str": "71468255818341",
+                "pic": 71468255818341
+            },
+            "name": "你是我的OK绷 (Live)",
+            "id": 185644
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "免费教学录像带",
+            "id": 185684
+        },
+        {
+            "al": {
+                "id": 18869,
+                "name": "惊叹号",
+                "picUrl": "http://p3.music.126.net/aRmkU-iV0yt0F6UTdEAN3A==/19123805742099070.jpg",
+                "pic_str": "19123805742099070",
+                "pic": 19123805742099070
+            },
+            "name": "超跑女神",
+            "id": 185623
+        },
+        {
+            "al": {
+                "id": 18888,
+                "name": "不能说的秘密 电影原声带",
+                "picUrl": "http://p3.music.126.net/UAgXkK9Buq7NcFJ2fy0KhA==/84662395351539.jpg",
+                "pic_str": "84662395351539",
+                "pic": 84662395351539
+            },
+            "name": "路小雨",
+            "id": 185852
+        },
+        {
+            "al": {
+                "id": 18875,
+                "name": "跨时代",
+                "picUrl": "http://p4.music.126.net/4E5b_0eDTiMCzYKiVSAerw==/19165587184063665.jpg",
+                "pic_str": "19165587184063665",
+                "pic": 19165587184063664
+            },
+            "name": "超人不会飞",
+            "id": 185686
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "龙战骑士",
+            "id": 185692
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p3.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "给我一首歌的时间",
+            "id": 185694
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "蛇舞",
+            "id": 185696
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p3.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "花海",
+            "id": 185697
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "魔术先生",
+            "id": 185698
+        },
+        {
+            "al": {
+                "id": 18888,
+                "name": "不能说的秘密 电影原声带",
+                "picUrl": "http://p3.music.126.net/UAgXkK9Buq7NcFJ2fy0KhA==/84662395351539.jpg",
+                "pic_str": "84662395351539",
+                "pic": 84662395351539
+            },
+            "name": "Secret (加长快板)",
+            "id": 185863
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "说好的幸福呢",
+            "id": 185699
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "兰亭序",
+            "id": 185701
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "流浪诗人",
+            "id": 185703
+        },
+        {
+            "al": {
+                "id": 18888,
+                "name": "不能说的秘密 电影原声带",
+                "picUrl": "http://p4.music.126.net/UAgXkK9Buq7NcFJ2fy0KhA==/84662395351539.jpg",
+                "pic_str": "84662395351539",
+                "pic": 84662395351539
+            },
+            "name": "不能说的秘密",
+            "id": 185868
+        },
+        {
+            "al": {
+                "id": 18877,
+                "name": "魔杰座",
+                "picUrl": "http://p4.music.126.net/HBanuZpt8SD2kf15AFa6Og==/109951163200234839.jpg",
+                "pic_str": "109951163200234839",
+                "pic": 109951163200234830
+            },
+            "name": "时光机",
+            "id": 185705
+        }
+    ]
+}

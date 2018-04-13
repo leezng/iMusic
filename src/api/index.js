@@ -1,9 +1,9 @@
-import topArtistsApi from './topArtists'
+import artistsApi from './artists'
 import songlistApi from './songlist'
 import searchApi from './search'
 
 export {
-  topArtistsApi,
+  artistsApi,
   songlistApi,
   searchApi
 }

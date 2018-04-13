@@ -29,9 +29,8 @@ class Sidebar extends Component {
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
-    const { location, match, history} = this.props
-    const newPath = match.path === '/' ? key : `${match.path}/${key}`
-    console.log(newPath, location, match)
+    const { location, history } = this.props
+    const newPath = `/${key}`
     if (location.pathname !== newPath) {
       history.push(newPath)
       this.setState({

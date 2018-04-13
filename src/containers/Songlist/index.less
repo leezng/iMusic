@@ -1,36 +1,12 @@
 .songlist {
   .ant-list-item-extra-wrap {
-    position: relative;
-    padding: 15px 0;
-    width: 100%;
-    border-radius: 4px;
-    text-align: center;
-    background-color: #eee;
-    &:hover .ant-list-item-extra {
-      opacity: 1;
-    }
-  }
-  .ant-list-item-main {
-    display: flex;
-    margin-bottom: 15px;
-  }
-  .ant-list-item-meta-title {
-    display: flex;
-    padding: 0 10px;
-    height: 40px;
-    justify-content: center;
-    line-height: 20px;
-    overflow: hidden;
-  }
-  .ant-list-item-meta-description {
-    margin: 0 auto;
-    width: 100px;
-    height: 100px; 
-    border-radius: 50%;
-    overflow: hidden;
-    img {
-      max-height: 100%;
-      width: auto;
+    &:hover {
+      .ant-list-item-extra {
+        opacity: 1;
+      }
+      .play {
+        transform: scale(1);
+      }
     }
   }
   .ant-list-item-extra {
@@ -44,12 +20,13 @@
     height: 100%;
     opacity: 0;
     font-size: 54px;
-    background-color: rgba(12, 12, 12, 0.5);
+    background-color: rgba(204, 204, 204, 0.3);
     color: #f9f9f9;
-    transition: opacity .3s;
-  }
-  
-  .ant-list-pagination {
-    margin: 0 0 10px;
+    transition: opacity .3s ease;
+    .play {
+      cursor: pointer;
+      transform: scale(0);
+      transition: transform .3s ease;
+    }
   }
 }

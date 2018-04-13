@@ -35,7 +35,7 @@ class Playlist extends Component {
       title: 'artists',
       dataIndex: 'artists',
       key: 'artists',
-      render: (text, record) => record.artists[0].name
+      render: (text, record) => record.artists[0].name // TODO: playlist结构统一，歌单的歌曲，歌手的歌曲等
     }, {
       title: 'Action',
       key: 'action',

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import user from './user'
 import searchResult from './searchResult'
-import topArtists from './topArtists'
+import artists from './artists'
 import songlist from './songlist'
 import playlist from './playlist'
 import playing from './playing'
@@ -9,7 +9,7 @@ import playing from './playing'
 export default combineReducers({
   user,
   searchResult,
-  topArtists,
+  artists,
   songlist,
   playlist,
   playing

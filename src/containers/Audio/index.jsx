@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => ({
   playing: state.playing
 })
 
-class Start extends Component {
+class Audio extends Component {
   static propTypes = {
     playlist: PropTypes.array, // 播放列表
     playing: PropTypes.object // 正在播放的歌曲
@@ -108,7 +108,7 @@ class Start extends Component {
     const offsetX = e.nativeEvent.offsetX
     const offsetWidth = e.target.offsetWidth
     let percent = offsetX / offsetWidth
-    let time = this.getCurrentTimeByPercent(percent)
+    let time = timeParse(this.getCurrentTimeByPercent(percent))
     this.setState({ mouseoverTime: time })
   }
 
@@ -117,16 +117,16 @@ class Start extends Component {
    * @param  {Number} percent 百分比值
    */
   setCurrentTimeByPercent = percent => {
-    let time = this.getCurrentTimeByPercent(percent)
-    this.audio.currentTime = timeParse(time)
+    this.audio.currentTime = this.getCurrentTimeByPercent(percent)
   }
 
   /**
    * 根据进度条百分比设置当前播放时间
    * @param  {Number} percent 百分比值
+   * @return {Number}
    */
   getCurrentTimeByPercent = percent => {
-    return timeParse(Math.floor(percent * (this.audio.duration || 0)))
+    return Math.floor(percent * (this.audio.duration || 0))
   }
 
   /**
@@ -135,6 +135,7 @@ class Start extends Component {
   componentWillReceiveProps (nextProps) {
     // 只有playing改变才说明是新的歌曲
     if (nextProps.playing !== this.props.playing) {
+      console.log('change')
       // let newId = nextProps.playing && nextProps.playing.id
       // let oldId = this.props.playing && this.props.playing.id
       // if (newId === oldId) return
@@ -187,4 +188,4 @@ class Start extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Start)
+export default connect(mapStateToProps)(Audio)

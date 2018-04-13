@@ -1,9 +1,10 @@
 import {
-  topArtistsApi,
+  artistsApi,
   songlistApi,
   searchApi
 } from 'src/api'
 
+// 搜索
 export const search = (keywords, pageSize, pageNo) => async (dispatch, getState) => {
   const searchResult = getState().searchResult
   if (searchResult && searchResult.status === 'pending') return
@@ -21,7 +22,7 @@ export const search = (keywords, pageSize, pageNo) => async (dispatch, getState)
       pageNo
     }})
   } catch (err) {
-    console.log('search: ', err)
+    console.warn('search: ', err)
     dispatch({
       type: 'SET_SEARCH_RESULT',
       status: 'reject'
@@ -29,22 +30,23 @@ export const search = (keywords, pageSize, pageNo) => async (dispatch, getState)
   }
 }
 
+// 获取歌手榜
 export const getTopArtists = () => async (dispatch, getState) => {
-  const topArtists = getState().topArtists
-  if (topArtists && topArtists.status === 'pending') return
+  const artists = getState().artists
+  if (artists && artists.status === 'pending') return
   try {
     dispatch({
       type: 'GET_TOP_ARTISTS',
       status: 'pending'
     })
-    const resBody = await topArtistsApi.getTopArtists()
+    const resBody = await artistsApi.getTopArtists()
     dispatch({
       type: 'GET_TOP_ARTISTS',
       status: resBody.code === 200 ? 'resolve' : 'reject',
-      result: resBody.list && resBody.list.artists
+      topArtists: resBody.artists.map(item => ({...item, ...{isTop: true}}))
     })
   } catch (err) {
-    console.log('getTopArtists: ', err)
+    console.warn('getTopArtists: ', err)
     dispatch({
       type: 'GET_TOP_ARTISTS',
       status: 'reject'
@@ -52,6 +54,36 @@ export const getTopArtists = () => async (dispatch, getState) => {
   }
 }
 
+// 获取歌手详情
+export const getArtistDetail = id => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: 'ADD_ARTIST_DETAIL',
+      status: 'pending'
+    })
+    const resBody = await artistsApi.getArtistDetail(id)
+    if (resBody.code === 200) {
+      let artist = resBody.artist || {}
+      dispatch({
+        type: 'ADD_ARTIST_DETAIL',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        detail: {
+          desc: artist.briefDesc,
+          hotSongs: resBody.hotSongs || []
+        },
+        id
+      })
+    }
+  } catch (err) {
+    console.warn('getArtistDetail: ', err)
+    dispatch({
+      type: 'ADD_ARTIST_DETAIL',
+      status: 'reject'
+    })
+  }
+}
+
+// 获取推荐歌单
 export const getSonglist = () => async (dispatch, getState) => {
   const songlist = getState().songlist
   if (songlist && songlist.status === 'pending') return
@@ -74,7 +106,7 @@ export const getSonglist = () => async (dispatch, getState) => {
       })
     }
   } catch (err) {
-    console.log('getSonglist: ', err)
+    console.warn('getSonglist: ', err)
     dispatch({
       type: 'GET_SONGLIST',
       status: 'reject'
@@ -82,9 +114,8 @@ export const getSonglist = () => async (dispatch, getState) => {
   }
 }
 
+// 获取推荐歌单详情
 export const getSonglistDetail = id => async (dispatch, getState) => {
-  const songlistDetail = getState().songlistDetail
-  if (songlistDetail && songlistDetail.status === 'pending') return
   try {
     dispatch({
       type: 'GET_SONGLIST_DETAIL',
@@ -103,7 +134,7 @@ export const getSonglistDetail = id => async (dispatch, getState) => {
       dispatch(setPlaying(playlist[0]))
     }
   } catch (err) {
-    console.log('getSonglistDetail: ', err)
+    console.warn('getSonglistDetail: ', err)
     dispatch({
       type: 'GET_SONGLIST_DETAIL',
       status: 'reject'

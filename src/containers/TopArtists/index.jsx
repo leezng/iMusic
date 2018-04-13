@@ -1,9 +1,14 @@
-import { getTopArtists } from 'src/actions'
+import { getTopArtists, getArtistDetail } from 'src/actions'
 import { connectListHoc } from '../ListHoc'
-import "./index.less"
+import './index.less'
 
 export default connectListHoc({
   className: 'top-artists',
-  stateName: 'topArtists',
-  getAllData: getTopArtists
+  stateName: 'artists',
+  getAllData: getTopArtists,
+  itemOnClick: (item, props) => {
+    const { dispatch, history} = props
+    dispatch(getArtistDetail(item.id))
+    history.push(`artistDetail/${item.id}`)
+  }
 })
