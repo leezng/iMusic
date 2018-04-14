@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout, message } from 'antd'
 import PropTypes from 'prop-types'
+import { addToPlaylist, setPlaying } from 'src/actions'
+
 import Sidebar from '../Sidebar'
 import MusicCenter from '../MusicCenter'
-import Controller from '../Controller'
+import Audio from '../Audio'
 import Playlist from '../Playlist'
 import Searchlist from '../Searchlist'
-import { addToPlaylist, setPlaying } from 'src/actions'
+import ArtistDetail from '../ArtistDetail'
 import "./index.less"
 
 const { Footer, Sider, Content } = Layout
@@ -63,12 +65,13 @@ class App extends Component {
               <Route path="/musicCenter" component={MusicCenter} />
               <Route path="/playlist" component={Playlist} />
               <Route path="/searchlist" component={Searchlist} />
+              <Route path="/artistDetail/:id" component={ArtistDetail} />
             </Switch>
           </Content>
         </Layout>
       </Layout>
       <Footer className="app-footer">
-        <Controller/>
+        <Audio/>
       </Footer> 
     </Layout>
   }

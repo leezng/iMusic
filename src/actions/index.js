@@ -13,7 +13,7 @@ export const search = (keywords, pageSize, pageNo) => async (dispatch, getState)
       type: 'SET_SEARCH_RESULT',
       status: 'pending'
     })
-    const resBody = await searchApi.search(keywords)
+    const resBody = await searchApi.search(keywords, pageSize, pageNo)
     dispatch({...resBody.result, ...{
       type: 'SET_SEARCH_RESULT',
       status: resBody.code === 200 ? 'resolve' : 'reject',
@@ -129,6 +129,7 @@ export const getSonglistDetail = id => async (dispatch, getState) => {
         detail: resBody.result,
         id
       })
+      // 关键字段: id, name, album, artists, lMusic, mMusic, hMusic
       let playlist = (resBody.result && resBody.result.tracks) || []
       dispatch(setPlaylist(playlist))
       dispatch(setPlaying(playlist[0]))

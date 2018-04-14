@@ -26,22 +26,18 @@ class Searchlist extends Component {
 
   render () {
     const { dispatch } = this.props
-    const { songs, songCount, pageSize } = this.props.searchResult
+    const { status, songs, songCount, pageSize } = this.props.searchResult
     const columns = [{
-      title: 'Name',
+      title: '歌曲',
       dataIndex: 'name',
       key: 'name'
     }, {
-      title: 'Id',
-      dataIndex: 'id',
-      key: 'id'
-    }, {
-      title: 'artists',
+      title: '歌手',
       dataIndex: 'artists',
       key: 'artists',
       render: (text, record) => record.artists[0].name
     }, {
-      title: 'Action',
+      title: '操作',
       key: 'action',
       render: (text, record) => (<Button.Group size="small">
         <Button type="primary" icon="caret-right" onClick={() =>
@@ -55,6 +51,7 @@ class Searchlist extends Component {
     return <Table
       className="searchlist"
       size="small"
+      loading={status === 'pending'}
       pagination={{
         pageSize,
         total: songCount,

@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
+import { LocaleProvider } from 'antd'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 import 'antd/dist/antd.css'
 import './assets/less/common.less'
 import App from './containers/App'
@@ -18,7 +20,9 @@ window.store = store
 render(
   <Provider store={store}>
     <HashRouter>
-      <App />
+      <LocaleProvider locale={zhCN}>
+        <App />
+      </LocaleProvider>
     </HashRouter>
   </Provider>,
   document.getElementById('root')

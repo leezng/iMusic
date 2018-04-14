@@ -1,4 +1,3 @@
-/* http://localhost:11845/top/artists?offset=0&limit=30 */
 {
     "code": 200,
     "more": true,
