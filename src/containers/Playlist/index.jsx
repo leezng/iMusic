@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
 import { Table, Button, Tag } from 'antd'
 import { removeFromPlaylist, clearPlaylist, setPlaying } from 'src/actions'
-import "./index.less"
 
 const mapStateToProps = (state, ownProps) => ({
   playlist: state.playlist,

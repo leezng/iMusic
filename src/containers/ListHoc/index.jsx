@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { List } from 'antd'
+import { List, Icon } from 'antd'
 import "./index.less"
 
 /**
  * 列表高阶组件
  * @param  {String} options.className  样式类名
  * @param  {String} options.stateName  store的对应数据字段
+ * @param  {Boolean} options.playIcon  悬浮时是否出现播放按钮
  * @param  {function} options.getAllData 获取数据源
  * @param  {function} options.itemOnClick [可选]单项点击事件, 提供参数(item, props),
  *                                        若存在ListItemRender则无效
@@ -17,6 +18,7 @@ import "./index.less"
 export function connectListHoc({
   className,
   stateName,
+  playIcon = false,
   getAllData,
   itemOnClick
 }, ListItemRender) {
@@ -61,7 +63,7 @@ export function connectListHoc({
 
     componentWillReceiveProps (nextProps) {
       if (nextProps.isActive === this.props.isActive) return
-      console.log('componentWillReceiveProps: ', nextProps)
+      // console.log('componentWillReceiveProps: ', nextProps)
       this.request()
     }
 
@@ -81,7 +83,7 @@ export function connectListHoc({
         result = result.filter(item => item && item.isTop) // 只获取歌手榜
       }
       return <List
-        className={`list-hoc ${className}`}
+        className={`list-hoc ${playIcon ? 'list-hoc-with-playicon' : ''} ${className}`}
         grid={{ gutter: 20, column: 6 }}
         loading={status === 'pending'}
         dataSource={this.getCurrentData(pageSize, pageNo, result)}
@@ -91,15 +93,23 @@ export function connectListHoc({
           total: result && result.length,
           size: 'small',
           onChange: this.hanldeOnChange,
+          hideOnSinglePage: true
         }}
         renderItem={item => {
+          // playIcon存在时, 事件绑定在ListItem, 否则绑定在ListItemMeta
+          let ItemProps = playIcon ? {
+            extra: <Icon className="play" type="play-circle-o"/>,
+            onClick: () => itemOnClick(item, this.props)
+          } : {}
+          let metaProps = {
+            title: item.name,
+            description: <img width={200} alt="无法获取图片" src={item.picUrl} />
+          }
+          if (!playIcon) metaProps.onClick = () => itemOnClick(item, this.props)
           return typeof ListItemRender === 'function'
             ? ListItemRender(item, this.props.dispatch)
-            : <List.Item>
-              <List.Item.Meta
-                title={item.name}
-                description={<img width={200} alt="无法获取图片" src={item.picUrl} />}
-                onClick={() => itemOnClick(item, this.props)} />
+            : <List.Item {...ItemProps}>
+              <List.Item.Meta {...metaProps}/>
             </List.Item>
         }}
       />

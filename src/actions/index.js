@@ -1,7 +1,8 @@
 import {
   artistsApi,
   songlistApi,
-  searchApi
+  searchApi,
+  djprogramApi
 } from 'src/api'
 
 // 搜索
@@ -78,6 +79,32 @@ export const getArtistDetail = id => async (dispatch, getState) => {
     console.warn('getArtistDetail: ', err)
     dispatch({
       type: 'ADD_ARTIST_DETAIL',
+      status: 'reject'
+    })
+  }
+}
+
+// 获取推荐电台
+export const getDjprogram = () => async (dispatch, getState) => {
+  const djprogram = getState().djprogram
+  if (djprogram && djprogram.status === 'pending') return
+  try {
+    dispatch({
+      type: 'GET_DJPROGRAM',
+      status: 'pending'
+    })
+    const resBody = await djprogramApi.getDjprogram()
+    if (resBody.code === 200) {
+      dispatch({
+        type: 'GET_DJPROGRAM',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        result: resBody.result || []
+      })
+    }
+  } catch (err) {
+    console.warn('getDjprogram: ', err)
+    dispatch({
+      type: 'GET_DJPROGRAM',
       status: 'reject'
     })
   }

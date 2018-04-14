@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Tabs } from 'antd'
 import TopArtists from '../TopArtists'
 import Songlist from '../Songlist'
+import Djprogram from '../Djprogram'
 import "./index.less"
 
 const TabPane = Tabs.TabPane
@@ -13,7 +14,7 @@ class MusicCenter extends Component {
   }
 
   handleTabChange = tabKey => {
-    console.log('handleTabChange: ', tabKey)
+    // console.log('handleTabChange: ', tabKey)
     this.setState({
       activeTab: tabKey
     })
@@ -29,7 +30,9 @@ class MusicCenter extends Component {
       <TabPane tab="推荐歌单" key="songList">
         <Songlist isActive={activeTab === 'songList'} />
       </TabPane>
-      <TabPane tab="Tab 3" key="3">Content of tab 3</TabPane>
+      <TabPane tab="推荐电台" key="djprogram">
+        <Djprogram isActive={activeTab === 'djprogram'} />
+      </TabPane>
       <TabPane tab="Tab 4" key="4">Content of tab 4</TabPane>
     </Tabs>
   }

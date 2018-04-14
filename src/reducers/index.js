@@ -5,12 +5,14 @@ import artists from './artists'
 import songlist from './songlist'
 import playlist from './playlist'
 import playing from './playing'
+import djprogram from './djprogram'
 
 export default combineReducers({
-  user,
-  searchResult,
-  artists,
-  songlist,
-  playlist,
-  playing
+  user, // 用户
+  searchResult, // 搜索结果
+  artists, // 所有歌手
+  songlist, // 推荐歌单
+  playlist, // 播放列表
+  playing, // 正在播放的歌曲
+  djprogram // 推荐电台
 })
