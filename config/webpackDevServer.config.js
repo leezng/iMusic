@@ -103,22 +103,26 @@ module.exports = function(proxy, allowedHost) {
       // it used the same host and port.
       // https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
-      app.get('/toplist/artist', async (req, res) => {
-        await wait(300)
-        return res.json(topArtists)
-      });
-      app.get('/personalized', async (req, res) => {
-        await wait(300)
-        return res.json(playlist)
-      });
-      app.get('/playlist/detail', async (req, res) => {
-        await wait(300)
-        return req.query && req.query.id && res.json(playlistDetail)
-      });
-      app.get('/search', async (req, res) => {
-        await wait(300)
-        return res.json(search)
-      });
+      // app.get('/toplist/artist', async (req, res) => {
+      //   await wait(300)
+      //   return res.json(topArtists)
+      // });
+      // app.get('/artist', async (req, res) => {
+      //   await wait(300)
+      //   return res.json(artist)
+      // });
+      // app.get('/personalized', async (req, res) => {
+      //   await wait(300)
+      //   return res.json(playlist)
+      // });
+      // app.get('/playlist/detail', async (req, res) => {
+      //   await wait(300)
+      //   return req.query && req.query.id && res.json(playlistDetail)
+      // });
+      // app.get('/search', async (req, res) => {
+      //   await wait(300)
+      //   return res.json(search)
+      // });
     },
   };
 };
