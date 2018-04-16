@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   /**
    * 搜索
@@ -6,7 +8,7 @@ export default {
    * @param  {Number} offset   页码, 首页为0
    */
   search (keywords, limit = 15, offset = 0) {
-    return fetch(`/search?keywords=${keywords}&limit=${limit}&offset=${offset}`)
-      .then(res => res.ok && res.json())
+    return axios.get(`/search?keywords=${keywords}&limit=${limit}&offset=${offset}`)
+      .then(res => res.data)
   }
 }

@@ -2,8 +2,63 @@ import {
   artistsApi,
   songlistApi,
   searchApi,
-  djprogramApi
+  djprogramApi,
+  userApi
 } from 'src/api'
+
+// 手机登陆
+export const phoneLogin = (phone, password) => (dispatch, getState) => {
+  return new Promise(async (resolve, reject) => {
+    const user = getState().user
+    if (user && user.status === 'pending') reject('pending')
+    try {
+      dispatch({
+        type: 'SET_USER',
+        status: 'pending'
+      })
+      const resBody = await userApi.phoneLogin(phone, password) || {}
+      const response = {
+        type: 'SET_USER',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        // account: resBody.account,暂时无需使用
+        profile: resBody.profile
+      }
+      dispatch(response)
+      resolve(response)
+    } catch (err) {
+      console.warn('phoneLogin: ', err)
+      dispatch({
+        type: 'SET_USER',
+        status: 'reject'
+      })
+      reject('reject')
+    }
+  })
+}
+
+// 获取用户详情
+export const getUserDetail = id => async (dispatch, getState) => {
+  const user = getState().user
+  if (user && user.status === 'pending') return
+  try {
+    dispatch({
+      type: 'SET_USER',
+      status: 'pending'
+    })
+    const resBody = await userApi.getDetail(id) || {}
+    dispatch({
+      type: 'SET_USER',
+      status: resBody.code === 200 ? 'resolve' : 'reject',
+      profile: resBody.profile
+    })
+  } catch (err) {
+    console.warn('getUserDetail: ', err)
+    dispatch({
+      type: 'SET_USER',
+      status: 'reject'
+    })
+  }
+}
 
 // 搜索
 export const search = (keywords, pageSize, pageNo) => async (dispatch, getState) => {
