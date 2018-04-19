@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Table, Button } from 'antd'
-import { search, addToPlaylist, setPlaying } from 'src/actions'
-import "./index.less"
+import { Table } from 'antd'
+import { search } from 'src/actions'
+import ActionGroup from '../ActionGroup'
+import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
   searchResult: state.searchResult
 })
 
+// 搜索结果列表
 class Searchlist extends Component {
   static propTypes = {
     searchResult: PropTypes.object
@@ -25,7 +27,6 @@ class Searchlist extends Component {
   }
 
   render () {
-    const { dispatch } = this.props
     const { status, songs, songCount, pageSize } = this.props.searchResult
     const columns = [{
       title: '歌曲',
@@ -39,14 +40,9 @@ class Searchlist extends Component {
     }, {
       title: '操作',
       key: 'action',
-      render: (text, record) => (<Button.Group size="small">
-        <Button type="primary" icon="caret-right" onClick={() =>
-          dispatch(addToPlaylist(record)) && dispatch(setPlaying(record))
-        } />
-        <Button type="primary" icon="plus-circle" onClick={() =>
-          dispatch(addToPlaylist(record))
-        } />
-      </Button.Group>)
+      render: (text, record) => <ActionGroup
+        actions={['play', 'add']}
+        song={record} />
     }]
     return <Table
       className="searchlist"

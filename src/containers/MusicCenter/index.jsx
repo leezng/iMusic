@@ -4,10 +4,11 @@ import { Tabs } from 'antd'
 import TopArtists from '../TopArtists'
 import Songlist from '../Songlist'
 import Djprogram from '../Djprogram'
-import "./index.less"
+import './index.less'
 
 const TabPane = Tabs.TabPane
 
+// 发现音乐(音乐馆)
 class MusicCenter extends Component {
   state = {
     activeTab: 'topArtists'

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Button, Card, Table } from 'antd'
-import { addToPlaylist, setPlaying } from 'src/actions'
+import { Card, Table } from 'antd'
+import ActionGroup from '../ActionGroup'
 import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -32,7 +32,7 @@ class ArtistDetail extends Component {
   }
 
   render () {
-    const { match, dispatch, artists } = this.props
+    const { match, artists } = this.props
     const id = match && match.params && +match.params.id
     const item = Array.isArray(artists.result) && artists.result.find(item => item.id === id)
     if (!item) return null
@@ -42,10 +42,6 @@ class ArtistDetail extends Component {
       title: '歌曲',
       dataIndex: 'name',
       key: 'name'
-    // }, {
-    //   title: 'Address',
-    //   dataIndex: 'address',
-    //   key: 'address',
     }, {
       title: '专辑',
       dataIndex: 'al',
@@ -54,16 +50,9 @@ class ArtistDetail extends Component {
     }, {
       title: '操作',
       key: 'action',
-      render: (text, record) => (<Button.Group size="small">
-        <Button type="primary" icon="caret-right" onClick={() => {
-          let song = this.songFormatter(record, item)
-          dispatch(addToPlaylist(song)) && dispatch(setPlaying(song))
-        }} />
-        <Button type="primary" icon="plus-circle" onClick={() => {
-          let song = this.songFormatter(record, item)
-          dispatch(addToPlaylist(song))
-        }} />
-      </Button.Group>)
+      render: (text, record) => <ActionGroup
+        actions={['play', 'add']}
+        song={this.songFormatter(record, item)} />
     }]
 
     return <div className="artist-detail">
@@ -73,7 +62,7 @@ class ArtistDetail extends Component {
         cover={<img alt="歌手图片" src={item.picUrl} />}>
         <Card.Meta
           title={item.name}
-          description={desc}/>
+          description={desc} />
       </Card>
       <Table
         size="middle"

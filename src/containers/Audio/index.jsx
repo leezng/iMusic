@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Icon, Tooltip, message } from 'antd'
 import { setPlaying } from 'src/actions'
-import "./index.less"
+import './index.less'
 
 // 时间一位数时加0
-function pad(val) {
+function pad (val) {
   val = Math.floor(val)
   if (val < 10) return '0' + val
   else return isNaN(val) ? '00' : val + ''
 }
 
 // 时间格式化为xx:xx
-function timeParse(sec) {
+function timeParse (sec) {
   let min = Math.floor(sec / 60)
   sec = sec - min * 60
   return pad(min) + ':' + pad(sec)
@@ -175,7 +175,7 @@ class Audio extends Component {
           <div
             className="slider-runway"
             onClick={this.sliderClick}
-            onMouseOver={this.sliderMouseover}>
+            onMouseMove={this.sliderMouseover}>
             <div className="slider-bar" style={{transform: `translateX(-${100 - percent}%)`}}></div>
           </div>
         </Tooltip>

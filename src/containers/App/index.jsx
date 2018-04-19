@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { Layout, message } from 'antd'
+import { Layout, Spin, message } from 'antd'
 import PropTypes from 'prop-types'
 import { addToPlaylist, setPlaying } from 'src/actions'
 
@@ -11,21 +11,24 @@ import Audio from '../Audio'
 import Playlist from '../Playlist'
 import Searchlist from '../Searchlist'
 import ArtistDetail from '../ArtistDetail'
-import "./index.less"
+import './index.less'
 
 const { Footer, Sider, Content } = Layout
 
 const mapStateToProps = (state, ownProps) => ({
-  playlist: state.playlist
+  playlist: state.playlist,
+  user: state.user
 })
 
 class App extends Component {
   static propTypes = {
-    playlist: PropTypes.array
+    playlist: PropTypes.array,
+    user: PropTypes.object
   }
 
   static defaultProps = {
-    playlist: []
+    playlist: [],
+    user: {}
   }
 
   preventDefault = e => {
@@ -53,27 +56,33 @@ class App extends Component {
   }
 
   render () {
-    return <Layout className="app-container" onDragEnter={this.preventDefault} onDragOver={this.preventDefault} onDrop={this.onDrop}>
-      <Layout>
-        <Sider className="app-sider">
-          <Sidebar/>
-        </Sider>
+    const { user } = this.props
+    // 获取用户歌单等也会使得status=pending
+    return <Spin
+      spinning={user.status === 'pending' && user.isLocal !== false}
+      wrapperClassName="app-spin">
+      <Layout className="app-container" onDragEnter={this.preventDefault} onDragOver={this.preventDefault} onDrop={this.onDrop}>
         <Layout>
-          <Content className="app-content">
-            <Switch>
-              <Route exact path="/" component={() => <Redirect to="/musicCenter" />} />
-              <Route path="/musicCenter" component={MusicCenter} />
-              <Route path="/playlist" component={Playlist} />
-              <Route path="/searchlist" component={Searchlist} />
-              <Route path="/artistDetail/:id" component={ArtistDetail} />
-            </Switch>
-          </Content>
+          <Sider className="app-sider">
+            <Sidebar />
+          </Sider>
+          <Layout>
+            <Content className="app-content">
+              <Switch>
+                <Route exact path="/" component={() => <Redirect to="/musicCenter" />} />
+                <Route path="/musicCenter" component={MusicCenter} />
+                <Route path="/playlist" component={Playlist} />
+                <Route path="/searchlist" component={Searchlist} />
+                <Route path="/artistDetail/:id" component={ArtistDetail} />
+              </Switch>
+            </Content>
+          </Layout>
         </Layout>
+        <Footer className="app-footer">
+          <Audio />
+        </Footer>
       </Layout>
-      <Footer className="app-footer">
-        <Audio/>
-      </Footer> 
-    </Layout>
+    </Spin>
   }
 }
 

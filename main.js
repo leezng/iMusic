@@ -1,42 +1,25 @@
-const port = 11845 // 服务器使用端口
-// SERVER_ENV = development | production
-const isDev = process.env.SERVER_ENV === 'development'
-
-process.env.PORT = port
-
-// 引入electron并创建一个Browserwindow
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const url = require('url')
+const config = require('./config')
+// const path = require('path')
 const express = require('express')
-const server = require('NeteaseCloudMusicApi/app.js')
+const { app, BrowserWindow } = require('electron')
 
-if (!isDev) {
+process.env.PORT = config.server.port // set server port
+
+var server = require('NeteaseCloudMusicApi/app.js') // server
+
+if (process.env.NODE_ENV !== 'development') {
   // server除带.的路径, 都当作http请求处理
-  server.use('/.app', express.static(path.resolve(__dirname, './build')))
+  server.use('/', express.static(__dirname))
 }
 
+// let isOsx = process.platform === 'darwin'
 // 保持win对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 var win
 
-function createWindow () {
-  const homePage = isDev
-    ? 'http://localhost:8086/'
-    : 'http://localhost:' + port + '/.app/'
+const createMainWindow = () => {
   // 创建浏览器窗口
   win = new BrowserWindow({ width: 1080, height: 660, frame: false, titleBarStyle: 'hiddenInset' })
-  win.show()
-  // 此处应判断：打包时进入该注释部分
-  // 加载应用-----  electron-quick-start中默认的加载入口
-  // win.loadURL(url.format({
-  //   pathname: path.join(__dirname, './build/index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }))
-  
-  // 加载应用
-  win.loadURL(homePage)
-  
+
   // 打开开发者工具，默认不打开
   // win.webContents.openDevTools()
 
@@ -44,10 +27,36 @@ function createWindow () {
   win.on('closed', function () {
     win = null
   })
+
+  // 加载应用
+  win.loadURL(
+    process.env.NODE_ENV === 'development'
+      ? `http://localhost:${config.devServer.port}`
+      : `http://localhost:${config.server.port}`
+  )
+
+  win.webContents.on('did-finish-load', () => {
+    try {
+      win.show()
+    } catch (ex) { }
+  })
 }
 
+// if (isOsx) {
+//   // App about
+//   // app.setAboutPanelOptions({
+//   //     applicationName: 'ieaseMusic',
+//   //     applicationVersion: pkg.version,
+//   //     copyright: 'Made with 💖 by trazyn. \n https://github.com/trazyn/ieaseMusic',
+//   //     credits: `With the invaluable help of: \n github.com/Binaryify/NeteaseCloudMusicApi`,
+//   //     version: pkg.version
+//   // });
+//   app.dock.setIcon(`${__dirname}/src/assets/dock.png`)
+//   // app.dock.setMenu(Menu.buildFromTemplate(dockMenu))
+// }
+
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
-app.on('ready', createWindow)
+app.on('ready', createMainWindow)
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {
@@ -58,7 +67,7 @@ app.on('window-all-closed', function () {
 })
 
 app.on('activate', function () {
-   // macOS中点击Dock图标时没有已打开的其余应用窗口时,则通常在应用中重建一个窗口
+  // macOS中点击Dock图标时没有已打开的其余应用窗口时,则通常在应用中重建一个窗口
   if (win === null) {
     createWindow()
   }

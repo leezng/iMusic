@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Avatar, Modal, Form, Input, Icon } from 'antd'
+import { Avatar, Button, Modal, Card, Form, Input, Icon, Popover, message } from 'antd'
+import { phoneLogin, refreshLogin, setLocalUser } from 'src/actions'
+import { getCookie, setCookie, deleteCookie } from 'src/utils'
 import './index.less'
 
 const FormItem = Form.Item
@@ -10,12 +12,39 @@ const mapStateToProps = (state, ownProps) => ({
   user: state.user
 })
 
-function UserAvatar (user) {
-  return user && user.id
-    ? <Avatar
-      size="large"
-      src={user.picUrl} />
-    : <span>Local</span>
+function UserAvatar ({profile, onClick}) {
+  return <div className="avatar" onClick={onClick}>{(() => (
+    profile && profile.userId
+      ? <Avatar
+        size="large"
+        src={profile.avatarUrl} />
+      : <span>Local</span>
+  ))()}</div>
+}
+
+function LoginForm ({props}) {
+  const { getFieldDecorator } = props.form
+  return <Form>
+    <span>目前仅支持使用手机号码登录</span>
+    <FormItem>
+      {getFieldDecorator('phone', {
+        rules: [{ required: true, message: '请输入手机号码' }]
+      })(
+        <Input
+          prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+          placeholder="用户名" />
+      )}
+    </FormItem>
+    <FormItem>
+      {getFieldDecorator('password', {
+        rules: [{ required: true, message: '请输入密码' }]
+      })(
+        <Input
+          prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+          type="password" placeholder="密码" />
+      )}
+    </FormItem>
+  </Form>
 }
 
 class User extends Component {
@@ -32,25 +61,60 @@ class User extends Component {
     confirmLoading: false
   }
 
-  showModal = () => this.setState({ visible: false }) // TODO
+  componentDidMount () {
+    // 获取登录状态
+    const { dispatch } = this.props
+    const idCookie = getCookie('__IMUSIC_ID')
+    if (idCookie) dispatch(refreshLogin(idCookie))
+    // else deleteCookie('') // TODO
+  }
 
+  // 退出登录, 当前仅能在cookie上操作, 后台未提供接口
+  loginOut = () => {
+    const { dispatch } = this.props
+    deleteCookie('__IMUSIC_ID')
+    dispatch(setLocalUser())
+    this.setState({ visible: false })
+  }
+
+  // 确认登录
   handleOk = () => {
     this.props.form.validateFields((err, values) => {
-      if (err) return
-      else {
-        console.log('Received values of form: ', values)
+      if (err) {
+        console.log(err)
+      } else {
+        const { dispatch } = this.props
+        const { phone, password } = values
         this.setState({ confirmLoading: true })
-        setTimeout(() => {
-          this.setState({
-            visible: false,
-            confirmLoading: false
-          })
-        }, 1000)
+        dispatch(phoneLogin(phone, password)).then(res => {
+          if (res && res.status === 'resolve') {
+            this.setState({
+              visible: false,
+              confirmLoading: false
+            })
+            let id = res.profile && res.profile.userId
+            setCookie('__IMUSIC_ID', id, 10)
+          } else {
+            this.setState({ confirmLoading: false })
+            message.warning(res.msg || '频繁登录，请稍后重试')
+          }
+        }).catch(err => {
+          console.warn(err)
+          this.setState({ confirmLoading: false })
+          message.warning('网络错误')
+        })
       }
     })
   }
 
-  handleCancel = (e) => {
+  // Popover的显示隐藏回调
+  onPopoverVisibleChange = visible => this.setState({ visible })
+
+  // set visible to true 可控制 Modal || Popover
+  show = () => this.setState({ visible: true })
+
+  // set visible to false 可控制 Modal || Popover
+  hide = (e) => {
     e.stopPropagation()
     this.setState({
       visible: false
@@ -60,40 +124,41 @@ class User extends Component {
   render () {
     const { visible, confirmLoading } = this.state
     const { user } = this.props
-    const { getFieldDecorator } = this.props.form
+    const profile = user.profile || {}
     return <div className="user-info">
-      <div className="avatar" onClick={this.showModal}>
-        <UserAvatar user={user} />
-      </div>
-      <Modal
-        visible={visible}
-        title="登陆"
-        okText="确认"
-        cancelText="取消"
-        onOk={this.handleOk}
-        confirmLoading={confirmLoading}
-        onCancel={this.handleCancel}>
-        <Form>
-          <FormItem>
-            {getFieldDecorator('userName', {
-              rules: [{ required: true, message: '请输入用户名' }],
-            })(
-              <Input
-                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="用户名" />
-            )}
-          </FormItem>
-          <FormItem>
-            {getFieldDecorator('password', {
-              rules: [{ required: true, message: '请输入密码' }],
-            })(
-              <Input
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                type="password" placeholder="密码" />
-            )}
-          </FormItem>
-        </Form>
-      </Modal>
+      {(() => {
+        if (user.isLocal === false && !confirmLoading) {
+          return <Popover
+            placement="rightTop"
+            content={<Card
+              style={{ width: 200 }}
+              cover={<img alt="头像" src={profile.avatarUrl} />}
+              actions={[<Button type="danger" onClick={this.loginOut}>退出登录</Button>]}>
+              <Card.Meta
+                title={profile.nickname}
+                description={profile.signature} />
+            </Card>}
+            trigger="click"
+            visible={visible}
+            onVisibleChange={this.onPopoverVisibleChange}>
+            <UserAvatar profile={profile} onClick={this.show} />
+          </Popover>
+        } else {
+          return <div>
+            <UserAvatar profile={profile} onClick={this.show} />
+            <Modal
+              visible={visible}
+              title="登录"
+              okText="确认"
+              cancelText="取消"
+              onOk={this.handleOk}
+              confirmLoading={confirmLoading}
+              onCancel={this.hide}>
+              <LoginForm props={this.props} />
+            </Modal>
+          </div>
+        }
+      })()}
     </div>
   }
 }

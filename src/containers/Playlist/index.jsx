@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import { Table, Button, Tag } from 'antd'
-import { removeFromPlaylist, clearPlaylist, setPlaying } from 'src/actions'
+import { Table, Tag } from 'antd'
+import ActionGroup from '../ActionGroup'
 
 const mapStateToProps = (state, ownProps) => ({
   playlist: state.playlist,
   playing: state.playing
 })
 
+// 播放列表
 class Playlist extends Component {
   static propTypes = {
     playlist: PropTypes.array,
@@ -21,7 +22,7 @@ class Playlist extends Component {
   }
 
   render () {
-    const { playlist, playing, dispatch } = this.props
+    const { playlist, playing } = this.props
     const columns = [{
       title: '歌曲',
       dataIndex: 'name',
@@ -29,8 +30,8 @@ class Playlist extends Component {
       render: (text, record) => {
         return playing.id === record.id
           ? <span>
-              {record.name}<Tag color="magenta" style={{marginLeft: 10}}>正在播放</Tag>
-            </span>
+            {record.name}<Tag color="magenta" style={{marginLeft: 10}}>正在播放</Tag>
+          </span>
           : record.name
       }
     }, {
@@ -41,14 +42,9 @@ class Playlist extends Component {
     }, {
       title: '操作',
       key: 'action',
-      render: (text, record) => (<Button.Group size="small">
-        <Button type="primary" icon="caret-right" onClick={() =>
-          dispatch(setPlaying(record))
-        } />
-        <Button type="primary" icon="delete" onClick={() =>
-          dispatch(removeFromPlaylist(record.id))
-        } />
-      </Button.Group>)
+      render: (text, record) => <ActionGroup
+        actions={['play', 'remove']}
+        song={record} />
     }]
 
     return <Table

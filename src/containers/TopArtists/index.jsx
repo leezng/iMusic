@@ -7,7 +7,7 @@ export default connectListHoc({
   stateName: 'artists',
   getAllData: getTopArtists,
   itemOnClick: (item, props) => {
-    const { dispatch, history} = props
+    const { dispatch, history } = props
     dispatch(getArtistDetail(item.id))
     history.push(`artistDetail/${item.id}`)
   }

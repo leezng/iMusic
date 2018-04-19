@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { List, Icon } from 'antd'
-import "./index.less"
+import './index.less'
 
 /**
- * 列表高阶组件
+ * 列表高阶组件(只适用于获取所有数据的情况, 不支持分页请求数据)
  * @param  {String} options.className  样式类名
  * @param  {String} options.stateName  store的对应数据字段
  * @param  {Boolean} options.playIcon  悬浮时是否出现播放按钮
@@ -15,7 +15,7 @@ import "./index.less"
  *                                        若存在ListItemRender则无效
  * @param  {function} ListItemRender [可选]用于自定义列表单项元素结构, 接收参数(item, dispatch)
  */
-export function connectListHoc({
+export function connectListHoc ({
   className,
   stateName,
   playIcon = false,
@@ -98,7 +98,7 @@ export function connectListHoc({
         renderItem={item => {
           // playIcon存在时, 事件绑定在ListItem, 否则绑定在ListItemMeta
           let ItemProps = playIcon ? {
-            extra: <Icon className="play" type="play-circle-o"/>,
+            extra: <Icon className="play" type="play-circle-o" />,
             onClick: () => itemOnClick(item, this.props)
           } : {}
           let metaProps = {
@@ -109,7 +109,7 @@ export function connectListHoc({
           return typeof ListItemRender === 'function'
             ? ListItemRender(item, this.props.dispatch)
             : <List.Item {...ItemProps}>
-              <List.Item.Meta {...metaProps}/>
+              <List.Item.Meta {...metaProps} />
             </List.Item>
         }}
       />

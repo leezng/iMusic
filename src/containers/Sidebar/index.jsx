@@ -13,8 +13,9 @@ class Sidebar extends Component {
 
   componentDidMount () {
     const { location } = this.props
-    this.setState({
-      activeMenu: location.pathname.slice(1),
+    const pathName = location.pathname.slice(1)
+    pathName && this.setState({
+      activeMenu: pathName
     })
   }
 
@@ -34,14 +35,14 @@ class Sidebar extends Component {
     if (location.pathname !== newPath) {
       history.push(newPath)
       this.setState({
-        activeMenu: key,
+        activeMenu: key
       })
     }
   }
 
   render () {
     return <div className="app-sidebar">
-      <User/>
+      <User />
       <div className="search">
         <Input.Search
           placeholder="搜索"
