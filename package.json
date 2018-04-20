@@ -18,8 +18,8 @@
     "package-win": "yarn build && rm -rf release && electron-builder --win --ia32 --projectDir ./dist"
   },
   "build": {
-    "productName": "ieaseMusic",
-    "appId": "gh.trazyn.ieaseMusic",
+    "productName": "iMusic",
+    "appId": "gh.leezng.iMusic",
     "compression": "maximum",
     "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
     "dmg": {
@@ -35,7 +35,7 @@
           "path": "/Applications"
         }
       ],
-      "title": "ieaseMusic ${version}"
+      "title": "iMusic ${version}"
     },
     "mac": {
       "icon": "../resource/dock.icns"
@@ -51,7 +51,7 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "../resource/ieaseMusic.ico"
+      "icon": "../resource/iMusic.ico"
     },
     "nsis": {
       "oneClick": false,

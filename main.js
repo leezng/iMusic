@@ -18,7 +18,14 @@ var win
 
 const createMainWindow = () => {
   // 创建浏览器窗口
-  win = new BrowserWindow({ width: 1080, height: 660, frame: false, titleBarStyle: 'hiddenInset' })
+  win = new BrowserWindow({
+    width: 1080,
+    minWidth: 800,
+    height: 660,
+    minHeight: 500,
+    frame: false,
+    titleBarStyle: 'hiddenInset'
+  })
 
   // 打开开发者工具，默认不打开
   // win.webContents.openDevTools()
