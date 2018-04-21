@@ -5,14 +5,37 @@
 // module.hot is disabled), so keeping it and related plugins contained
 // within webpack helps prevent unexpected errors.
 {
-  "presets": ['es2015', "react", "stage-0"],
-  "plugins": ["babel-polyfill", "transform-decorators-legacy"],
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 10"]
+      }
+    }],
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ],  
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es"
+    }]
+  ],
   "env": {
-      "production": {
-          "presets": ["react-optimize"]
-      },
-      "development": {
-          "presets": ["react-hmre"]
-      },
+    // "production": {
+    //   "presets": ["react-optimize"]
+    // },
+    "development": {
+      "presets": ["react-hmre"]
+    },
   },
 }
