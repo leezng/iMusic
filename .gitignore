@@ -5,6 +5,7 @@
 # Other
 #
 dist/
+dist-web/
 release/
 resource/
 

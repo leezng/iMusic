@@ -1,0 +1,1701 @@
+/* http://localhost:11845/user/record?uid=371805141&type=1 */
+{
+    "weekData": [
+        {
+            "playCount": 0,
+            "score": 100,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 1007170,
+                        "name": "陈粒"
+                    }
+                ],
+                "al": {
+                    "id": 3098832,
+                    "name": "如也",
+                    "picUrl": "http://p4.music.126.net/VuJFMbXzpAProbJPoXLv7g==/7721870161993398.jpg",
+                    "pic_str": "7721870161993398",
+                    "pic": 7721870161993398
+                },
+                "st": 0,
+                "v": 11,
+                "alia": [],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 0,
+                "cf": "",
+                "dt": 336000,
+                "h": {
+                    "br": 320000,
+                    "fid": 7809831092254763,
+                    "size": 13444721,
+                    "vd": -0.52
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 7715273092266000,
+                    "size": 4034162,
+                    "vd": -0.09
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 9,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 7776845743420435,
+                    "size": 6722893,
+                    "vd": -0.08
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "绝对占有 相对自由",
+                "id": 30431377,
+                "privilege": {
+                    "id": 30431377,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 3063,
+                        "name": "黄义达"
+                    }
+                ],
+                "al": {
+                    "id": 9131,
+                    "name": "专属密码",
+                    "picUrl": "http://p3.music.126.net/O837Y3jFHR0BNaz1ysF7DA==/825733232460062.jpg",
+                    "pic_str": "825733232460062",
+                    "pic": 825733232460062
+                },
+                "st": 3,
+                "v": 16,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000009231003",
+                "mst": 9,
+                "cp": 7001,
+                "cf": "",
+                "dt": 271214,
+                "h": {
+                    "br": 320000,
+                    "fid": 3321624627667466,
+                    "size": 10851434,
+                    "vd": -2.98
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 3330420720653434,
+                    "size": 3255549,
+                    "vd": -2.57
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 3,
+                "crbt": "580692982324b491800924020c6eeb9a",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 7993449535575694,
+                    "size": 5425802,
+                    "vd": -2.54
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5309461,
+                "name": "那女孩对我说",
+                "id": 92939,
+                "privilege": {
+                    "id": 92939,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 19679,
+                        "name": "HALCALI"
+                    }
+                ],
+                "al": {
+                    "id": 72566,
+                    "name": "Long Kiss Good Bye",
+                    "picUrl": "http://p4.music.126.net/RNZsWyIOESBLngf92uZ0Og==/4459619162262113.jpg",
+                    "pic_str": "4459619162262113",
+                    "pic": 4459619162262113,
+                    "alia": [
+                        "NARUTO片尾曲",
+                        " 火影忍者ED"
+                    ]
+                },
+                "st": -9,
+                "v": 32,
+                "alia": [
+                    "TV动画《火影忍者疾风传》ED7 / TVアニメ「NARUTO -ナルト- 疾風伝」ED7"
+                ],
+                "pop": 100,
+                "rt": "",
+                "mst": 9,
+                "cp": 663018,
+                "cf": "",
+                "dt": 246936,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 9904325,
+                    "vd": -4.47
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 0,
+                    "size": 2995251,
+                    "vd": -4.08
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 1,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 0,
+                    "size": 4969273,
+                    "vd": -4.06
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 339231,
+                "name": "Long Kiss Good Bye",
+                "id": 740268,
+                "privilege": {
+                    "id": 740268,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": -200,
+                    "pl": 0,
+                    "dl": 0,
+                    "sp": 0,
+                    "cp": 0,
+                    "subp": 0,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 0,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 18351,
+                        "name": "advantage Lucy"
+                    }
+                ],
+                "al": {
+                    "id": 65486,
+                    "name": "Lucy Van Pelt",
+                    "picUrl": "http://p4.music.126.net/F0TQzDtg3cEEiRwAN9Iv1A==/6622358535411590.jpg",
+                    "pic_str": "6622358535411590",
+                    "pic": 6622358535411590
+                },
+                "st": 1,
+                "v": 5,
+                "alia": [],
+                "pop": 90,
+                "rt": "",
+                "mst": 9,
+                "cp": 663018,
+                "cf": "",
+                "dt": 218828,
+                "h": {
+                    "br": 320000,
+                    "fid": 3243559304209957,
+                    "size": 8748939,
+                    "vd": -0.000265076
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 3245758327421160,
+                    "size": 2625420,
+                    "vd": -0.000265076
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 4,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 6632254140072389,
+                    "size": 4374997,
+                    "vd": -0.000265076
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "Nico",
+                "id": 678231,
+                "privilege": {
+                    "id": 678231,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 13112043,
+                        "name": "鞠文娴"
+                    }
+                ],
+                "al": {
+                    "id": 37871038,
+                    "name": "BINGBIAN病变 (女声版)",
+                    "picUrl": "http://p3.music.126.net/4TuBpyxVpbHnj2EMCSnW9w==/109951163176375492.jpg",
+                    "pic_str": "109951163176375492",
+                    "pic": 109951163176375490
+                },
+                "st": 0,
+                "v": 3,
+                "alia": [],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 17003,
+                "cf": "",
+                "dt": 247031,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 9883733,
+                    "vd": 0
+                },
+                "l": {
+                    "br": 128000,
+                    "fid": 0,
+                    "size": 3953519,
+                    "vd": 0
+                },
+                "pst": 0,
+                "cd": "",
+                "no": 1,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 192000,
+                    "fid": 0,
+                    "size": 5930257,
+                    "vd": 0
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "BINGBIAN病变 (女声版)",
+                "id": 543607345,
+                "privilege": {
+                    "id": 543607345,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 8926,
+                        "name": "莫文蔚"
+                    }
+                ],
+                "al": {
+                    "id": 37561940,
+                    "name": "慢慢喜欢你",
+                    "picUrl": "http://p4.music.126.net/XqNiBR_6gPXXq58vW2dD8g==/109951163169448520.jpg",
+                    "pic_str": "109951163169448520",
+                    "pic": 109951163169448510
+                },
+                "st": 3,
+                "v": 5,
+                "alia": [],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 7001,
+                "cf": "",
+                "dt": 221022,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 8841970,
+                    "vd": 0
+                },
+                "l": {
+                    "br": 128000,
+                    "fid": 0,
+                    "size": 3536814,
+                    "vd": 0
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 1,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 192000,
+                    "fid": 0,
+                    "size": 5305200,
+                    "vd": 0
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "慢慢喜欢你",
+                "id": 541687281,
+                "privilege": {
+                    "id": 541687281,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 7061,
+                        "name": "阿桑"
+                    }
+                ],
+                "al": {
+                    "id": 511713,
+                    "name": "我们的主打歌 3",
+                    "picUrl": "http://p4.music.126.net/7APo8U2BiBHXCNfPH7fRXg==/23089744200154.jpg",
+                    "pic_str": "23089744200154",
+                    "pic": 23089744200154
+                },
+                "st": 1,
+                "v": 682,
+                "alia": [
+                    "电视剧《蔷薇之恋》片尾曲"
+                ],
+                "pop": 100,
+                "rt": "600902000009289074",
+                "mst": 9,
+                "cp": 677020,
+                "cf": "",
+                "dt": 290873,
+                "h": {
+                    "br": 320000,
+                    "fid": 1045635558023561,
+                    "size": 11654224,
+                    "vd": -0.74
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 1145691116151601,
+                    "size": 3515486,
+                    "vd": -0.37
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 34,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 998356558029323,
+                    "size": 5840802,
+                    "vd": -0.34
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5330689,
+                "name": "叶子",
+                "id": 5249197,
+                "privilege": {
+                    "id": 5249197,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 42955,
+                        "name": "Sufjan Stevens"
+                    }
+                ],
+                "al": {
+                    "id": 36525952,
+                    "name": "Call Me By Your Name (Original Motion Picture Soundtrack)",
+                    "picUrl": "http://p3.music.126.net/Xz32BGhlEPPtirBZG1N4Ag==/18257390579783713.jpg",
+                    "pic_str": "18257390579783713",
+                    "pic": 18257390579783710,
+                    "alia": [
+                        "电影《请以你的名字呼唤我》原声带"
+                    ]
+                },
+                "st": 3,
+                "v": 378,
+                "alia": [
+                    "《请以你的名字呼唤我》电影插曲"
+                ],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 7001,
+                "cf": "",
+                "dt": 248965,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 9961056,
+                    "vd": 0
+                },
+                "l": {
+                    "br": 128000,
+                    "fid": 0,
+                    "size": 3984448,
+                    "vd": 0
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 13,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 192000,
+                    "fid": 0,
+                    "size": 5976651,
+                    "vd": 0
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5798036,
+                "name": "Mystery of Love",
+                "id": 516358164,
+                "privilege": {
+                    "id": 516358164,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 9606,
+                        "name": "王心凌"
+                    }
+                ],
+                "al": {
+                    "id": 489971,
+                    "name": "天国的嫁衣 电视原声带",
+                    "picUrl": "http://p3.music.126.net/g7tKSQVQfb6kExuRGJ-Xkg==/109951163240607941.jpg",
+                    "pic_str": "109951163240607941",
+                    "pic": 109951163240607940
+                },
+                "st": 3,
+                "v": 676,
+                "alia": [
+                    "《天国的嫁衣》插曲"
+                ],
+                "pop": 100,
+                "rt": "600902000005333566",
+                "mst": 9,
+                "cp": 7002,
+                "cf": "",
+                "dt": 260545,
+                "h": {
+                    "br": 320000,
+                    "fid": 1024744837095292,
+                    "size": 10452637,
+                    "vd": 0
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 1017048255700812,
+                    "size": 3163534,
+                    "vd": 0
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 5,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 1031341906861949,
+                    "size": 5246434,
+                    "vd": 0
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5307734,
+                "name": "花的嫁纱",
+                "id": 4875961,
+                "privilege": {
+                    "id": 4875961,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 9774,
+                        "name": "王蓝茵"
+                    }
+                ],
+                "al": {
+                    "id": 489909,
+                    "name": "恶作剧之吻 电视原声带",
+                    "picUrl": "http://p3.music.126.net/3n01o8lnrbQfopy5PkpppA==/18877515137439308.jpg",
+                    "pic_str": "18877515137439308",
+                    "pic": 18877515137439308
+                },
+                "st": 1,
+                "v": 677,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000009484382",
+                "mst": 9,
+                "cp": 22035,
+                "cf": "",
+                "dt": 226000,
+                "h": {
+                    "br": 320000,
+                    "fid": 2089072092783861,
+                    "size": 9110073,
+                    "vd": -1.34
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 2069280883483845,
+                    "size": 2758661,
+                    "vd": -0.95
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 12,
+                "crbt": "79abe2cdabb1b95f75df2a1b10a8f01f",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 2030797976511334,
+                    "size": 4573649,
+                    "vd": -0.9
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "恶作剧",
+                "id": 4875084,
+                "privilege": {
+                    "id": 4875084,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 13738,
+                        "name": "183Club"
+                    }
+                ],
+                "al": {
+                    "id": 489905,
+                    "name": "王子变青蛙 电视原声带",
+                    "picUrl": "http://p4.music.126.net/LW4ZNNfgEYxiuF6AQezn-w==/834529325482369.jpg",
+                    "pic_str": "834529325482369",
+                    "pic": 834529325482369
+                },
+                "st": 3,
+                "v": 682,
+                "alia": [
+                    "《王子变青蛙》插曲"
+                ],
+                "pop": 100,
+                "rt": "",
+                "mst": 9,
+                "cp": 7002,
+                "cf": "",
+                "dt": 224133,
+                "h": {
+                    "br": 320000,
+                    "fid": 3393092917228917,
+                    "size": 8968403,
+                    "vd": -2.39
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 3426078265021020,
+                    "size": 2690552,
+                    "vd": -2.01
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 11,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 18627925998354976,
+                    "size": 4484224,
+                    "vd": -1.97
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5369211,
+                "name": "真爱",
+                "id": 4875036,
+                "privilege": {
+                    "id": 4875036,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 11947,
+                        "name": "锦绣二重唱"
+                    }
+                ],
+                "al": {
+                    "id": 489810,
+                    "name": "命中注定我爱你 电视原声带",
+                    "picUrl": "http://p3.music.126.net/zY_aWTXkX4jriUK0Eh5BUw==/29686813965788.jpg",
+                    "pic_str": "29686813965788",
+                    "pic": 29686813965788
+                },
+                "st": 1,
+                "v": 686,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000007951369",
+                "mst": 9,
+                "cp": 684010,
+                "cf": "",
+                "dt": 203272,
+                "h": {
+                    "br": 320000,
+                    "fid": 5807620418026691,
+                    "size": 8175634,
+                    "vd": -0.9
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 5832909185463440,
+                    "size": 2482926,
+                    "vd": -0.53
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 5,
+                "crbt": "125acf2b1d83bfa16b5a0b7a4a1b74b2",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 5834008697091215,
+                    "size": 4109414,
+                    "vd": -0.47
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "我的快乐",
+                "id": 4873343,
+                "privilege": {
+                    "id": 4873343,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 1197168,
+                        "name": "徐秉龙"
+                    }
+                ],
+                "al": {
+                    "id": 35373032,
+                    "name": "林宥嘉",
+                    "picUrl": "http://p4.music.126.net/F-9fxXkcNezoImBJ6fU9qw==/109951162902970293.jpg",
+                    "pic_str": "109951162902970293",
+                    "pic": 109951162902970290
+                },
+                "st": 0,
+                "v": 16,
+                "alia": [],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 0,
+                "cf": "",
+                "dt": 281454,
+                "h": {
+                    "br": 320000,
+                    "fid": 18923694625733210,
+                    "size": 11260909,
+                    "vd": -0.53
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 19217264230349708,
+                    "size": 3378304,
+                    "vd": -0.11
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 1,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 19006157997818170,
+                    "size": 5630477,
+                    "vd": -0.1
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5483065,
+                "name": "林宥嘉",
+                "id": 472117541,
+                "privilege": {
+                    "id": 472117541,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 2,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 102035,
+                        "name": "The xx"
+                    }
+                ],
+                "al": {
+                    "id": 438387,
+                    "name": "xx",
+                    "picUrl": "http://p3.music.126.net/Xik6a3wXoGPOLI1GNXGdFQ==/825733232504415.jpg",
+                    "pic_str": "825733232504415",
+                    "pic": 825733232504415
+                },
+                "st": 1,
+                "v": 18,
+                "alia": [],
+                "pop": 100,
+                "rt": "",
+                "mst": 9,
+                "cp": 390012,
+                "cf": "",
+                "dt": 127920,
+                "h": {
+                    "br": 320000,
+                    "fid": 1422768049768000,
+                    "size": 5118998,
+                    "vd": -0.45
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 3287539775742598,
+                    "size": 1535730,
+                    "vd": -0.02
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 1,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 1365593507993948,
+                    "size": 2559521,
+                    "vd": -0.03
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "Intro",
+                "id": 4341314,
+                "privilege": {
+                    "id": 4341314,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 7122,
+                        "name": "阿肆"
+                    },
+                    {
+                        "id": 3685,
+                        "name": "林宥嘉"
+                    }
+                ],
+                "al": {
+                    "id": 34940090,
+                    "name": "我愚蠢的理想主义",
+                    "picUrl": "http://p4.music.126.net/bPoOwlDdL72AkXjYvj-3aQ==/18623527952064964.jpg",
+                    "pic_str": "18623527952064964",
+                    "pic": 18623527952064964
+                },
+                "st": 0,
+                "v": 11,
+                "alia": [],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 22020,
+                "cf": "",
+                "dt": 246000,
+                "h": {
+                    "br": 320000,
+                    "fid": 18669707440351870,
+                    "size": 9842982,
+                    "vd": -2.24
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 18669707440351876,
+                    "size": 2952926,
+                    "vd": -1.8
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 3,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 18669707440351876,
+                    "size": 4921514,
+                    "vd": -1.79
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5362519,
+                "name": "致姗姗来迟的你 ",
+                "id": 432506809,
+                "privilege": {
+                    "id": 432506809,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 12728,
+                        "name": "Sweety"
+                    }
+                ],
+                "al": {
+                    "id": 37290,
+                    "name": "花言乔语",
+                    "picUrl": "http://p4.music.126.net/DtXaOWquQHyB9edIuOADgg==/109951163061823739.jpg",
+                    "pic_str": "109951163061823739",
+                    "pic": 109951163061823740
+                },
+                "st": 1,
+                "v": 299,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000009414750",
+                "mst": 9,
+                "cp": 588012,
+                "cf": "",
+                "dt": 283820,
+                "h": {
+                    "br": 320000,
+                    "fid": 0,
+                    "size": 11354950,
+                    "vd": -3
+                },
+                "l": {
+                    "br": 128000,
+                    "fid": 0,
+                    "size": 4542006,
+                    "vd": -2
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 10,
+                "crbt": "13b67cb14ca8969e1f4c31735a9729ea",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 192000,
+                    "fid": 0,
+                    "size": 6812987,
+                    "vd": -2
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5741709,
+                "name": "樱花草",
+                "id": 376971,
+                "privilege": {
+                    "id": 376971,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 981205,
+                        "name": "mizuki"
+                    },
+                    {
+                        "id": 1096011,
+                        "name": "SawanoHiroyuki[nZk]"
+                    }
+                ],
+                "al": {
+                    "id": 2982127,
+                    "name": "A/Z | aLIEz",
+                    "picUrl": "http://p3.music.126.net/FahHKWzpgA5t9hIaj4kbBQ==/6649846324993045.jpg",
+                    "pic_str": "6649846324993045",
+                    "pic": 6649846324993045,
+                    "alia": [
+                        "TV动画《ALDNOAH.ZERO》ED专辑"
+                    ]
+                },
+                "st": 0,
+                "v": 32,
+                "alia": [
+                    "TV动画《ALDNOAH.ZERO》ED2 / TVアニメ「アルドノア・ゼロ」ED2"
+                ],
+                "pop": 100,
+                "rt": null,
+                "mst": 9,
+                "cp": 663018,
+                "cf": "",
+                "dt": 268480,
+                "h": {
+                    "br": 320000,
+                    "fid": 6620159511136894,
+                    "size": 10743652,
+                    "vd": -2.85
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 6620159511136896,
+                    "size": 3223835,
+                    "vd": -2.51
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 3,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 6620159511136895,
+                    "size": 5372355,
+                    "vd": -2.46
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 382750,
+                "name": "aLIEz",
+                "id": 29307041,
+                "privilege": {
+                    "id": 29307041,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 5379,
+                        "name": "韦礼安"
+                    }
+                ],
+                "al": {
+                    "id": 2262071,
+                    "name": "尝味·人生-百味华语作品集",
+                    "picUrl": "http://p4.music.126.net/RR1xm9WB4b4un4xVA8UIfg==/868614185983517.jpg",
+                    "pic_str": "868614185983517",
+                    "pic": 868614185983517
+                },
+                "st": 3,
+                "v": 672,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000009330022",
+                "mst": 9,
+                "cp": 1011,
+                "cf": "",
+                "dt": 252264,
+                "h": {
+                    "br": 320000,
+                    "fid": 5838406743614168,
+                    "size": 10131378,
+                    "vd": 0
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 5880188185366661,
+                    "size": 3066510,
+                    "vd": 0
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 16,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 5910974510944189,
+                    "size": 5085044,
+                    "vd": 0
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 59157,
+                "name": "有没有",
+                "id": 25640781,
+                "privilege": {
+                    "id": 25640781,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 55454,
+                        "name": "Dia Frampton"
+                    }
+                ],
+                "al": {
+                    "id": 254624,
+                    "name": "Red",
+                    "picUrl": "http://p4.music.126.net/GFx9nDMqUZgP-GAB3nCL_A==/109951163240603344.jpg",
+                    "pic_str": "109951163240603344",
+                    "pic": 109951163240603340
+                },
+                "st": 3,
+                "v": 25,
+                "alia": [],
+                "pop": 100,
+                "rt": "",
+                "mst": 9,
+                "cp": 7003,
+                "cf": "",
+                "dt": 254432,
+                "h": {
+                    "br": 320000,
+                    "fid": 5739450697082252,
+                    "size": 10219001,
+                    "vd": -3.2
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 1358996371970955,
+                    "size": 3094469,
+                    "vd": -2.89
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 8,
+                "crbt": "5efccfcb2cc3fa68f671d64bde60e7ca",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 1352399302204314,
+                    "size": 5130349,
+                    "vd": -2.81
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5403793,
+                "name": "Walk Away - Album Version",
+                "id": 2529311,
+                "privilege": {
+                    "id": 2529311,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                },
+                "eq": "pop"
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 13773,
+                        "name": "小瀬村晶"
+                    },
+                    {
+                        "id": 160075,
+                        "name": "Haruka Nakamura"
+                    }
+                ],
+                "al": {
+                    "id": 2088723,
+                    "name": "Afterglow",
+                    "picUrl": "http://p4.music.126.net/V8sgXiMjEY_a7lLRth32nQ==/623423092970197.jpg",
+                    "pic_str": "623423092970197",
+                    "pic": 623423092970197
+                },
+                "st": 1,
+                "v": 4,
+                "alia": [],
+                "pop": 100,
+                "rt": "",
+                "mst": 9,
+                "cp": 663018,
+                "cf": "",
+                "dt": 354586,
+                "h": {
+                    "br": 320000,
+                    "fid": 1031341906865237,
+                    "size": 14177725,
+                    "vd": -0.000265076
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 1168780860337526,
+                    "size": 4263525,
+                    "vd": -0.000265076
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 10,
+                "crbt": null,
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 1031341906865238,
+                    "size": 7096452,
+                    "vd": -0.000265076
+                },
+                "djId": 0,
+                "fee": 0,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 0,
+                "name": "Afterglow",
+                "id": 22744933,
+                "privilege": {
+                    "id": 22744933,
+                    "fee": 0,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 320000,
+                    "dl": 320000,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 320000,
+                    "fl": 320000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                },
+                "eq": "classic"
+            }
+        },
+        {
+            "playCount": 0,
+            "score": 50,
+            "song": {
+                "rtUrls": [],
+                "ar": [
+                    {
+                        "id": 6469,
+                        "name": "张宇"
+                    }
+                ],
+                "al": {
+                    "id": 19247,
+                    "name": "雨一直下",
+                    "picUrl": "http://p3.music.126.net/otCQ-2wUgLaEN2_W8Nf_DA==/57174604656249.jpg",
+                    "pic_str": "57174604656249",
+                    "pic": 57174604656249
+                },
+                "st": 0,
+                "v": 27,
+                "alia": [],
+                "pop": 100,
+                "rt": "600902000000818962",
+                "mst": 9,
+                "cp": 13009,
+                "cf": "",
+                "dt": 288157,
+                "h": {
+                    "br": 320000,
+                    "fid": 6639950720216635,
+                    "size": 11517917,
+                    "vd": 0.21
+                },
+                "l": {
+                    "br": 96000,
+                    "fid": 6656443394636285,
+                    "size": 3456112,
+                    "vd": 0.0106097
+                },
+                "pst": 0,
+                "cd": "1",
+                "no": 4,
+                "crbt": "35a27a3f9412ddd17a5e0ba51d5d4759",
+                "rtUrl": null,
+                "a": null,
+                "m": {
+                    "br": 160000,
+                    "fid": 6638851208588567,
+                    "size": 5759485,
+                    "vd": 0.19651
+                },
+                "djId": 0,
+                "fee": 8,
+                "t": 0,
+                "ftype": 0,
+                "rtype": 0,
+                "rurl": null,
+                "mv": 5570210,
+                "name": "给你们",
+                "id": 190499,
+                "privilege": {
+                    "id": 190499,
+                    "fee": 8,
+                    "payed": 0,
+                    "st": 0,
+                    "pl": 128000,
+                    "dl": 0,
+                    "sp": 7,
+                    "cp": 1,
+                    "subp": 1,
+                    "cs": false,
+                    "maxbr": 999000,
+                    "fl": 128000,
+                    "toast": false,
+                    "flag": 0,
+                    "preSell": false
+                }
+            }
+        }
+    ],
+    "code": 200
+}

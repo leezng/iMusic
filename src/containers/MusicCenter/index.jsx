@@ -4,7 +4,6 @@ import { Tabs } from 'antd'
 import TopArtists from '../TopArtists'
 import Songlist from '../Songlist'
 import Djprogram from '../Djprogram'
-import './index.less'
 
 const TabPane = Tabs.TabPane
 

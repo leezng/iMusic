@@ -1,4 +1,22 @@
-// 设置cookie
+/**
+ * 获取一个对象内部某个属性的值
+ * @param  {Object} data 整个对象
+ * @param  {String} path [可选], 例如a表示获取data.a的值, a.b.c表示获取data.a.b.c的值
+ * @return {All}
+ */
+export function getObjectValue (data, path) {
+  let p = path ? `data.${path}` : 'data'
+  try {
+    return new Function('data', `return ${p}`)(data)
+  } catch (err) {}
+}
+
+/**
+ * 设置cookie
+ * @param {String} name  键名
+ * @param {String} value 键值
+ * @param {Number} expireDays 有效天数
+ */
 export function setCookie (name, value, expireDays) {
   let baseStr = name + '=' + encodeURIComponent(value)
   if (expireDays) {
@@ -9,7 +27,11 @@ export function setCookie (name, value, expireDays) {
   document.cookie = baseStr
 }
 
-// 获取cookie值
+/**
+ * 获取cookie值
+ * @param  {String} name 键名
+ * @return {String} 键值
+ */
 export function getCookie (name) {
   let _name = name + '='
   let arr = document.cookie.split(';')
@@ -21,10 +43,13 @@ export function getCookie (name) {
   return ''
 }
 
-// 删除Cookie
+/**
+ * 删除Cookie
+ * @param  {String} name 键名
+ */
 export function deleteCookie (name) {
   let exp = new Date()
   exp.setTime(exp.getTime() - 1)
   let val = getCookie(name)
-  document.cookie = name + '=' + val + '; expires=' + exp.toGMTString()
+  document.cookie = `${name}=${val};expires=${exp.toGMTString()}`
 }
