@@ -16,6 +16,8 @@
     "stage-0"
   ],
   "plugins": [
+    // "babel-polyfill",
+    // "transform-decorators-legacy", // 使用 ES7 Decorators 简化this的绑定
     [
       "transform-runtime",
       {

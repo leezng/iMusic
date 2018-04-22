@@ -16,7 +16,7 @@ module.exports = {
 
   entry: [
     // `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
-    'babel-polyfill',
+    // 'babel-polyfill',
     'src/index.js'
   ],
 
@@ -27,16 +27,12 @@ module.exports = {
   },
 
   plugins: [
-    // “If you are using the CLI, the webpack process will not exit with an error code by enabling this plugin.”
-    // https://github.com/webpack/docs/wiki/list-of-plugins#noerrorsplugin
-    new webpack.NoEmitOnErrorsPlugin(),
-
     // https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
     new webpack.HotModuleReplacementPlugin(),
 
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': '"development"'
     }),
 
     new HtmlWebpackPlugin({

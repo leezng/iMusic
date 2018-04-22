@@ -2,12 +2,24 @@ const path = require('path');
 
 module.exports = {
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loader: ['babel-loader', 'eslint-loader'],
+        loader: 'eslint-loader',
+        enforce: 'pre',
         include: path.resolve(__dirname, '../src'),
         exclude: /node_modules/
+      },
+      {
+        test: /\.jsx?$/,
+        loader: ['babel-loader'],
+        include: [
+          path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, '../config'),
+          path.resolve(__dirname, '../main.js'),
+          path.resolve(__dirname, '../node_modules/NeteaseCloudMusicApi'),
+          path.resolve(__dirname, '../node_modules/hoek')
+        ]
       },
       {
         test: /\.css$/,

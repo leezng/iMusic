@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const MinifyPlugin = require('uglifyjs-webpack-plugin');
 const config = require('./index');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -15,7 +14,7 @@ module.exports = {
   devtool: false,
 
   entry: [
-    'babel-polyfill',
+    // 'babel-polyfill',
     'src/index.js'
   ],
 
@@ -25,9 +24,12 @@ module.exports = {
   },
 
   plugins: [
-    // https://github.com/webpack/webpack/issues/2545
-    // Use babel-minify-webpack-plugin minify code
-    new MinifyPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: false
+    }),
 
     // https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
     // https://github.com/webpack/webpack/issues/864
@@ -36,7 +38,7 @@ module.exports = {
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
       DEBUG: false,
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': '"production"'
     }),
 
     new CopyWebpackPlugin([
