@@ -3,7 +3,7 @@ const config = require('./config')
 const express = require('express')
 const { app, BrowserWindow } = require('electron')
 
-process.env.PORT = config.server.port // set server port
+process.env.PORT = config.build.port // set server port
 
 var server = require('NeteaseCloudMusicApi/app.js') // server
 
@@ -38,8 +38,8 @@ const createMainWindow = () => {
   // 加载应用
   win.loadURL(
     process.env.NODE_ENV === 'development'
-      ? `http://localhost:${config.devServer.port}`
-      : `http://localhost:${config.server.port}`
+      ? `http://localhost:${config.dev.devServer.port}`
+      : `http://localhost:${config.build.port}`
   )
 
   win.webContents.on('did-finish-load', () => {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Card, Table } from 'antd'
 import ActionGroup from '../ActionGroup'
+import { connectBackHoc } from '../BackHoc'
 import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -35,7 +36,7 @@ class ArtistDetail extends Component {
     const { match, artists } = this.props
     const id = match && match.params && +match.params.id
     const item = Array.isArray(artists.result) && artists.result.find(item => item.id === id)
-    if (!item) return null
+    if (!item) return null // 改组件暂无考虑刷新的情况
     const { desc, hotSongs } = item.detail || {}
     const isLoading = artists.status === 'pending'
     const columns = [{
@@ -74,4 +75,4 @@ class ArtistDetail extends Component {
   }
 }
 
-export default connect(mapStateToProps)(ArtistDetail)
+export default connect(mapStateToProps)(connectBackHoc(ArtistDetail))

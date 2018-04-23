@@ -21,7 +21,7 @@ const webpackConfig = require('../config/webpack.config.dev')
 const debug = _debug('dev:server')
 const app = express()
 const compiler = webpack(webpackConfig)
-const proxyTable = config.proxyTable || {}
+const proxyTable = config.dev.proxyTable || {}
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
@@ -61,10 +61,10 @@ app.use(webpackHotMiddleware(compiler))
 //   await wait(300)
 //   return res.json(search)
 // })
-app.listen(config.devServer.port, config.devServer.host, err => {
+app.listen(config.dev.devServer.port, config.dev.devServer.host, err => {
   if (err) {
     throw err
   }
 
-  debug(`Hot reload server is running with port ${config.devServer.port}`)
+  debug(`Hot reload server is running with port ${config.dev.devServer.port}`)
 })

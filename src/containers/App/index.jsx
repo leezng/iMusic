@@ -11,6 +11,7 @@ import Audio from '../Audio'
 import Playlist from '../Playlist'
 import Searchlist from '../Searchlist'
 import ArtistDetail from '../ArtistDetail'
+import UserSonglist from '../UserSonglist'
 import './index.less'
 
 const { Footer, Sider, Content } = Layout
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route path="/playlist" component={Playlist} />
                 <Route path="/searchlist" component={Searchlist} />
                 <Route path="/artistDetail/:id" component={ArtistDetail} />
+                <Route path="/userSonglist/:id" component={UserSonglist} />
               </Switch>
             </Content>
           </Layout>

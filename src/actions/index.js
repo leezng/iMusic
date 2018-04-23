@@ -88,17 +88,38 @@ export const getUserDetail = id => async (dispatch, getState) => {
 }
 
 // 获取用户歌单
-export const getUserSonglist = id => async (dispatch, getState) => {
+export const getUserSonglist = id => (dispatch, getState) => {
   return new Promise(async (resolve, reject) => {
     try {
       const resBody = await userApi.getUserSonglist(id) || {}
       resBody.code === 200 && dispatch({
         type: 'SET_USER_SONGLIST',
-        songlist: resBody.songlist
+        songlist: resBody.playlist || []
       })
       resolve(resBody)
     } catch (err) {
       console.warn('getUserSonglist: ', err)
+      reject(err)
+    }
+  })
+}
+
+// 获取用户歌单详情
+export const getUserSonglistDetail = id => (dispatch, getState) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resBody = await songlistApi.getSonglistDetail(id)
+      if (resBody.code === 200) {
+        let tracks = (resBody.result && resBody.result.tracks) || []
+        dispatch({
+          type: 'SET_USER_SONGLIST_DETAIL',
+          tracks,
+          id
+        })
+      }
+      resolve(resBody)
+    } catch (err) {
+      console.warn('getUserSonglistDetail: ', err)
       reject(err)
     }
   })
@@ -134,28 +155,30 @@ export const search = (keywords, pageSize, pageNo) => async (dispatch, getState)
 }
 
 // 获取歌手榜
-export const getTopArtists = () => async (dispatch, getState) => {
-  const artists = getState().artists
-  if (artists && artists.status === 'pending') return
-  try {
-    dispatch({
-      type: 'GET_TOP_ARTISTS',
-      status: 'pending'
-    })
-    const resBody = await artistsApi.getTopArtists()
-    let artists = resBody.artists || []
-    dispatch({
-      type: 'GET_TOP_ARTISTS',
-      status: resBody.code === 200 ? 'resolve' : 'reject',
-      topArtists: artists.map(item => ({...item, ...{isTop: true}}))
-    })
-  } catch (err) {
-    console.warn('getTopArtists: ', err)
-    dispatch({
-      type: 'GET_TOP_ARTISTS',
-      status: 'error'
-    })
-  }
+export const getTopArtists = () => (dispatch, getState) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      dispatch({
+        type: 'GET_TOP_ARTISTS',
+        status: 'pending'
+      })
+      const resBody = await artistsApi.getTopArtists()
+      let artists = resBody.artists || []
+      dispatch({
+        type: 'GET_TOP_ARTISTS',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        topArtists: artists.map(item => ({...item, ...{isTop: true}}))
+      })
+      resolve(resBody)
+    } catch (err) {
+      console.warn('getTopArtists: ', err)
+      dispatch({
+        type: 'GET_TOP_ARTISTS',
+        status: 'error'
+      })
+      reject(err)
+    }
+  })
 }
 
 // 获取歌手详情
@@ -186,56 +209,60 @@ export const getArtistDetail = id => async (dispatch, getState) => {
 }
 
 // 获取推荐电台
-export const getDjprogram = () => async (dispatch, getState) => {
-  const djprogram = getState().djprogram
-  if (djprogram && djprogram.status === 'pending') return
-  try {
-    dispatch({
-      type: 'GET_DJPROGRAM',
-      status: 'pending'
-    })
-    const resBody = await djprogramApi.getDjprogram()
-    dispatch({
-      type: 'GET_DJPROGRAM',
-      status: resBody.code === 200 ? 'resolve' : 'reject',
-      result: resBody.result || []
-    })
-  } catch (err) {
-    console.warn('getDjprogram: ', err)
-    dispatch({
-      type: 'GET_DJPROGRAM',
-      status: 'error'
-    })
-  }
+export const getDjprogram = () => (dispatch, getState) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      dispatch({
+        type: 'GET_DJPROGRAM',
+        status: 'pending'
+      })
+      const resBody = await djprogramApi.getDjprogram()
+      dispatch({
+        type: 'GET_DJPROGRAM',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        result: resBody.result || []
+      })
+      resolve(resBody)
+    } catch (err) {
+      console.warn('getDjprogram: ', err)
+      dispatch({
+        type: 'GET_DJPROGRAM',
+        status: 'error'
+      })
+      reject(err)
+    }
+  })
 }
 
 // 获取推荐歌单
-export const getSonglist = () => async (dispatch, getState) => {
-  const songlist = getState().songlist
-  if (songlist && songlist.status === 'pending') return
-  try {
-    dispatch({
-      type: 'GET_SONGLIST',
-      status: 'pending'
-    })
-    const resBody = await songlistApi.getSonglist()
-    let result = resBody.result || []
-    dispatch({
-      type: 'GET_SONGLIST',
-      status: resBody.code === 200 ? 'resolve' : 'reject',
-      result: result.map(item => ({
-        id: item.id,
-        name: item.name,
-        picUrl: item.picUrl
-      }))
-    })
-  } catch (err) {
-    console.warn('getSonglist: ', err)
-    dispatch({
-      type: 'GET_SONGLIST',
-      status: 'error'
-    })
-  }
+export const getSonglist = () => (dispatch, getState) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      dispatch({
+        type: 'GET_SONGLIST',
+        status: 'pending'
+      })
+      const resBody = await songlistApi.getSonglist()
+      let result = resBody.result || []
+      dispatch({
+        type: 'GET_SONGLIST',
+        status: resBody.code === 200 ? 'resolve' : 'reject',
+        result: result.map(item => ({
+          id: item.id,
+          name: item.name,
+          picUrl: item.picUrl
+        }))
+      })
+      resolve(resBody)
+    } catch (err) {
+      console.warn('getSonglist: ', err)
+      dispatch({
+        type: 'GET_SONGLIST',
+        status: 'error'
+      })
+      reject(err)
+    }
+  })
 }
 
 // 获取推荐歌单详情

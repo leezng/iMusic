@@ -11,13 +11,13 @@ module.exports = {
   devtool: false,
 
   entry: [
-    // 'babel-polyfill',
     './main.js',
   ],
 
   output: {
-    path: config.dist,
-    filename: 'main.js'
+    path: config.build.outputPath,
+    filename: 'main.js',
+    publicPath: config.build.publicPath
   },
 
   plugins: [
@@ -30,7 +30,7 @@ module.exports = {
 
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': config.build.env
     })
   ],
 

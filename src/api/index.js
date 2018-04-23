@@ -9,10 +9,22 @@ axios.defaults.withCredentials = true // 携带cookie
 
 if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = '/api' // 便于代理
+} else if (process.env.DEMO_ENV === 'gh-pages') {
+  axios.interceptors.request.use((config) => {
+    if (!config.url) return config
+    let end = config.url.indexOf('?')
+    if (end === -1) end = config.url.length
+    let name = config.url
+      .slice(1, end)
+      .replace(/\/(\w+)/g, ($0, $1) => $1[0].toUpperCase() + $1.slice(1)) + '.json'
+    return {
+      ...config,
+      ...{
+        url: location.origin + location.pathname + '/mock/' + name
+      }
+    }
+  })
 }
-// else {
-//   axios.defaults.baseURL = `http://localhost:${config.server.port}`
-// }
 
 export {
   artistsApi,

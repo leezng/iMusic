@@ -4,8 +4,6 @@ const path = require('path');
 const baseConfig = require('./webpack.config.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { host, port } = config.server;
-
 module.exports = {
   ...baseConfig,
 
@@ -16,14 +14,13 @@ module.exports = {
 
   entry: [
     // `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
-    // 'babel-polyfill',
     'src/index.js'
   ],
 
   output: {
-    path: config.dist,
+    path: config.build.outputPath,
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: config.dev.publicPath
   },
 
   plugins: [
@@ -32,7 +29,7 @@ module.exports = {
 
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"development"'
+      'process.env.NODE_ENV': config.dev.env
     }),
 
     new HtmlWebpackPlugin({

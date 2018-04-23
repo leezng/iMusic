@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Avatar, Button, Modal, Card, Form, Input, Icon, Popover, message } from 'antd'
 import { phoneLogin, refreshLogin, setLocalUser } from 'src/actions'
@@ -66,15 +67,15 @@ class User extends Component {
     const { dispatch } = this.props
     const idCookie = getCookie('__IMUSIC_ID')
     if (idCookie) dispatch(refreshLogin(idCookie))
-    // else deleteCookie('') // TODO
   }
 
   // 退出登录, 当前仅能在cookie上操作, 后台未提供接口
   loginOut = () => {
-    const { dispatch } = this.props
+    const { dispatch, location, history } = this.props
     deleteCookie('__IMUSIC_ID')
     dispatch(setLocalUser())
     this.setState({ visible: false })
+    if (location.pathname !== '/musicCenter') history.push('/musicCenter')
   }
 
   // 确认登录
@@ -163,4 +164,4 @@ class User extends Component {
   }
 }
 
-export default Form.create()(connect(mapStateToProps)(User))
+export default Form.create()(withRouter(connect(mapStateToProps)(User)))

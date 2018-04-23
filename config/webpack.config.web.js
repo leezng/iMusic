@@ -5,11 +5,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
 
-const webpackConfig = {
-  ...baseConfig,
+const folder = path.resolve(__dirname, '../dist-web')
 
-  // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
-  target: 'electron-renderer',
+module.exports = {
+  ...baseConfig,
 
   devtool: false,
 
@@ -18,9 +17,8 @@ const webpackConfig = {
   ],
 
   output: {
-    path: config.build.outputPath,
-    filename: '[name].[hash].js',
-    publicPath: config.build.publicPath
+    path: folder,
+    filename: '[name].[hash].js'
   },
 
   plugins: [
@@ -38,18 +36,22 @@ const webpackConfig = {
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
       DEBUG: false,
-      'process.env.NODE_ENV': config.build.env
+      'process.env.NODE_ENV': '"production"'
     }),
 
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../package.json'),
-        to: config.build.outputPath
+        to: folder
+      }, {
+        from: path.resolve(__dirname, '../mock'),
+        to: `${folder}/mock`,
+        ignore: ['.*']
       }
     ]),
 
     new HtmlWebpackPlugin({
-      filename: `${config.build.outputPath}/index.html`,
+      filename: `${folder}/index.html`,
       template: path.resolve(__dirname, '../index.html'),
       inject: 'body',
       minify: {
@@ -58,19 +60,3 @@ const webpackConfig = {
     })
   ]
 };
-
-if (process.env.DEMO_ENV === 'gh-pages') {
-  webpackConfig.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env.DEMO_ENV': '"gh-pages"'
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../mock'),
-        to: path.resolve(__dirname, config.build.outputPath, './mock')
-      }
-    ])
-  );
-}
-
-module.exports = webpackConfig;

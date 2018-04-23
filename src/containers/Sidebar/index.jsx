@@ -1,14 +1,40 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Menu, Input, Icon } from 'antd'
-import { search } from 'src/actions'
+import { Menu, Input, Icon, Spin } from 'antd'
+import { search, getUserSonglist } from 'src/actions'
 import User from '../User'
 import './index.less'
 
+const mapStateToProps = (state, ownProps) => ({
+  user: state.user
+})
+
+const menuData = [{
+  name: '发现音乐',
+  key: 'musicCenter',
+  icon: 'appstore'
+}, {
+  name: '播放列表',
+  key: 'playlist',
+  icon: 'customer-service'
+}, {
+//   name: '我的音乐',
+//   key: 'userMusicCenter',
+//   icon: 'edit',
+//   isLocal: false
+// }, {
+  name: '我的歌单',
+  key: 'userSonglist',
+  icon: 'heart-o',
+  isLocal: false,
+  subMenu: [] // subMenu数据实际来源于store
+}]
+
 class Sidebar extends Component {
   state = {
-    activeMenu: 'musicCenter'
+    activeMenu: 'musicCenter',
+    spinning: false
   }
 
   componentDidMount () {
@@ -17,6 +43,21 @@ class Sidebar extends Component {
     pathName && this.setState({
       activeMenu: pathName
     })
+  }
+
+  componentWillReceiveProps (nextProps) {
+    let oldId = this.props.user && this.props.user.profile && this.props.user.profile.userId
+    let newId = nextProps.user && nextProps.user.profile && nextProps.user.profile.userId
+    if (newId && newId !== oldId) {
+      const { dispatch } = this.props
+      this.setState({spinning: true})
+      dispatch(getUserSonglist(newId)).then(res => {
+        this.setState({spinning: false})
+      }).catch(err => {
+        console.warn(err)
+        this.setState({spinning: false})
+      })
+    }
   }
 
   onSearch = text => {
@@ -30,8 +71,10 @@ class Sidebar extends Component {
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
+    // TODO: 默认缺省路由
+    // console.log('menuItemClick: ', e, key, keyPath)
     const { location, history } = this.props
-    const newPath = `/${key}`
+    const newPath = `/${keyPath.reverse().join('/')}`
     if (location.pathname !== newPath) {
       history.push(newPath)
       this.setState({
@@ -40,20 +83,45 @@ class Sidebar extends Component {
     }
   }
 
+  getMenuContent (menu, userSonglist) {
+    return menu.map(item => {
+      // 如果是用户歌单, 则subMenu数据来自store
+      let subMenu = item.key === 'userSonglist' ? userSonglist : item.subMenu
+      return subMenu
+        ? <Menu.SubMenu
+          key={item.key || item.id}
+          title={<span><Icon type={item.icon} />{item.name}</span>}>
+          {this.getMenuContent(subMenu)}
+        </Menu.SubMenu>
+        : <Menu.Item key={item.key || item.id}>
+          {item.icon ? <Icon type={item.icon} /> : null}
+          {item.name}
+        </Menu.Item>
+    })
+  }
+
   render () {
+    const { user } = this.props
+    const menu = user.isLocal === false ? menuData : menuData.filter(k => k.isLocal !== false)
+    const userSonglist = (user && user.songlist) || []
     return <div className="app-sidebar">
-      <User />
-      <div className="search">
-        <Input.Search
-          placeholder="搜索"
-          onSearch={this.onSearch} />
-      </div>
-      <Menu mode="inline" selectedKeys={[this.state.activeMenu]} onClick={this.menuItemClick}>
-        <Menu.Item key="musicCenter"><Icon type="mail" />音乐馆</Menu.Item>
-        <Menu.Item key="playlist"><Icon type="customer-service" />播放列表</Menu.Item>
-      </Menu>
+      <Spin spinning={this.state.spinning}>
+        <User />
+        <div className="search">
+          <Input.Search
+            placeholder="搜索"
+            onSearch={this.onSearch} />
+        </div>
+        <Menu
+          mode="inline"
+          selectedKeys={[this.state.activeMenu]}
+          defaultOpenKeys={['userSonglist']}
+          onClick={this.menuItemClick}>
+          {this.getMenuContent(menu, userSonglist)}
+        </Menu>
+      </Spin>
     </div>
   }
 }
 
-export default withRouter(connect()(Sidebar))
+export default withRouter(connect(mapStateToProps)(Sidebar))

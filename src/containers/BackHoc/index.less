@@ -1,0 +1,21 @@
+@import "~src/assets/less/var.less";
+
+.back-hoc {
+  position: relative;
+  .title {
+    position: absolute;
+    padding: 3px 6px;
+    z-index: 10;
+    border-bottom-right-radius: 10px;
+    transition: all .3s;
+    transform: scale(.5);
+    transform-origin: top left;
+    font-size: 24px;
+    color: @primary-color;
+    background-color: rgba(238, 238, 238, .7);
+    cursor: pointer;
+    &:hover {
+      transform: none;
+    }
+  }
+}
