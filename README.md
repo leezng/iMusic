@@ -23,12 +23,21 @@
 
 ## 预览
 
+- [在线地址](https://leezng.github.io/iMusic/) (使用模拟数据，与真实App存在一定差别。)
+
 ## 开发者
 
 ```
+# download
+git clone git@github.com:leezng/iMusic.git
+
 # install dependencies
 yarn
 
 # run development environment
 yarn dev
 ```
+
+## LICENSE
+
+[MIT](./LICENSE)
