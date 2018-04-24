@@ -1,5 +1,7 @@
 # iMusic
 
+----- 持续开发中 -----
+
 一个基于 `React` 与 `electron` 开发的音乐App。
 
 感谢 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 提供的 API。
