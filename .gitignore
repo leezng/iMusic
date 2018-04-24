@@ -2,12 +2,10 @@
 #
 .DS_Store
 
-# Other
+# build
 #
 dist/
-dist-web/
 release/
-resource/
 
 # node.js
 #

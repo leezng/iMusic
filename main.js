@@ -52,13 +52,13 @@ const createMainWindow = () => {
 // if (isOsx) {
 //   // App about
 //   // app.setAboutPanelOptions({
-//   //     applicationName: 'ieaseMusic',
-//   //     applicationVersion: pkg.version,
-//   //     copyright: 'Made with 💖 by trazyn. \n https://github.com/trazyn/ieaseMusic',
-//   //     credits: `With the invaluable help of: \n github.com/Binaryify/NeteaseCloudMusicApi`,
-//   //     version: pkg.version
+//   //     applicationName:
+//   //     applicationVersion:
+//   //     copyright:
+//   //     credits:
+//   //     version:
 //   // });
-//   app.dock.setIcon(`${__dirname}/src/assets/dock.png`)
+//   app.dock.setIcon(`${__dirname}/resource/dock.png`)
 //   // app.dock.setMenu(Menu.buildFromTemplate(dockMenu))
 // }
 
