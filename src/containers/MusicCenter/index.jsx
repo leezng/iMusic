@@ -33,7 +33,6 @@ class MusicCenter extends Component {
       <TabPane tab="推荐电台" key="djprogram">
         <Djprogram isActive={activeTab === 'djprogram'} />
       </TabPane>
-      <TabPane tab="Tab 4" key="4">Content of tab 4</TabPane>
     </Tabs>
   }
 }
