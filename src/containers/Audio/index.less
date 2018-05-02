@@ -1,18 +1,22 @@
 @import "~src/assets/less/var.less";
 
+@playing-name-height: 20px; // 底部播放条歌曲名字高度
+
 .audio-controller {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 60px;
-  z-index: 10;
+  z-index: 100;
   background-color: #fff1f6;
   .play-wrapper {
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 0 15px;
-    width: 240px;
+    width: 200px;
+    z-index: 15;
     font-size: 36px;
     i {
       margin: 0 10px;
@@ -25,14 +29,28 @@
     }
   }
   .slider-wrapper {
-    width: 100%;
-    color: @primary-color;
-    p {
-      margin: 0;
+    flex: 1 1 auto;
+    z-index: 15;
+    .meta {
+      display: flex;
+    }
+    .name {
+      padding-right: 30px;
+      flex: 1 1 auto;
       /* 歌曲名称只显示在一行，超出部分显示为省略号 */
       overflow: hidden;
       white-space: nowrap;
-      text-overflow: ellipsis;   
+      text-overflow: ellipsis; 
+      line-height: @playing-name-height;
+      height: @playing-name-height;
+      span:hover {
+        color: @primary-color;
+        cursor: pointer;
+      }
+    }
+    .audio-time {
+      overflow: hidden;
+      font-size: 12px;
     }
   }
   .slider-runway {
@@ -50,17 +68,5 @@
     transform: translateX(-100%);
     transition: transform .3s linear;
     pointer-events: none;
-  }
-  .audio-time {
-    overflow: hidden;
-    margin-top: -1px;
-    .total {
-      float: right;
-      font-size: 12px;
-    }
-    .current {
-      float: left;
-      font-size: 12px;
-    }
   }
 }

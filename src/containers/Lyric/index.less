@@ -1,0 +1,61 @@
+@import "~src/assets/less/var.less";
+@item-height: 30px; /* 单行歌词高度 */
+
+.lyric {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #eee;
+  transform: translateY(200%);
+  transition: transform .3s ease;
+  .background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(200px);
+  }
+  .content {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 50px 10%;
+    height: 100%;
+    > i {
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .cover {
+      border-radius: 50%;
+      overflow-x: hidden;
+    }
+    .wrapper {
+      flex: 1 1 auto;
+      height: 60%;
+      overflow: hidden;
+      text-align: center;
+    }
+    .lyric-show {
+      transition: transform .3s;
+      /* transform: translateY(-30px); */
+      p {
+        height: @item-height;
+        line-height: @item-height;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        &.active {
+          color: @primary-color;
+          text-shadow: 0 0 1px #000;
+        }
+      }
+    }
+  }
+}

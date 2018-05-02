@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Icon, Tooltip, message } from 'antd'
+import { Icon, Tooltip, Divider, message } from 'antd'
+import Lyric from '../Lyric'
 import { setPlaying } from 'src/actions'
 import './index.less'
 
 // 时间一位数时加0
 function pad (val) {
-  val = Math.floor(val)
+  val = Math.floor(val) // 舍弃毫秒
   if (val < 10) return '0' + val
   else return isNaN(val) ? '00' : val + ''
 }
@@ -39,7 +41,8 @@ class Audio extends Component {
     running: false,
     percent: 0,
     currentTime: '00:00',
-    mouseoverTime: '00:00'
+    mouseoverTime: '00:00',
+    lyricVisible: false
   }
 
   // 播放/暂停
@@ -148,14 +151,21 @@ class Audio extends Component {
     }
   }
 
+  // 打开歌词界面
+  openLyricView = () => {
+    this.setState({lyricVisible: true})
+  }
+
   render () {
-    const { playing } = this.props
-    const { running, percent, currentTime, mouseoverTime } = this.state
+    const { playing, location } = this.props
+    const { running, percent, currentTime, mouseoverTime, lyricVisible } = this.state
     const playIcon = running ? 'pause-circle' : 'play-circle'
     const src = playing.url || (playing.id
       ? `http://music.163.com/song/media/outer/url?id=${playing.id}.mp3`
-      : 'http://up.mcyt.net/?down/32222.mp3')
-    return <div className="audio-controller">
+      : '')
+    return <div
+      className="audio-controller"
+      style={{background: location.pathname === '/lyric' ? 'transparent' : ''}}>
       <audio
         autoPlay={running}
         src={src}
@@ -164,13 +174,24 @@ class Audio extends Component {
         onError={this.onError}
         ref={(audio) => { this.audio = audio }}>
       </audio>
+
       <div className="play-wrapper">
         <Icon type="step-backward" onClick={this.prev} style={{fontSize: '28px'}} />
         <Icon type={playIcon} onClick={this.togglePlay} />
         <Icon type="step-forward" onClick={this.next} style={{fontSize: '28px'}} />
       </div>
+
       <div className="slider-wrapper">
-        <p>{playing.name}</p>
+        <div className="meta">
+          <div className="name">
+            <span onClick={this.openLyricView}>{playing.name || 'iMusic'}</span>
+          </div>
+          <div className="audio-time">
+            <span>{currentTime}</span>
+            <Divider type="vertical" />
+            <span>{timeParse(playing.duration / 1000)}</span>
+          </div>
+        </div>
         <Tooltip title={mouseoverTime}>
           <div
             className="slider-runway"
@@ -179,13 +200,14 @@ class Audio extends Component {
             <div className="slider-bar" style={{transform: `translateX(-${100 - percent}%)`}}></div>
           </div>
         </Tooltip>
-        <div className="audio-time">
-          <span className="current">{currentTime}</span>
-          <span className="total">{timeParse(playing.duration / 1000)}</span>
-        </div>
       </div>
+
+      <Lyric
+        visible={lyricVisible}
+        currentTime={currentTime}
+        onClose={() => this.setState({lyricVisible: false})} />
     </div>
   }
 }
 
-export default connect(mapStateToProps)(Audio)
+export default withRouter(connect(mapStateToProps)(Audio))

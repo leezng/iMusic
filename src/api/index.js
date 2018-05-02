@@ -4,6 +4,7 @@ import songlistApi from './songlist'
 import searchApi from './search'
 import djprogramApi from './djprogram'
 import userApi from './user'
+import lyricApi from './lyric'
 
 axios.defaults.withCredentials = true // 携带cookie
 
@@ -31,5 +32,6 @@ export {
   songlistApi,
   searchApi,
   djprogramApi,
-  userApi
+  userApi,
+  lyricApi
 }
