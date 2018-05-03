@@ -13,16 +13,16 @@ const mapStateToProps = (state, ownProps) => ({
 class App extends Component {
   static propTypes = {
     visible: PropTypes.bool,
+    running: PropTypes.bool,
     onClose: PropTypes.func,
-    currentTime: PropTypes.string,
-    playing: PropTypes.object
+    currentTime: PropTypes.string
   }
 
   static defaultProps = {
     visible: false, // 歌词界面是否可见
+    running: false, // 播放|暂停
     onClose: () => {}, // 界面关闭
-    currentTime: '', // 当前的播放时间
-    playing: {} // 当前正在播放的歌曲
+    currentTime: '' // 当前的播放时间
   }
 
   state = {
@@ -80,7 +80,6 @@ class App extends Component {
 
   // 监听播放时间变化
   watchCurrentTime (newTime = '', oldTime = '') {
-    console.log('newTime', newTime)
     if (!newTime) return
     const { index, content } = this.state.lyricMap[newTime] || {}
     if (content && index !== undefined) {
@@ -90,7 +89,7 @@ class App extends Component {
 
   render () {
     const { lyricArr, activeIndex } = this.state
-    const { visible, onClose, playing } = this.props
+    const { visible, running, onClose, playing } = this.props
     if (!visible) return null // 不可见
 
     const album = playing.album || {} // 当前专辑
@@ -100,7 +99,9 @@ class App extends Component {
       <div className="background" style={{backgroundImage: `url(${coverUrl})`}}></div>
       <div className="content">
         <Icon type="close" onClick={onClose} />
-        <div className="cover" style={{backgroundImage: `url(${coverUrl})`}}></div>
+        <div
+          className={`cover ${running ? 'is-running' : ''}`}
+          style={{backgroundImage: `url(${coverUrl})`}}></div>
         <div className="wrapper">
           <div
             className="lyric-show"

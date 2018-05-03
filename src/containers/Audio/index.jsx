@@ -204,6 +204,7 @@ class Audio extends Component {
 
       <Lyric
         visible={lyricVisible}
+        running={running}
         currentTime={currentTime}
         onClose={() => this.setState({lyricVisible: false})} />
     </div>
