@@ -100,13 +100,11 @@ class App extends Component {
       <div className="background" style={{backgroundImage: `url(${coverUrl})`}}></div>
       <div className="content">
         <Icon type="close" onClick={onClose} />
-        <div className="cover">
-          <img src={coverUrl} width="200" />
-        </div>
+        <div className="cover" style={{backgroundImage: `url(${coverUrl})`}}></div>
         <div className="wrapper">
           <div
             className="lyric-show"
-            style={{transform: `translateY(${150 + -30 * activeIndex}px)`}}>
+            style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>
             {lyricArr.map((item, index) => <p
               key={index}
               className={activeIndex === index ? 'active' : ''}>

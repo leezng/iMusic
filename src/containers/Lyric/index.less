@@ -1,5 +1,14 @@
 @import "~src/assets/less/var.less";
-@item-height: 30px; /* 单行歌词高度 */
+@item-height: 40px; /* 单行歌词高度 */
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .lyric {
   position: fixed;
@@ -31,10 +40,18 @@
       top: 30px;
       font-size: 24px;
       cursor: pointer;
+      &:hover {
+        color: @primary-color;
+      }
     }
     .cover {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      overflow-x: hidden;
+      background-size: cover;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      animation: rotate 10s linear infinite;
     }
     .wrapper {
       flex: 1 1 auto;
@@ -53,7 +70,6 @@
         font-size: 16px;
         &.active {
           color: @primary-color;
-          text-shadow: 0 0 1px #000;
         }
       }
     }
