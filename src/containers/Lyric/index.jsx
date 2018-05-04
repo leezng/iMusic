@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   state = {
-    ok: false,
+    noTransform: false, // 是否设置为transform: none的状态
     fetching: false, // 是否正在获取歌词
     lyricArr: [], // 当前歌曲的歌词
     lyricMap: {}, // 类似于lyricArr, 此数据为对象, 便于数据查找
@@ -39,7 +39,7 @@ class App extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.visible !== this.props.visible) {
-      setTimeout(() => this.setState({ok: nextProps.visible}), 0)
+      setTimeout(() => this.setState({noTransform: nextProps.visible}), 100)
     }
     this.watchPlaying(nextProps.playing, this.props.playing)
     this.watchCurrentTime(nextProps.currentTime, this.props.currentTime)
@@ -58,6 +58,7 @@ class App extends Component {
         const resBody = await lyricApi.getLyric(newPlaying.id) // get lyric
         if (resBody.code === 200) {
           const lyricStr = (resBody.lrc && resBody.lrc.lyric) || ''
+          // write lyricArr
           lyricArr = lyricStr.replace(/\n/g, ',')
             .split(',')
             .filter(item => item)
@@ -65,6 +66,7 @@ class App extends Component {
               time: item.slice(1, 6),
               content: item.slice(11)
             }))
+          // write lyricMap
           lyricArr.forEach((item, index) => (lyricMap[item.time] = {
             content: item.content,
             index
@@ -88,14 +90,14 @@ class App extends Component {
   }
 
   render () {
-    const { lyricArr, activeIndex } = this.state
+    const { noTransform, lyricArr, activeIndex } = this.state
     const { visible, running, onClose, playing } = this.props
     if (!visible) return null // 不可见
 
     const album = playing.album || {} // 当前专辑
     const artist = (playing.artists && playing.artists[0]) || {}
     const coverUrl = album.picUrl || artist.picUrl || artist.img1v1Url
-    return <div className="lyric" style={{transform: this.state.ok ? 'none' : ''}}>
+    return <div className="lyric" style={{transform: noTransform ? 'none' : ''}}>
       <div className="background" style={{backgroundImage: `url(${coverUrl})`}}></div>
       <div className="content">
         <Icon type="close" onClick={onClose} />
@@ -103,6 +105,7 @@ class App extends Component {
           className={`cover ${running ? 'is-running' : ''}`}
           style={{backgroundImage: `url(${coverUrl})`}}></div>
         <div className="wrapper">
+          <h3>{playing.name}</h3>
           <div
             className="lyric-show"
             style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>

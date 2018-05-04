@@ -1,3 +1,6 @@
+/**
+ * 本地播放队列
+ */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
@@ -9,7 +12,6 @@ const mapStateToProps = (state, ownProps) => ({
   playing: state.playing
 })
 
-// 播放列表
 class Playlist extends Component {
   static propTypes = {
     playlist: PropTypes.array,

@@ -15,7 +15,7 @@ const menuData = [{
   key: 'musicCenter',
   icon: 'appstore'
 }, {
-  name: '播放列表',
+  name: '播放队列',
   key: 'playlist',
   icon: 'customer-service'
 }, {

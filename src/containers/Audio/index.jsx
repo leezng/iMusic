@@ -151,9 +151,9 @@ class Audio extends Component {
     }
   }
 
-  // 打开歌词界面
-  openLyricView = () => {
-    this.setState({lyricVisible: true})
+  // 切换歌词界面显示|隐藏
+  toggleLyricView = () => {
+    this.setState({lyricVisible: !this.state.lyricVisible})
   }
 
   render () {
@@ -184,7 +184,7 @@ class Audio extends Component {
       <div className="slider-wrapper">
         <div className="meta">
           <div className="name">
-            <span onClick={this.openLyricView}>{playing.name || 'iMusic'}</span>
+            <span onClick={this.toggleLyricView}>{playing.name || 'iMusic'}</span>
           </div>
           <div className="audio-time">
             <span>{currentTime}</span>
