@@ -51,7 +51,7 @@ class App extends Component {
       url: URL.createObjectURL(file),
       isLocal: true,
       path: file.path, // 本地文件存储路径
-      id: +new Date()
+      id: +new Date() // TODO 本地歌曲ID如何生成?
     }
     dispatch(addToPlaylist(song)) && dispatch(setPlaying(song))
   }

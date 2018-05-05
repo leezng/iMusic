@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Avatar, Button, Modal, Card, Form, Input, Icon, Popover, message } from 'antd'
+import { Alert, Avatar, Button, Modal, Card, Form, Input, Icon, Popover, message } from 'antd'
 import { phoneLogin, refreshLogin, setLocalUser } from 'src/actions'
 import { getCookie, setCookie, deleteCookie } from 'src/utils'
 import './index.less'
@@ -26,14 +26,13 @@ function UserAvatar ({profile, onClick}) {
 function LoginForm ({props}) {
   const { getFieldDecorator } = props.form
   return <Form>
-    <span>目前仅支持使用手机号码登录</span>
-    <FormItem>
+    <FormItem extra="*目前仅支持使用手机号码登录">
       {getFieldDecorator('phone', {
         rules: [{ required: true, message: '请输入手机号码' }]
       })(
         <Input
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-          placeholder="用户名" />
+          placeholder="手机号码" />
       )}
     </FormItem>
     <FormItem>
@@ -149,8 +148,10 @@ class User extends Component {
             <UserAvatar profile={profile} onClick={this.show} />
             <Modal
               visible={visible}
-              title="登录"
-              okText="确认"
+              title="使用网易云音乐帐号登录"
+              wrapClassName="login-modal"
+              width={400}
+              okText="登录"
               cancelText="取消"
               onOk={this.handleOk}
               confirmLoading={confirmLoading}

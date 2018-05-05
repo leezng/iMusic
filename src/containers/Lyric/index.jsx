@@ -105,14 +105,18 @@ class App extends Component {
           className={`cover ${running ? 'is-running' : ''}`}
           style={{backgroundImage: `url(${coverUrl})`}}></div>
         <div className="wrapper">
-          <h3>{playing.name}</h3>
-          <div
-            className="lyric-show"
-            style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>
-            {lyricArr.map((item, index) => <p
-              key={index}
-              className={activeIndex === index ? 'active' : ''}>
-              {item.content}</p>)}
+          <div className="wrapper-title">
+            <h3>{playing.name}</h3>
+          </div>
+          <div className="wrapper-content">
+            <div
+              className="lyric-show"
+              style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>
+              {lyricArr.map((item, index) => <p
+                key={index}
+                className={activeIndex === index ? 'active' : ''}>
+                {item.content}</p>)}
+            </div>
           </div>
         </div>
       </div>

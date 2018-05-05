@@ -4,8 +4,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import { Table, Tag } from 'antd'
+import { Button, Table, Tag } from 'antd'
 import ActionGroup from '../ActionGroup'
+import { clearPlaylist } from 'src/actions'
+import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
   playlist: state.playlist,
@@ -24,7 +26,7 @@ class Playlist extends Component {
   }
 
   render () {
-    const { playlist, playing } = this.props
+    const { playlist, playing, dispatch } = this.props
     const columns = [{
       title: '歌曲',
       dataIndex: 'name',
@@ -48,13 +50,16 @@ class Playlist extends Component {
         actions={['play', 'remove']}
         song={record} />
     }]
-
-    return <Table
-      className="playlist"
-      size="small"
-      columns={columns}
-      dataSource={playlist}
-      rowKey="id" />
+    return <div className="playlist">
+      <div className="operations">
+        <Button onClick={() => dispatch(clearPlaylist())}>清空播放队列</Button>
+      </div>
+      <Table
+        size="small"
+        columns={columns}
+        dataSource={playlist}
+        rowKey="id" />
+    </div>
   }
 }
 

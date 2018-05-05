@@ -44,6 +44,7 @@ class ActionGroup extends Component {
       case 'play':
         return {
           icon: 'caret-right',
+          title: '播放歌曲',
           onClick: () => {
             this.addToPlaylist(song)
             // 当前没有播放歌曲/正在播放的歌曲ID不一致, 则更新正在播放
@@ -56,12 +57,14 @@ class ActionGroup extends Component {
       case 'add':
         return {
           icon: 'plus-circle',
+          title: '添加到播放队列',
           onClick: () => this.addToPlaylist(song)
         }
       // 从播放队列中移除
       case 'remove':
         return {
           icon: 'delete',
+          title: '从播放队列中移除',
           onClick: () => dispatch(removeFromPlaylist(song.id))
         }
     }
