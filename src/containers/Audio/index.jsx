@@ -138,7 +138,7 @@ class Audio extends Component {
   componentWillReceiveProps (nextProps) {
     // 只有playing改变才说明是新的歌曲
     if (nextProps.playing !== this.props.playing) {
-      console.log('change')
+      // console.log('change')
       // let newId = nextProps.playing && nextProps.playing.id
       // let oldId = this.props.playing && this.props.playing.id
       // if (newId === oldId) return
@@ -153,7 +153,11 @@ class Audio extends Component {
 
   // 切换歌词界面显示|隐藏
   toggleLyricView = () => {
-    this.setState({lyricVisible: !this.state.lyricVisible})
+    const { playing } = this.props
+    // 存在播放歌曲时才允许打开歌词界面
+    if (playing && playing.id) {
+      this.setState({lyricVisible: !this.state.lyricVisible})
+    }
   }
 
   render () {
