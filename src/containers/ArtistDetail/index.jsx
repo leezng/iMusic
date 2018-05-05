@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Card, Table } from 'antd'
+import { Button, Card, Table } from 'antd'
 import ActionGroup from '../ActionGroup'
 import { connectBackHoc } from '../BackHoc'
+import { setPlaylist, setPlaying } from 'src/actions'
 import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -19,6 +20,17 @@ class ArtistDetail extends Component {
     artists: {}
   }
 
+  state = {
+    pageStartIndex: 0 // 热门歌曲列表中，当前页的起始索引
+  }
+
+  // 分页器页码变化回调
+  handleOnChange = (pagination) => {
+    this.setState({
+      pageStartIndex: (pagination.current - 1) * pagination.pageSize
+    })
+  }
+
   songFormatter = (song, artist) => {
     // 约定的字段
     return {
@@ -32,14 +44,13 @@ class ArtistDetail extends Component {
     }
   }
 
-  render () {
-    const { match, artists } = this.props
-    const id = match && match.params && +match.params.id
-    const item = Array.isArray(artists.result) && artists.result.find(item => item.id === id)
-    if (!item) return null // 改组件暂无考虑刷新的情况
-    const { desc, hotSongs } = item.detail || {}
-    const isLoading = artists.status === 'pending'
-    const columns = [{
+  // 获取table的column列渲染信息
+  getColumnsTpl (artist) {
+    return [{
+      key: 'index',
+      // 分页起始索引 + 行索引 + 1
+      render: (text, record, index) => this.state.pageStartIndex + index + 1
+    }, {
       title: '歌曲',
       dataIndex: 'name',
       key: 'name'
@@ -53,8 +64,25 @@ class ArtistDetail extends Component {
       key: 'action',
       render: (text, record) => <ActionGroup
         actions={['play', 'add']}
-        song={this.songFormatter(record, item)} />
+        song={this.songFormatter(record, artist)} />
     }]
+  }
+
+  // 播放全部歌曲
+  playAllSongs = (artist, songs = []) => {
+    const { dispatch } = this.props
+    const allSongs = songs.map(item => this.songFormatter(item, artist))
+    dispatch(setPlaylist(allSongs))
+    dispatch(setPlaying(allSongs[0]))
+  }
+
+  render () {
+    const { match, artists } = this.props
+    const id = match && match.params && +match.params.id
+    const item = Array.isArray(artists.result) && artists.result.find(item => item.id === id)
+    if (!item) return null // 该组件暂无考虑刷新的情况
+    const { desc, hotSongs } = item.detail || {}
+    const isLoading = artists.status === 'pending'
 
     return <div className="artist-detail">
       <Card
@@ -65,11 +93,18 @@ class ArtistDetail extends Component {
           title={item.name}
           description={desc} />
       </Card>
+      <div className="table-title">
+        热门歌曲
+        <div className="actions">
+          <Button type="primary" size="small" icon="caret-right" onClick={() => this.playAllSongs(item, hotSongs)}>播放全部</Button>
+        </div>
+      </div>
       <Table
         size="middle"
         loading={isLoading}
-        columns={columns}
+        columns={this.getColumnsTpl(item)}
         dataSource={hotSongs || []}
+        onChange={this.handleOnChange}
         rowKey="id" />
     </div>
   }
