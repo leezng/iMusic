@@ -322,6 +322,10 @@ export const clearPlaylist = () => ({
   type: 'CLEAR_PLAYLIST'
 })
 
+export const upsetPlaylist = () => ({
+  type: 'UPSET_PLAYLIST'
+})
+
 export const setPlaying = (playing = {}) => ({
   type: 'SET_PLAYING',
   playing

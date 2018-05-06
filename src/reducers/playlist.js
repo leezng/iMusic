@@ -35,6 +35,10 @@ const playlist = (state = LOCAL, action) => {
     case 'CLEAR_PLAYLIST':
       result = []
       break
+    // 打乱队列顺序
+    case 'UPSET_PLAYLIST':
+      result = [...state].sort((a, b) => Math.random() - 0.5)
+      break
     default:
       result = state
   }

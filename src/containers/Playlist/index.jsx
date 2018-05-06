@@ -4,9 +4,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import { Button, Table, Tag } from 'antd'
+import { Button, Table, Tag, Popconfirm } from 'antd'
 import ActionGroup from '../ActionGroup'
-import { clearPlaylist } from 'src/actions'
+import { clearPlaylist, upsetPlaylist } from 'src/actions'
 import './index.less'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -50,14 +50,21 @@ class Playlist extends Component {
         actions={['play', 'remove']}
         song={record} />
     }]
+    const enabled = playlist && playlist.length
     return <div className="playlist">
       <div className="operations">
-        <Button onClick={() => dispatch(clearPlaylist())}>清空播放队列</Button>
+        <Button icon="rocket" size="small" disabled={!enabled} onClick={() => dispatch(upsetPlaylist())}>打乱顺序</Button>
+        <Popconfirm title="你真的要清空整个队列吗?" onConfirm={() => dispatch(clearPlaylist())}  okText="确认" cancelText="取消">
+          <Button icon="delete" size="small" type="danger" disabled={!enabled}>清空播放队列</Button>
+        </Popconfirm>
       </div>
       <Table
         size="small"
         columns={columns}
         dataSource={playlist}
+        locale={{
+          emptyText: '暂无歌曲'
+        }}
         rowKey="id" />
     </div>
   }
