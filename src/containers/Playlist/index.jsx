@@ -42,10 +42,12 @@ class Playlist extends Component {
       title: '歌手',
       dataIndex: 'artists',
       key: 'artists',
+      width: '40%',
       render: (text, record) => record.artists[0].name
     }, {
       title: '操作',
       key: 'action',
+      width: 150,
       render: (text, record) => <ActionGroup
         actions={['play', 'remove']}
         song={record} />
@@ -54,7 +56,7 @@ class Playlist extends Component {
     return <div className="playlist">
       <div className="operations">
         <Button icon="rocket" size="small" disabled={!enabled} onClick={() => dispatch(upsetPlaylist())}>打乱顺序</Button>
-        <Popconfirm title="你真的要清空整个队列吗?" onConfirm={() => dispatch(clearPlaylist())}  okText="确认" cancelText="取消">
+        <Popconfirm title="你真的要清空整个队列吗?" onConfirm={() => dispatch(clearPlaylist())} okText="确认" cancelText="取消">
           <Button icon="delete" size="small" type="danger" disabled={!enabled}>清空播放队列</Button>
         </Popconfirm>
       </div>

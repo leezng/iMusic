@@ -62,10 +62,13 @@ class App extends Component {
           lyricArr = lyricStr.replace(/\n/g, ',')
             .split(',')
             .filter(item => item)
-            .map(item => ({
-              time: item.slice(1, 6),
-              content: item.slice(11)
-            }))
+            .map(item => {
+              let contentStartIndex = item.indexOf(']') + 1
+              return {
+                time: item.slice(1, 6),
+                content: item.slice(contentStartIndex || 10).trim()
+              }
+            })
           // write lyricMap
           lyricArr.forEach((item, index) => (lyricMap[item.time] = {
             content: item.content,
@@ -107,6 +110,10 @@ class App extends Component {
         <div className="wrapper">
           <div className="wrapper-title">
             <h3>{playing.name}</h3>
+            <div className="song-message">
+              <span>歌手: {artist.name || '未知'}</span>
+              <span>专辑: {album.name || '未知'}</span>
+            </div>
           </div>
           <div className="wrapper-content">
             <div

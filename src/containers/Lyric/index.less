@@ -1,6 +1,6 @@
 @import "~src/assets/less/var.less";
-@lyric-height: 420px; /* 歌词容器高度 */
-@lyric-title-height: 60px; /* 歌词头部标题高度 */
+@lyric-height: 450px; /* 歌词容器高度 */
+@lyric-title-height: 80px; /* 歌词头部标题高度 */
 @item-height: 40px; /* 单行歌词高度 */
 
 @keyframes rotate {
@@ -47,7 +47,7 @@
       }
     }
     .cover {
-      width: 200px;
+      flex: 0 0 200px;
       height: 200px;
       border-radius: 50%;
       background-size: cover;
@@ -58,12 +58,15 @@
       }
     }
     .wrapper {
-      flex: 1 1 auto;
+      flex: 1 1 calc(100% - 200px);
+      margin-left: 25%;
       height: @lyric-height;
-      text-align: center;
     }
     .wrapper-title {
       height: @lyric-title-height;
+    }
+    .song-message span {
+      margin-right: 50px;
     }
     .wrapper-content {
       overflow: hidden;
@@ -78,6 +81,7 @@
         margin: 0;
         padding: 0;
         font-size: 16px;
+        white-space: nowrap;
         &.active {
           color: @primary-color;
         }

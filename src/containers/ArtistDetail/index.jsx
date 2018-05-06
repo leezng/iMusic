@@ -48,6 +48,7 @@ class ArtistDetail extends Component {
   getColumnsTpl (artist) {
     return [{
       key: 'index',
+      width: 40,
       // 分页起始索引 + 行索引 + 1
       render: (text, record, index) => this.state.pageStartIndex + index + 1
     }, {
@@ -58,10 +59,12 @@ class ArtistDetail extends Component {
       title: '专辑',
       dataIndex: 'al',
       key: 'al',
+      width: '40%',
       render: (text, record) => record.al && record.al.name
     }, {
       title: '操作',
       key: 'action',
+      width: 150,
       render: (text, record) => <ActionGroup
         actions={['play', 'add']}
         song={this.songFormatter(record, artist)} />

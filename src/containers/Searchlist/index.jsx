@@ -36,10 +36,12 @@ class Searchlist extends Component {
       title: '歌手',
       dataIndex: 'artists',
       key: 'artists',
+      width: '40%',
       render: (text, record) => record.artists[0].name
     }, {
       title: '操作',
       key: 'action',
+      width: 150,
       render: (text, record) => <ActionGroup
         actions={['play', 'add']}
         song={record} />
