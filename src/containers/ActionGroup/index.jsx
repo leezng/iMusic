@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import {
   setPlaying,
   addToPlaylist,
@@ -34,7 +34,7 @@ class ActionGroup extends Component {
     const { dispatch, playlist } = this.props
     const exist = playlist.findIndex(item => item.id === song.id) !== -1
     if (!exist) dispatch(addToPlaylist(song))
-    else console.log('歌曲已存在队列中', song)
+    else message.warning('歌曲已存在播放队列中')
   }
 
   switcher = (action, song) => {
@@ -45,6 +45,7 @@ class ActionGroup extends Component {
         return {
           icon: 'caret-right',
           title: '播放歌曲',
+          disabled: playing && playing.id === song.id, // 歌曲正在播放, 设置为disabled
           onClick: () => {
             this.addToPlaylist(song)
             // 当前没有播放歌曲/正在播放的歌曲ID不一致, 则更新正在播放

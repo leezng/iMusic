@@ -138,7 +138,6 @@ class Audio extends Component {
   componentWillReceiveProps (nextProps) {
     // 只有playing改变才说明是新的歌曲
     if (nextProps.playing !== this.props.playing) {
-      // console.log('change')
       // let newId = nextProps.playing && nextProps.playing.id
       // let oldId = this.props.playing && this.props.playing.id
       // if (newId === oldId) return

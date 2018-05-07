@@ -1,7 +1,7 @@
 {
   "name": "iMusic",
   "version": "0.0.1",
-  "description": "A React project",
+  "description": "A Music App",
   "author": "leezng <leezng@outlook.com>",
   "main": "main.js",
   "scripts": {
