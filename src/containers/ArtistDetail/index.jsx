@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Button, Card, Table } from 'antd'
 import ActionGroup from '../ActionGroup'
-import { connectBackHoc } from '../BackHoc'
 import { setPlaylist, setPlaying } from 'src/actions'
 import './index.less'
 
@@ -113,4 +112,4 @@ class ArtistDetail extends Component {
   }
 }
 
-export default connect(mapStateToProps)(connectBackHoc(ArtistDetail))
+export default connect(mapStateToProps)(ArtistDetail)

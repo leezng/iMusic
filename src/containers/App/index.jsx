@@ -5,6 +5,7 @@ import { Layout, Spin, message } from 'antd'
 import PropTypes from 'prop-types'
 import { addToPlaylist, setPlaying } from 'src/actions'
 
+import TitleBar from '../TitleBar'
 import Sidebar from '../Sidebar'
 import MusicCenter from '../MusicCenter'
 import Audio from '../Audio'
@@ -68,6 +69,7 @@ class App extends Component {
             <Sidebar />
           </Sider>
           <Layout>
+            <TitleBar />
             <Content className="app-content">
               <Switch>
                 <Route exact path="/" component={() => <Redirect to="/musicCenter" />} />
