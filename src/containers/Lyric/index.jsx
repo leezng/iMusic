@@ -101,29 +101,26 @@ class App extends Component {
     const artist = (playing.artists && playing.artists[0]) || {}
     const coverUrl = album.picUrl || artist.picUrl || artist.img1v1Url
     return <div className="lyric" style={{transform: noTransform ? 'none' : ''}}>
-      <div className="background" style={{backgroundImage: `url(${coverUrl})`}}></div>
-      <div className="content">
-        <Icon type="close" onClick={onClose} />
-        <div
-          className={`cover ${running ? 'is-running' : ''}`}
-          style={{backgroundImage: `url(${coverUrl})`}}></div>
-        <div className="wrapper">
-          <div className="wrapper-title">
-            <h3>{playing.name}</h3>
-            <div className="song-message">
-              <span>歌手: {artist.name || '未知'}</span>
-              <span>专辑: {album.name || '未知'}</span>
-            </div>
+      <Icon type="close" onClick={onClose} />
+      <div
+        className={`cover ${running ? 'is-running' : ''}`}
+        style={{backgroundImage: `url(${coverUrl})`}}></div>
+      <div className="wrapper">
+        <div className="wrapper-title">
+          <h3>{playing.name}</h3>
+          <div className="song-message">
+            <span>歌手: {artist.name || '未知'}</span>
+            <span>专辑: {album.name || '未知'}</span>
           </div>
-          <div className="wrapper-content">
-            <div
-              className="lyric-show"
-              style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>
-              {lyricArr.map((item, index) => <p
-                key={index}
-                className={activeIndex === index ? 'active' : ''}>
-                {item.content}</p>)}
-            </div>
+        </div>
+        <div className="wrapper-content">
+          <div
+            className="lyric-show"
+            style={{transform: `translateY(${160 + -40 * activeIndex}px)`}}>
+            {lyricArr.map((item, index) => <p
+              key={index}
+              className={activeIndex === index ? 'active' : ''}>
+              {item.content}</p>)}
           </div>
         </div>
       </div>

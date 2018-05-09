@@ -3,6 +3,8 @@
 @lyric-title-height: 80px; /* 歌词头部标题高度 */
 @item-height: 40px; /* 单行歌词高度 */
 
+@background-color: #FFB6C1;
+
 @keyframes rotate {
   from {
     transform: rotate(0);
@@ -13,78 +15,83 @@
 }
 
 .lyric {
+  display: flex;
   position: fixed;
+  padding: 0 10% 60px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 100%;
+  align-items: center;
   z-index: 10;
-  background-color: #eee;
-  transform: translateY(200%);
+  background-color: @background-color;
+  transform: translateY(100%);
   transition: transform .3s ease;
-  .background {
+  > i {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    left: 30px;
+    top: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    &:hover {
+      color: @primary-color;
+    }
+  }
+  .cover {
+    flex: 0 0 200px;
+    height: 200px;
+    border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    filter: blur(200px);
+    overflow: hidden;
+    &.is-running {
+      animation: rotate 10s linear infinite;
+    }
   }
-  .content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 10% 60px;
-    height: 100%;
-    > i {
-      position: absolute;
-      left: 30px;
-      top: 30px;
-      font-size: 24px;
-      cursor: pointer;
-      &:hover {
+  .wrapper {
+    flex: 1 1 calc(100% - 200px);
+    margin-left: 25%;
+    height: @lyric-height;
+  }
+  .wrapper-title {
+    height: @lyric-title-height;
+    h3 {
+      margin-bottom: 10px;
+    }
+  }
+  .song-message {
+    margin: 0 -10px;
+    span {
+      float: left;
+      padding: 0 10px;
+      width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  .wrapper-content {
+    overflow: hidden;
+    height: calc(~"100%" - @lyric-title-height);
+  }
+  .lyric-show {
+    transition: transform .3s;
+    /* transform: translateY(-30px); */
+    p {
+      height: @item-height;
+      line-height: @item-height;
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      white-space: nowrap;
+      &.active {
         color: @primary-color;
-      }
-    }
-    .cover {
-      flex: 0 0 200px;
-      height: 200px;
-      border-radius: 50%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      overflow: hidden;
-      &.is-running {
-        animation: rotate 10s linear infinite;
-      }
-    }
-    .wrapper {
-      flex: 1 1 calc(100% - 200px);
-      margin-left: 25%;
-      height: @lyric-height;
-    }
-    .wrapper-title {
-      height: @lyric-title-height;
-    }
-    .song-message span {
-      margin-right: 50px;
-    }
-    .wrapper-content {
-      overflow: hidden;
-      height: calc(~"100%" - @lyric-title-height);
-    }
-    .lyric-show {
-      transition: transform .3s;
-      /* transform: translateY(-30px); */
-      p {
-        height: @item-height;
-        line-height: @item-height;
-        margin: 0;
-        padding: 0;
-        font-size: 16px;
-        white-space: nowrap;
-        &.active {
-          color: @primary-color;
-        }
       }
     }
   }

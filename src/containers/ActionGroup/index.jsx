@@ -29,12 +29,16 @@ class ActionGroup extends Component {
     song: {}
   }
 
-  // 新的歌曲不存在队列中, 才进行添加
-  addToPlaylist = song => {
+  /**
+   * 新的歌曲不存在队列中, 才进行添加
+   * @param  {Object}  song  歌曲
+   * @param  {Boolean} ignoreError 是否忽略错误
+   */
+  addToPlaylist = (song, ignoreError = false) => {
     const { dispatch, playlist } = this.props
     const exist = playlist.findIndex(item => item.id === song.id) !== -1
     if (!exist) dispatch(addToPlaylist(song))
-    else message.warning('歌曲已存在播放队列中')
+    else if (!ignoreError) message.warning('歌曲已存在播放队列中')
   }
 
   switcher = (action, song) => {
@@ -47,7 +51,7 @@ class ActionGroup extends Component {
           title: '播放歌曲',
           disabled: playing && playing.id === song.id, // 歌曲正在播放, 设置为disabled
           onClick: () => {
-            this.addToPlaylist(song)
+            this.addToPlaylist(song, true)
             // 当前没有播放歌曲/正在播放的歌曲ID不一致, 则更新正在播放
             if (!playing || playing.id !== song.id) {
               dispatch(setPlaying(song))
