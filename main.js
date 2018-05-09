@@ -19,9 +19,9 @@ var win
 const createMainWindow = () => {
   // 创建浏览器窗口
   win = new BrowserWindow({
-    width: 1080,
+    width: 960,
     minWidth: 800,
-    height: 660,
+    height: 600,
     minHeight: 500,
     frame: false,
     titleBarStyle: 'hiddenInset'

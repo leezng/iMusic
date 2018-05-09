@@ -4,6 +4,7 @@ import { Tabs } from 'antd'
 import TopArtists from '../TopArtists'
 import Songlist from '../Songlist'
 import Djprogram from '../Djprogram'
+import './index.less'
 
 const TabPane = Tabs.TabPane
 
@@ -23,7 +24,9 @@ class MusicCenter extends Component {
   render () {
     const { activeTab } = this.state
     return <Tabs
-      defaultActiveKey={this.state.activeTab} onChange={this.handleTabChange}>
+      className="music-center"
+      defaultActiveKey={this.state.activeTab}
+      onChange={this.handleTabChange}>
       <TabPane tab="热门歌手" key="topArtists">
         <TopArtists isActive={activeTab === 'topArtists'} />
       </TabPane>
