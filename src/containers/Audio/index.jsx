@@ -167,7 +167,7 @@ class Audio extends Component {
       ? `http://music.163.com/song/media/outer/url?id=${playing.id}.mp3`
       : '')
     return <div
-      className="audio-controller"
+      className={`audio-controller ${lyricVisible ? 'lyric-active' : ''}`}
       style={{background: location.pathname === '/lyric' ? 'transparent' : ''}}>
       <audio
         autoPlay={running}
