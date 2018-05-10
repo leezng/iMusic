@@ -1,7 +1,16 @@
+import { remote } from 'electron'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Icon } from 'antd'
+import { Button, Icon } from 'antd'
 import './index.less'
+
+const win = remote.getCurrentWindow()
+
+let isWin
+try {
+  // 阻止web版报错
+  isWin = process.platform === 'win32'
+} catch (e) {}
 
 class TitleBar extends Component {
   /**
@@ -19,8 +28,13 @@ class TitleBar extends Component {
         <Icon type="left" onClick={() => this.go(-1)} />
         <Icon type="right" onClick={() => this.go(1)} />
       </div>
-      <div className="win-controller">
-      </div>
+      {(() => {
+        if (!isWin) return null
+        return <div className="win-controller" style={{display: isWin ? '' : 'none'}}>
+          <Button icon="minus" size="small" onClick={() => win.minimize()}></Button>
+          <Button icon="close" size="small" onClick={() => win.close()}></Button>
+        </div>
+      })()}
     </div>
   }
 }

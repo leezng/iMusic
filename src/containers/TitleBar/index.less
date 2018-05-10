@@ -9,6 +9,7 @@
   border-bottom: 1px solid #e8e8e8;
   -webkit-app-region: drag;
   .common {
+    float: left;
     i {
       font-size: 16px;
       &:not(:last-child) {
@@ -22,5 +23,12 @@
   }
   .win-controller {
     float: right;
+    button {
+      padding: 0 4px !important;
+      font-size: 16px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
   }
 }

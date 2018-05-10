@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'development') {
 // 保持win对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 var win
 
-const createMainWindow = () => {
+const createWindow = () => {
   // 创建浏览器窗口
   win = new BrowserWindow({
     width: 960,
@@ -63,7 +63,7 @@ const createMainWindow = () => {
 // }
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
-app.on('ready', createMainWindow)
+app.on('ready', createWindow)
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {
