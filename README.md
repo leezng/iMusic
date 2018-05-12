@@ -14,10 +14,6 @@
 ![screenshot_artist](./resource/screenshot_artist.png)
 ![screenshot_lyric](./resource/screenshot_lyric.png)
 
-## 预览
-
-- [在线地址](https://leezng.github.io/iMusic/) (使用模拟数据，与真实App存在一定差别。)
-
 ## 开发者
 
 ```
