@@ -14,7 +14,7 @@ const webpackConfig = {
   devtool: false,
 
   entry: [
-    'src/index.js'
+    'src/renderer/index.js'
   ],
 
   output: {

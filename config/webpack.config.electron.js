@@ -11,7 +11,7 @@ module.exports = {
   devtool: false,
 
   entry: [
-    './main.js',
+    'src/main/index.js',
   ],
 
   output: {

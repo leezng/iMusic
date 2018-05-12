@@ -14,7 +14,7 @@ module.exports = {
 
   entry: [
     // `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
-    'src/index.js'
+    'src/renderer/index.js'
   ],
 
   output: {

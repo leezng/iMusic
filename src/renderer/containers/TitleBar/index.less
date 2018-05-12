@@ -1,0 +1,36 @@
+@import "~renderer/assets/less/var.less";
+@title-bar-height: 40px;
+
+.title-bar { 
+  padding: 0 15px;
+  height: @title-bar-height;
+  line-height: @title-bar-height;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  -webkit-app-region: drag;
+  .common {
+    float: left;
+    i {
+      font-size: 16px;
+      cursor: pointer;
+      -webkit-app-region: no-drag;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
+  .win-controller {
+    float: right;
+    -webkit-app-region: no-drag;
+    button {
+      padding: 0 4px !important;
+      font-size: 16px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+}

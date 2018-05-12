@@ -16,7 +16,6 @@ module.exports = {
         include: [
           path.resolve(__dirname, '../src'),
           path.resolve(__dirname, '../config'),
-          path.resolve(__dirname, '../main.js'),
           path.resolve(__dirname, '../node_modules/NeteaseCloudMusicApi'),
           path.resolve(__dirname, '../node_modules/hoek')
         ]
@@ -89,7 +88,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      src: path.resolve(__dirname, '../src')
+      src: path.resolve(__dirname, '../src'),
+      renderer: path.resolve(__dirname, '../src/renderer')
     }
   }
 };
