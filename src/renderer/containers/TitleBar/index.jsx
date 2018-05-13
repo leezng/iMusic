@@ -19,7 +19,7 @@ function info () {
     content: (
       <div>
         <div>本项目仅供技术交流使用，禁止用于商业用途</div>
-        <div>Copyright © 2018 <a onClick={() => shell.openExternal('https://github.com/leezng')}>leezng</a></div>
+        <div>Copyright 2018 <a onClick={() => shell.openExternal('https://github.com/leezng/iMusic')}>leezng</a></div>
       </div>
     )
   })

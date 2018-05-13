@@ -1,10 +1,10 @@
 # iMusic
 
-一个基于 `React` 开发的音乐App。
+🎵一个基于 `React` 开发的音乐App。
 
 感谢 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 提供的 API。
 
-项目持续开发中, coming soon...
+💪项目持续开发中...
 
 ![Mind](./resource/mind.png)
 
