@@ -1,0 +1,703 @@
+{
+    "result": {
+        "songs": [
+            {
+                "id": 400162138,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 11127,
+                        "name": "Beyond",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 34430029,
+                    "name": "华纳23周年纪念精选系列",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 999273600007,
+                    "size": 14,
+                    "copyrightId": 7002,
+                    "status": 3,
+                    "picId": 3273246124149810
+                },
+                "duration": 323693,
+                "copyrightId": 7002,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 387717,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 13283,
+                        "name": "信乐团",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 38408,
+                    "name": "海阔天空",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1075564800000,
+                    "size": 10,
+                    "copyrightId": 0,
+                    "status": 1,
+                    "picId": 109951163028211140
+                },
+                "duration": 278936,
+                "copyrightId": 489015,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 5343895,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 346089,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 11127,
+                        "name": "Beyond",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 34110,
+                    "name": "25周年精选",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1205164800000,
+                    "size": 48,
+                    "copyrightId": 5003,
+                    "status": 1,
+                    "picId": 82463372084291,
+                    "alia": [
+                        "Beyond 25th Anniversary"
+                    ]
+                },
+                "duration": 322560,
+                "copyrightId": 7002,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 27515047,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 9881,
+                        "name": "汪小敏",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2623243,
+                    "name": "一声所爱 大地飞歌（第九期）",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1375200000007,
+                    "size": 12,
+                    "copyrightId": 0,
+                    "status": 1,
+                    "picId": 5630599045913351
+                },
+                "duration": 178677,
+                "copyrightId": 0,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 28875146,
+                "name": "海阔天空 (Live)",
+                "artists": [
+                    {
+                        "id": 11127,
+                        "name": "Beyond",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2921018,
+                    "name": "The Story Live 2005",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1112284800007,
+                    "size": 22,
+                    "copyrightId": 0,
+                    "status": 0,
+                    "picId": 14344228695980904
+                },
+                "duration": 369449,
+                "copyrightId": 0,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 5347246,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 29017036,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 6211,
+                        "name": "幼稚园杀手",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2965013,
+                    "name": "热门华语236",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1388505600004,
+                    "size": 47,
+                    "copyrightId": 0,
+                    "status": 2,
+                    "picId": 3297435373429925
+                },
+                "duration": 224444,
+                "copyrightId": 0,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 25780157,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 9263,
+                        "name": "Robynn & Kendy",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2313008,
+                    "name": "Dear Diary",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1361116800007,
+                    "size": 10,
+                    "copyrightId": 7003,
+                    "status": 1,
+                    "picId": 2336462209041205
+                },
+                "duration": 195788,
+                "copyrightId": 7003,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 255660,
+                "name": "海阔天空 (Live)",
+                "artists": [
+                    {
+                        "id": 8336,
+                        "name": "林忆莲",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 25533,
+                    "name": "Sandy Lam Concert MMXI 演唱会",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1338825600000,
+                    "size": 25,
+                    "copyrightId": 7003,
+                    "status": 3,
+                    "picId": 109951163062452320
+                },
+                "duration": 259004,
+                "copyrightId": 7003,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 308235,
+                "name": "海阔天空(Live) - live",
+                "artists": [
+                    {
+                        "id": 9952,
+                        "name": "谢安琪",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 30602,
+                    "name": "903 id    Club 谢安琪拉阔变奏厅 Live",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1222963200000,
+                    "size": 21,
+                    "copyrightId": 5003,
+                    "status": 1,
+                    "picId": 106652627911507
+                },
+                "duration": 239647,
+                "copyrightId": 5003,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 347247,
+                "name": "遥かなる梦に",
+                "artists": [
+                    {
+                        "id": 11127,
+                        "name": "Beyond",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 34209,
+                    "name": "海阔天空",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 746812800000,
+                    "size": 10,
+                    "copyrightId": 1003,
+                    "status": 1,
+                    "picId": 102254581395219
+                },
+                "duration": 322000,
+                "copyrightId": 1003,
+                "status": 0,
+                "alias": [
+                    "原曲:海阔天空"
+                ],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 27937677,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 2116,
+                        "name": "陈奕迅",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2698078,
+                    "name": "热门华语185",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1356969600004,
+                    "size": 32,
+                    "copyrightId": 0,
+                    "status": 2,
+                    "picId": 3421680187176214
+                },
+                "duration": 328019,
+                "copyrightId": 0,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 418279424,
+                "name": "海阔天空（箱琴版）",
+                "artists": [
+                    {
+                        "id": 1132850,
+                        "name": "顾稚蔚",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 34742615,
+                    "name": "海阔天空（超吉音乐箱琴版）",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1466693540525,
+                    "size": 1,
+                    "copyrightId": 0,
+                    "status": 1,
+                    "picId": 17683445509803018
+                },
+                "duration": 320821,
+                "copyrightId": 0,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 0,
+                "rUrl": null
+            },
+            {
+                "id": 25702224,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 3080,
+                        "name": "黄贯中",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 2282021,
+                    "name": "我是歌手第一季 第1期",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1358438400007,
+                    "size": 7,
+                    "copyrightId": 12009,
+                    "status": 40,
+                    "picId": 1710840092840653
+                },
+                "duration": 303320,
+                "copyrightId": 404023,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 115093,
+                "name": "海阔天空",
+                "artists": [
+                    {
+                        "id": 3706,
+                        "name": "林子祥",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 11277,
+                    "name": "港乐.林子祥",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1036080000000,
+                    "size": 24,
+                    "copyrightId": 7002,
+                    "status": 1,
+                    "picId": 871912720826751
+                },
+                "duration": 330397,
+                "copyrightId": 7002,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            },
+            {
+                "id": 31877402,
+                "name": "海阔天空 (Live)",
+                "artists": [
+                    {
+                        "id": 7891,
+                        "name": "韩红",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    }
+                ],
+                "album": {
+                    "id": 3142050,
+                    "name": "我是歌手第三季 第5期",
+                    "artist": {
+                        "id": 0,
+                        "name": "",
+                        "picUrl": null,
+                        "alias": [],
+                        "albumSize": 0,
+                        "picId": 0,
+                        "img1v1Url": "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+                        "img1v1": 0,
+                        "trans": null
+                    },
+                    "publishTime": 1422547200007,
+                    "size": 7,
+                    "copyrightId": 424010,
+                    "status": -1,
+                    "picId": 2917004349702834
+                },
+                "duration": 310000,
+                "copyrightId": 404023,
+                "status": 0,
+                "alias": [],
+                "rtype": 0,
+                "ftype": 0,
+                "mvid": 0,
+                "fee": 8,
+                "rUrl": null
+            }
+        ],
+        "songCount": 293
+    },
+    "code": 200
+}

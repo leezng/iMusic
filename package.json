@@ -1,0 +1,121 @@
+{
+  "name": "iMusic",
+  "version": "1.0.0",
+  "description": "A Music App",
+  "author": "leezng <leezng@outlook.com>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .js src",
+    "build": "rm -rf dist && yarn build:main && yarn build:renderer",
+    "build:main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --progress --profile --colors",
+    "build:renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.production.js --progress --profile --colors",
+    "build:gh-pages": "rm -rf dist && cross-env NODE_ENV=production DEMO_ENV=gh-pages node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.production.js --progress --profile --colors",
+    "dev": "concurrently --kill-others \"yarn dev:app\" \"yarn dev:server\"",
+    "dev:app": "cross-env NODE_ENV=development DEBUG_COLORS=true DEBUG=dev:*,-not_this node -r babel-register ./config/dev-server.js",
+    "dev:server": "cross-env NODE_ENV=development DEBUG_COLORS=true DEBUG=dev:*,-not_this ./node_modules/.bin/electron -r babel-register ./src/main/index",
+    "package:mac": "yarn build && rm -rf release && electron-builder --mac --projectDir ./dist",
+    "package:linux": "yarn build && rm -rf release && electron-builder --linux --projectDir ./dist",
+    "package:win": "yarn build && rm -rf release && electron-builder --win --ia32 --projectDir ./dist"
+  },
+  "build": {
+    "productName": "iMusic",
+    "appId": "gh.leezng.iMusic",
+    "compression": "maximum",
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "title": "iMusic ${version}"
+    },
+    "mac": {
+      "icon": "../resource/dock.icns"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm",
+        "AppImage"
+      ],
+      "icon": "../resource",
+      "category": "Music"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "../resource/iMusic.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "output": "../release"
+    }
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-import": "^1.7.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "concurrently": "^3.5.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "electron": "^1.8.4",
+    "electron-builder": "^20.8.1",
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-formatter-pretty": "^1.3.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "express": "^4.15.4",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.18.0",
+    "json-loader": "^0.5.7",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.18.2",
+    "svg-inline-loader": "^0.8.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.21.0"
+  },
+  "dependencies": {
+    "NeteaseCloudMusicApi": "^2.9.2",
+    "antd": "^3.3.2",
+    "axios": "^0.18.0",
+    "react": "^16.2.0",
+    "react-dev-utils": "^5.0.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  }
+}
