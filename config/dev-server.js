@@ -4,6 +4,9 @@
  */
 const express = require('express');
 const webpack = require('webpack');
+const electron = require('electron')
+const path = require('path');
+const { spawn } = require('child_process');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const proxyMiddleware = require('http-proxy-middleware');
@@ -11,6 +14,7 @@ const _debug = require('debug');
 
 const config = require('./index');
 const webpackConfig = require('../config/webpack.config.dev');
+const mainConfig = require('../config/webpack.config.electron');
 
 // var topArtists = require('../mock/topArtists.json')
 // var artist = require('../mock/artist.json')
@@ -20,8 +24,29 @@ const webpackConfig = require('../config/webpack.config.dev');
 
 const debug = _debug('dev:server');
 const app = express();
-const compiler = webpack(webpackConfig);
 const proxyTable = config.dev.proxyTable || {};
+const compiler = webpack(webpackConfig);
+
+function startElectron () {
+  const electronProcess = spawn(electron, [path.join(__dirname, '../dist/main.js')]);
+
+  electronProcess.stdout.on('data', function (data) {
+    console.log(data.toString());
+  });
+
+  electronProcess.stderr.on('data', function (data) {
+    console.error(data.toString());
+  });
+
+  electronProcess.on('close', () => {
+    process.exit();
+  });
+}
+
+const mainCompiler = webpack(mainConfig);
+mainCompiler.run((err, stats) => {
+  startElectron();
+}) // or mainCompiler.watch({ // watch options
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {

@@ -11,7 +11,7 @@
     "build:main": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --progress --profile --colors",
     "build:renderer": "cross-env NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.production.js --progress --profile --colors",
     "build:gh-pages": "rm -rf dist && cross-env NODE_ENV=production DEMO_ENV=gh-pages node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.production.js --progress --profile --colors",
-    "dev": "concurrently --kill-others \"yarn dev:app\" \"yarn dev:server\"",
+    "dev": "concurrently --kill-others \"yarn dev:app\"",
     "dev:app": "cross-env NODE_ENV=development DEBUG_COLORS=true DEBUG=dev:*,-not_this node -r babel-register ./config/dev-server.js",
     "dev:server": "cross-env NODE_ENV=development DEBUG_COLORS=true DEBUG=dev:*,-not_this ./node_modules/.bin/electron -r babel-register ./src/main/index",
     "package:mac": "yarn build && rm -rf release && electron-builder --mac --projectDir ./dist",
