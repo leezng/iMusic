@@ -1,10 +1,7 @@
-const config = require('../../config')
-const express = require('express')
-const { app, BrowserWindow, session } = require('electron')
-
-process.env.PORT = config.build.port // set server port
-
-const server = require('NeteaseCloudMusicApi/app.js') // server
+import config from '../../config'
+import express from 'express'
+import { app, BrowserWindow, session } from 'electron'
+import server from 'NeteaseCloudMusicApi/app.js'
 
 if (process.env.NODE_ENV !== 'development') {
   // server除带.的路径, 都当作http请求处理

@@ -2,6 +2,8 @@ const path = require('path');
 
 const serverPort = 11845;
 
+process.env.PORT = serverPort
+
 const config = {
   dev: {
     env: '"development"',
