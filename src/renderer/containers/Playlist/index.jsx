@@ -35,20 +35,28 @@ class Playlist extends Component {
     this.setState({ current })
   }
 
-  componentWillReceiveProps (nextProps) {
+  // 根据props与playing决定是否设置当前页码
+  handleCurrentFromPlaying = props => {
     const { pageSize } = this.state
+    const { playlist, playing } = props
+    const idx = playlist.findIndex(item => item.id === playing.id)
+    const current = idx !== -1
+      ? Math.floor((idx + pageSize) / pageSize)
+      : 1
+    // 切换到播放歌曲的页码
+    this.setCurrent(current)
+  }
+
+  componentWillMount () {
+    this.handleCurrentFromPlaying(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
     // 只有playing改变才说明是新的歌曲
     if (nextProps.playing !== this.props.playing) {
-      const { playlist, playing } = nextProps
-      const idx = playlist.findIndex(item => item.id === playing.id)
-      let current = 1
-      if (idx !== -1) {
-        current = Math.floor((idx + pageSize) / pageSize)
-      }
-      // 切换到播放歌曲的页码
-      this.setCurrent(current)
+      this.handleCurrentFromPlaying(nextProps)
     }
-   }
+  }
 
   render () {
     const { current, pageSize } = this.state
