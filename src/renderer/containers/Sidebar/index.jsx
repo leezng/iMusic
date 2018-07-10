@@ -65,9 +65,16 @@ class Sidebar extends Component {
     if (!keywords) return
     const { location, history, dispatch } = this.props
     dispatch(search(keywords, 15, 0))
-    // 跳转到搜索结果页
     const newPath = '/searchlist'
-    if (location.pathname !== newPath) history.push(newPath)
+    // 若在搜索结果页再次搜索, 无需跳转
+    if (location.pathname !== newPath) {
+      // 跳转到搜索结果页
+      history.push(newPath)
+      // 清除侧边栏激活标签
+      this.setState({
+        activeMenu: null
+      })
+    }
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
