@@ -23,9 +23,9 @@ function UserAvatar ({profile, onClick}) {
   ))()}</div>
 }
 
-function LoginForm ({props}) {
+function LoginForm ({props, onSubmit}) {
   const { getFieldDecorator } = props.form
-  return <Form>
+  return <Form onSubmit={onSubmit}>
     <FormItem extra="*目前仅支持使用手机号码登录">
       {getFieldDecorator('phone', {
         rules: [{ required: true, message: '请输入手机号码' }]
@@ -78,7 +78,7 @@ class User extends Component {
   }
 
   // 确认登录
-  handleOk = () => {
+  onSubmit = () => {
     this.props.form.validateFields((err, values) => {
       if (err) {
         console.log(err)
@@ -153,10 +153,10 @@ class User extends Component {
               width={400}
               okText="登录"
               cancelText="取消"
-              onOk={this.handleOk}
+              onOk={this.onSubmit}
               confirmLoading={confirmLoading}
               onCancel={this.hide}>
-              <LoginForm props={this.props} />
+              <LoginForm props={this.props} onSubmit={this.onSubmit} />
             </Modal>
           </div>
         }
