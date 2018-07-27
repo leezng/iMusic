@@ -2,11 +2,18 @@ import config from '../../config'
 import express from 'express'
 import { app, BrowserWindow, session } from 'electron'
 import server from 'NeteaseCloudMusicApi/app.js'
+import path from 'path'
+// import preference from './preference'
 
 if (process.env.NODE_ENV !== 'development') {
   // server除带.的路径, 都当作http请求处理
   server.use('/', express.static(__dirname))
+} else {
+  app.setPath('userData', path.resolve(app.getPath('appData'), './iMusic-dev'))
+  // console.log(app.getPath('appData'))
 }
+
+require('./preference')
 
 var win // 缓存窗口对象
 var forceQuit // mac下是否强制退出的标识
