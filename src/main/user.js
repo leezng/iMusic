@@ -2,6 +2,10 @@ import { app, ipcMain } from 'electron'
 import path from 'path'
 import fs from 'fs'
 
+if (process.env.NODE_ENV === 'development') {
+  app.setPath('userData', path.resolve(app.getPath('appData'), './iMusic-dev'))
+}
+
 // 未登录ID为global
 const LOCAL_USER_ID = 'global'
 
@@ -10,8 +14,33 @@ let user = {
   // 用户ID
   id: LOCAL_USER_ID,
   // 用户目录路径
-  path: ensureUserDir(LOCAL_USER_ID),
+  path: '',
+  // 用户配置数据
   config: {}
+}
+
+/**
+ * 确保用户目录存在
+ * @param  {String} id 用户ID, 未登录时为global
+ * @return {String} 用户目录文件夹
+ */
+function ensureUserPath (id = LOCAL_USER_ID) {
+  const userPath = path.join(app.getPath('userData'), `./user/${id}`)
+  try {
+    fs.accessSync(userPath, fs.F_OK)
+  } catch (err) {
+    mkdir(userPath)
+  }
+  return userPath
+}
+
+/**
+ * 更新用户配置信息, 并保存到本地目录
+ * @param  {Object} data   用户配置
+ */
+function updateUserConfig (data) {
+  user.config = data
+  writeFile(file, obj)
 }
 
 /**
@@ -33,28 +62,6 @@ function mkdir (dirname) {
     console.error('create dir failed', err)
     return false
   }
-}
-
-/**
- * 确保用户目录存在
- * @param  {String} id 用户ID, 未登录时为global
- * @return {String} 用户目录文件夹
- */
-function ensureUserDir (id) {
-  const userPath = path.join(app.getPath('userData'), `./user/${id}`)
-  try {
-    fs.accessSync(pa, fs.F_OK)
-  } catch (err) {
-    mkdir(pa)
-  }
-  return userPath
-}
-
-function updateUserConfig (key, value) {
-  const file = path.join(user.path, './config.json')
-  const result = readFile(file) || {}
-  obj[key] = value
-  writeFile(file, obj)
 }
 
 /**
@@ -95,17 +102,29 @@ function readFile (file) {
 ipcMain.on('set-user', (event, id) => {
   const userId = id || LOCAL_USER_ID
   if (userId === user.id) return
-  const userPath = ensureUserDir(userId)
+  const userPath = ensureUserPath(userId)
   const userConfigFile = path.join(userPath, './config.json')
   user = {
     id: userId,
-    path: userPath
+    path: userPath,
     config: readFile(userConfigFile) || {}
   }
+})
+
+/**
+ * 监听登录配置数据是否更新
+ */
+ipcMain.on('update-user-config', (event, config) => {
+  // 一定时间后才进行写入操作, 避免频繁IO
+  if (updateUserConfig.timer) clearTimeout(updateUserConfig.timer)
+  updateUserConfig.timer = setTimeout(() => {
+    updateUserConfig(config)
+  }, 1000)
 })
 
 export default {
   get userId () {
     return user.id
-  }
+  },
+  ensureUserPath
 }
