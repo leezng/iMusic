@@ -2,6 +2,7 @@ import config from '../../config'
 import express from 'express'
 import { app, BrowserWindow, session } from 'electron'
 import server from 'NeteaseCloudMusicApi/app.js'
+import message from './message'
 import path from 'path'
 import user from './user'
 

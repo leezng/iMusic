@@ -9,7 +9,7 @@ import lyricApi from './lyric'
 axios.defaults.withCredentials = true // 携带cookie
 
 if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = '/api' // 便于代理
+  axios.defaults.baseURL = '/api' // 便于webpack-proxy
 } else if (process.env.DEMO_ENV === 'gh-pages') {
   axios.interceptors.request.use((config) => {
     if (!config.url) return config
@@ -25,6 +25,11 @@ if (process.env.NODE_ENV === 'development') {
       }
     }
   })
+}
+
+// 支持用户配置代理请求
+axios.defaults.params = {
+  proxy: 'http://web-proxy.tencent.com:8080'
 }
 
 export {

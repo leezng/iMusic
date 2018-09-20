@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 
 if (process.env.NODE_ENV === 'development') {
+  // 开发模式下更改用户数据目录
   app.setPath('userData', path.resolve(app.getPath('appData'), './iMusic-dev'))
 }
 
@@ -98,8 +99,9 @@ function readFile (file) {
 
 /**
  * 监听登录用户是否变化
+ *   若不传ID, 表示没有登录用户, 则自动获取全局本地用户
  */
-ipcMain.on('set-user', (event, id) => {
+function updateUser (id) {
   const userId = id || LOCAL_USER_ID
   if (userId === user.id) return
   const userPath = ensureUserPath(userId)
@@ -109,22 +111,26 @@ ipcMain.on('set-user', (event, id) => {
     path: userPath,
     config: readFile(userConfigFile) || {}
   }
-})
+  return user
+}
 
 /**
- * 监听登录配置数据是否更新
+ * 监听用户配置数据是否更新
+ * @param  {Object} config 配置数据
  */
-ipcMain.on('update-user-config', (event, config) => {
+function updateUserConfig (config) {
   // 一定时间后才进行写入操作, 避免频繁IO
   if (updateUserConfig.timer) clearTimeout(updateUserConfig.timer)
   updateUserConfig.timer = setTimeout(() => {
     updateUserConfig(config)
   }, 1000)
-})
+}
 
 export default {
-  get userId () {
-    return user.id
+  get userConfig () {
+    return user.config
   },
-  ensureUserPath
+  ensureUserPath,
+  updateUser,
+  updateUserConfig
 }

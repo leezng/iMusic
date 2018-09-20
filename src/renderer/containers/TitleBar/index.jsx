@@ -5,15 +5,7 @@ import { Button, Icon, Modal } from 'antd'
 import './index.less'
 import pkgInfo from '@/package.json'
 
-const win = remote.getCurrentWindow()
-
-let isWin
-try {
-  // 阻止web版报错
-  isWin = process.platform === 'win32'
-} catch (e) {}
-
-function info () {
+function showInfo () {
   Modal.info({
     title: `${pkgInfo.name} - ${pkgInfo.version}`,
     content: (
@@ -35,12 +27,20 @@ class TitleBar extends Component {
     history.go(step)
   }
 
+  openSetting = () => {
+    const { history } = this.props
+    history.push('/setting')
+  }
+
   render () {
+    const win = remote.getCurrentWindow()
+    const isWin = process.platform === 'win32'
     return <div className="title-bar">
       <div className="common">
         <Icon type="left" onClick={() => this.go(-1)} />
         <Icon type="right" onClick={() => this.go(1)} />
-        <Icon type="copyright" onClick={info} />
+        <Icon type="setting" onClick={this.openSetting} />
+        <Icon type="copyright" onClick={showInfo} />
       </div>
       {(() => {
         if (!isWin) return null

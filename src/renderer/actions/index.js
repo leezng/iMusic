@@ -11,25 +11,32 @@ export const phoneLogin = (phone, password) => (dispatch, getState) => {
   return new Promise(async (resolve, reject) => {
     const user = getState().user
     if (user && user.status === 'pending') reject(new Error('pending'))
+
+    dispatch({
+      type: 'SET_USER',
+      status: 'pending'
+    })
     try {
-      dispatch({
-        type: 'SET_USER',
-        status: 'pending'
-      })
       const resBody = await userApi.phoneLogin(phone, password) || {}
-      const response = {
-        type: 'SET_USER',
-        status: resBody.code === 200 ? 'resolve' : 'reject',
-        isLocal: resBody.code !== 200,
-        // account: resBody.account,暂时无需使用
-        profile: resBody.profile,
-        code: resBody.code,
-        msg: resBody.msg || '' // 502 = 密码错误
+      if (resBody.code === 200) {
+        const config = await userApi.getUserConfig(resBody.profile.userId)
+        dispatch({
+          type: 'SET_USER',
+          status: 'resolve',
+          isLocal: false,
+          // account: resBody.account,暂时无需使用
+          profile: resBody.profile,
+          config
+        })
+      } else {
+        dispatch({
+          type: 'SET_USER',
+          status: 'reject'
+        })
       }
-      dispatch(response)
-      resolve(response)
+      resolve(resBody)
     } catch (err) {
-      console.warn('phoneLogin: ', err)
+      console.warn('phoneLogin error: ', err)
       dispatch({
         type: 'SET_USER',
         status: 'error'
@@ -72,11 +79,13 @@ export const getUserDetail = id => async (dispatch, getState) => {
       status: 'pending'
     })
     const resBody = await userApi.getDetail(id) || {}
+    const config = await userApi.getUserConfig(resBody.profile.userId)
     dispatch({
       type: 'SET_USER',
       status: resBody.code === 200 ? 'resolve' : 'reject',
       profile: resBody.profile,
-      isLocal: resBody.code !== 200
+      isLocal: resBody.code !== 200,
+      config
     })
   } catch (err) {
     console.warn('getUserDetail: ', err)
@@ -123,6 +132,21 @@ export const getUserSonglistDetail = id => (dispatch, getState) => {
       reject(err)
     }
   })
+}
+
+// 模拟注销
+export const setLocalUser = () => (dispatch) => {
+  dispatch({
+    type: 'SET_USER',
+    status: 'pending'
+  })
+  setTimeout(async () => {
+    const config = await userApi.getUserConfig()
+    dispatch({
+      type: 'SET_LOCAL_USER',
+      config
+    })
+  }, 500)
 }
 
 // 搜索
@@ -292,15 +316,6 @@ export const getSonglistDetail = id => async (dispatch, getState) => {
       status: 'error'
     })
   }
-}
-
-// 模拟注销
-export const setLocalUser = () => (dispatch) => {
-  dispatch({
-    type: 'SET_USER',
-    status: 'pending'
-  })
-  setTimeout(() => dispatch({type: 'SET_LOCAL_USER'}), 500)
 }
 
 export const setPlaylist = (playlist = []) => ({

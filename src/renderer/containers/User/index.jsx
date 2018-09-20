@@ -44,6 +44,8 @@ function LoginForm ({props, onSubmit}) {
           type="password" placeholder="密码" />
       )}
     </FormItem>
+    {/* 隐藏的button用于触发onsubmit */}
+    <button style={{display: 'none'}}></button>
   </Form>
 }
 
@@ -66,6 +68,9 @@ class User extends Component {
     const { dispatch } = this.props
     const idCookie = getCookie('__IMUSIC_ID')
     if (idCookie) dispatch(refreshLogin(idCookie))
+    else {
+      console.log('TODO：默认打开时，没有用户，应该获取全局配置！')
+    }
   }
 
   // 退出登录, 当前仅能在cookie上操作, 后台未提供接口
@@ -78,32 +83,36 @@ class User extends Component {
   }
 
   // 确认登录
-  onSubmit = () => {
-    this.props.form.validateFields((err, values) => {
+  onSubmit = (e) => {
+    // 阻止回车默认动作
+    e.preventDefault()
+    this.props.form.validateFields(async (err, values) => {
       if (err) {
         console.log(err)
-      } else {
+        return
+      }
+      try {
+        // 进入request
         const { dispatch } = this.props
         const { phone, password } = values
         this.setState({ confirmLoading: true })
-        dispatch(phoneLogin(phone, password)).then(res => {
-          if (res && res.status === 'resolve') {
-            this.setState({
-              visible: false,
-              confirmLoading: false
-            })
-            let id = res.profile && res.profile.userId
-            setCookie('__IMUSIC_ID', id, 10)
-          } else {
-            this.setState({ confirmLoading: false })
-            message.warning(res.msg || '频繁登录，请稍后重试')
-          }
-        }).catch(err => {
-          console.warn(err)
-          this.setState({ confirmLoading: false })
-          message.warning('网络错误')
-        })
+        const res = await dispatch(phoneLogin(phone, password))
+        if (res && res.code === 200) {
+          this.setState({
+            visible: false,
+            confirmLoading: false
+          })
+          let id = res.profile && res.profile.userId
+          // 该cookie用于模拟登录态失效
+          setCookie('__IMUSIC_ID', id, 10)
+        } else {
+          message.warning(res.msg || '频繁登录，请稍后重试')
+        }
+      } catch (err) {
+        console.warn(err)
+        message.warning('登录失败，请检查是否网络错误或其他问题')
       }
+      this.setState({ confirmLoading: false })
     })
   }
 
