@@ -5,6 +5,7 @@ import {
   djprogramApi,
   userApi
 } from 'renderer/api'
+import { deleteCookie } from 'renderer/utils'
 
 // 手机登陆
 export const phoneLogin = (phone, password) => (dispatch, getState) => {
@@ -54,18 +55,19 @@ export const refreshLogin = id => async (dispatch, getState) => {
       status: 'pending'
     })
     const resBody = await userApi.refreshLogin()
-    dispatch({
-      type: 'SET_USER',
-      status: resBody.code === 200 ? 'resolve' : 'reject'
-    })
-    // 若是已登录状态, 获取用户详情
-    if (resBody.code === 200) dispatch(getUserDetail(id))
+    if (resBody.code === 200) {
+      dispatch({
+        type: 'SET_USER',
+        status: 'resolve'
+      })
+      dispatch(getUserDetail(id))
+    } else {
+      // 登录状态实际已过期
+      dispatch(setLocalUser(true))
+    }
   } catch (err) {
     console.warn('refreshLogin: ', err)
-    dispatch({
-      type: 'SET_USER',
-      status: 'error'
-    })
+    dispatch(setLocalUser(true))
   }
 }
 
@@ -134,19 +136,38 @@ export const getUserSonglistDetail = id => (dispatch, getState) => {
   })
 }
 
-// 模拟注销
-export const setLocalUser = () => (dispatch) => {
+// 设置用户的配置数据
+export const setUserConfig = (config) => (dispatch) => {
   dispatch({
-    type: 'SET_USER',
-    status: 'pending'
+    type: 'SET_USER_CONFIG',
+    config
   })
-  setTimeout(async () => {
-    const config = await userApi.getUserConfig()
+}
+
+// 设置为本地用户
+//    默认用于模拟注销，需等待
+//    immediate = true时表示立即执行，不等待
+export const setLocalUser = (immediate = false) => (dispatch) => {
+  return new Promise((resolve, reject) => {
     dispatch({
-      type: 'SET_LOCAL_USER',
-      config
+      type: 'SET_USER',
+      status: 'pending'
     })
-  }, 500)
+    async function callback () {
+      deleteCookie('__IMUSIC_ID')
+      const config = await userApi.getUserConfig()
+      dispatch({
+        type: 'SET_LOCAL_USER',
+        config
+      })
+      resolve()
+    }
+    if (immediate) {
+      callback()
+    } else {
+      setTimeout(callback, 500)
+    }
+  })
 }
 
 // 搜索

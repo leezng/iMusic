@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Avatar, Button, Modal, Card, Form, Input, Icon, Popover, message } from 'antd'
-import { phoneLogin, refreshLogin, setLocalUser } from 'renderer/actions'
-import { getCookie, setCookie, deleteCookie } from 'renderer/utils'
+import { phoneLogin, setLocalUser } from 'renderer/actions'
+import { setCookie } from 'renderer/utils'
 import './index.less'
 
 const FormItem = Form.Item
@@ -63,20 +63,18 @@ class User extends Component {
     confirmLoading: false
   }
 
-  componentDidMount () {
-    // 获取登录状态
-    const { dispatch } = this.props
-    const idCookie = getCookie('__IMUSIC_ID')
-    if (idCookie) dispatch(refreshLogin(idCookie))
-    else {
-      console.log('TODO：默认打开时，没有用户，应该获取全局配置！')
-    }
-  }
+  // componentDidMount () {
+  //   // 获取登录状态
+  //   const { dispatch } = this.props
+  //   const idCookie = getCookie('__IMUSIC_ID')
+  //   if (idCookie) dispatch(refreshLogin(idCookie))
+  //   // 若本地用户也需要获取配置
+  //   else dispatch(setLocalUser(true))
+  // }
 
   // 退出登录, 当前仅能在cookie上操作, 后台未提供接口
   loginOut = () => {
     const { dispatch, location, history } = this.props
-    deleteCookie('__IMUSIC_ID')
     dispatch(setLocalUser())
     this.setState({ visible: false })
     if (location.pathname !== '/musicCenter') history.push('/musicCenter')
@@ -116,9 +114,6 @@ class User extends Component {
     })
   }
 
-  // Popover的显示隐藏回调
-  onPopoverVisibleChange = visible => this.setState({ visible })
-
   // set visible to true 可控制 Modal || Popover
   show = () => this.setState({ visible: true })
 
@@ -148,8 +143,7 @@ class User extends Component {
                 description={profile.signature} />
             </Card>}
             trigger="click"
-            visible={visible}
-            onVisibleChange={this.onPopoverVisibleChange}>
+            visible={visible}>
             <UserAvatar profile={profile} onClick={this.show} />
           </Popover>
         } else {

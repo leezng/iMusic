@@ -36,12 +36,12 @@ function ensureUserPath (id = LOCAL_USER_ID) {
 }
 
 /**
- * 更新用户配置信息, 并保存到本地目录
+ * 写入用户配置信息, 保存在本地目录
  * @param  {Object} data   用户配置
  */
-function updateUserConfig (data) {
+function setUserConfig (data) {
   user.config = data
-  writeFile(file, obj)
+  writeFile(path.join(user.path, './config.json'), data)
 }
 
 /**
@@ -76,7 +76,7 @@ function writeFile (file, data, append = false, encoding = 'utf8') {
     const buffer = Buffer.from(JSON.stringify(data))
     fs.writeFileSync(file, buffer, {
       encoding,
-      flag
+      flag: append ? 'a' : 'w'
     })
   } catch (err) {
     console.log('write file failed', err)
@@ -102,12 +102,12 @@ function readFile (file) {
  *   若不传ID, 表示没有登录用户, 则自动获取全局本地用户
  */
 function updateUser (id) {
-  const userId = id || LOCAL_USER_ID
-  if (userId === user.id) return
-  const userPath = ensureUserPath(userId)
+  if (newId === user.id) return user
+  const newId = id || LOCAL_USER_ID
+  const userPath = ensureUserPath(newId)
   const userConfigFile = path.join(userPath, './config.json')
   user = {
-    id: userId,
+    id: newId,
     path: userPath,
     config: readFile(userConfigFile) || {}
   }
@@ -122,7 +122,7 @@ function updateUserConfig (config) {
   // 一定时间后才进行写入操作, 避免频繁IO
   if (updateUserConfig.timer) clearTimeout(updateUserConfig.timer)
   updateUserConfig.timer = setTimeout(() => {
-    updateUserConfig(config)
+    setUserConfig(config)
   }, 1000)
 }
 
