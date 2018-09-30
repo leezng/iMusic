@@ -46,7 +46,7 @@ function startElectron () {
 const mainCompiler = webpack(mainConfig);
 mainCompiler.run((err, stats) => {
   startElectron();
-}) // or mainCompiler.watch({ // watch options
+});
 
 // proxy api requests
 Object.keys(proxyTable).forEach(function (context) {
