@@ -6,6 +6,7 @@ import songlist from './songlist'
 import playlist from './playlist'
 import playing from './playing'
 import djprogram from './djprogram'
+import preferences from './preferences'
 
 export default combineReducers({
   user, // 用户
@@ -14,5 +15,6 @@ export default combineReducers({
   songlist, // 推荐歌单
   playlist, // 播放列表
   playing, // 正在播放的歌曲
-  djprogram // 推荐电台
+  djprogram, // 推荐电台
+  preferences // 偏好设置
 })

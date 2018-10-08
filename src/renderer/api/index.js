@@ -73,8 +73,12 @@ axios.interceptors.response.use(undefined, (err) => {
 function updateRequestProxy (url = '', port = 80) {
   let proxyUrl = ''
   if (url) {
-    const { origin, pathname } = new URL(url)
-    proxyUrl = `${origin}:${port}${pathname}`
+    try {
+      const { origin, pathname } = new URL(url)
+      proxyUrl = `${origin}:${port}${pathname}`
+    } catch (err) {
+      proxyUrl = ''
+    }
   }
   axios.defaults.params.proxy = proxyUrl
 }

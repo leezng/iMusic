@@ -1,12 +1,6 @@
 import axios from 'axios'
-import call from 'main/call'
 
 export default {
-  // 通知主进程用户更改, 并获取用户本地配置
-  async getUserConfig (userId) {
-    const { config } = await call.sendToMain('update-user', userId)
-    return config
-  },
   // 手机登陆
   phoneLogin (phone, password) {
     return axios.get(`/login/cellphone?phone=${phone}&password=${password}`)

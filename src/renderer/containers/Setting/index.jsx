@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 // import PropTypes from 'prop-types'
 import { Form, Input, InputNumber, Switch, Button } from 'antd'
 import './index.less'
-import call from 'main/call'
 import { getObjectValue } from 'renderer/utils'
-import { setUserConfig } from 'renderer/actions'
+import { setPreferences } from 'renderer/actions'
 
 const FormItem = Form.Item
 
 const mapStateToProps = (state, ownProps) => ({
-  user: state.user
+  preferences: state.preferences
 })
 
 class Setting extends Component {
@@ -21,8 +20,8 @@ class Setting extends Component {
   }
 
   initValue = (id) => {
-    const data = this.props.user && this.props.user.config
-    return getObjectValue(data, id)
+    const { preferences } = this.props
+    return getObjectValue(preferences, id)
   }
 
   handleSubmit = (e) => {
@@ -33,8 +32,7 @@ class Setting extends Component {
       } else {
         console.log('Received values of form: ', values)
         const { dispatch } = this.props
-        await call.sendToMain('update-user-config', values)
-        dispatch(setUserConfig(values))
+        dispatch(setPreferences(values))
       }
     })
   }
@@ -48,7 +46,7 @@ class Setting extends Component {
     return (
       <Form onSubmit={this.handleSubmit} className="setting-form">
         <FormItem {...formItemLayout} label="使用代理">
-          {getFieldDecorator('useProxy', { valuePropName: 'checked' })(
+          {getFieldDecorator('proxy.use', { initialValue: this.initValue('proxy.use'), valuePropName: 'checked' })(
             <Switch />
           )}
         </FormItem>
@@ -58,7 +56,6 @@ class Setting extends Component {
             initialValue: this.initValue('proxy.url'),
             rules: [{
               type: 'url',
-              required: true,
               message: '请输入代理地址'
             }]
           })(
@@ -75,7 +72,7 @@ class Setting extends Component {
         <FormItem
           wrapperCol={{ span: 14, offset: formItemLayout.labelCol.span }}
         >
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button type="primary" htmlType="submit">保存</Button>
         </FormItem>
       </Form>
     )

@@ -3,8 +3,7 @@ import express from 'express'
 import { app, BrowserWindow, session } from 'electron'
 import server from 'NeteaseCloudMusicApi/app.js'
 import message from './message'
-import path from 'path'
-import user from './user'
+import preferences from './preferences'
 
 if (process.env.NODE_ENV !== 'development') {
   // server除带.的路径, 都当作http请求处理
@@ -26,8 +25,8 @@ function createWindow () {
     return
   }
 
-  // 确保用户目录存在
-  user.ensureUserPath()
+  message.listen()
+  preferences.init()
 
   // 创建浏览器窗口
   win = new BrowserWindow({

@@ -5,6 +5,7 @@ import {
   djprogramApi,
   userApi
 } from 'renderer/api'
+import call from 'main/call'
 import { deleteCookie } from 'renderer/utils'
 
 // 手机登陆
@@ -20,14 +21,12 @@ export const phoneLogin = (phone, password) => (dispatch, getState) => {
     try {
       const resBody = await userApi.phoneLogin(phone, password) || {}
       if (resBody.code === 200) {
-        const config = await userApi.getUserConfig(resBody.profile.userId)
         dispatch({
           type: 'SET_USER',
           status: 'resolve',
           isLocal: false,
           // account: resBody.account,暂时无需使用
-          profile: resBody.profile,
-          config
+          profile: resBody.profile
         })
       } else {
         dispatch({
@@ -81,13 +80,11 @@ export const getUserDetail = id => async (dispatch, getState) => {
       status: 'pending'
     })
     const resBody = await userApi.getDetail(id) || {}
-    const config = await userApi.getUserConfig(resBody.profile.userId)
     dispatch({
       type: 'SET_USER',
       status: resBody.code === 200 ? 'resolve' : 'reject',
       profile: resBody.profile,
-      isLocal: resBody.code !== 200,
-      config
+      isLocal: resBody.code !== 200
     })
   } catch (err) {
     console.warn('getUserDetail: ', err)
@@ -136,14 +133,6 @@ export const getUserSonglistDetail = id => (dispatch, getState) => {
   })
 }
 
-// 设置用户的配置数据
-export const setUserConfig = (config) => (dispatch) => {
-  dispatch({
-    type: 'SET_USER_CONFIG',
-    config
-  })
-}
-
 // 设置为本地用户
 //    默认用于模拟注销，需等待
 //    immediate = true时表示立即执行，不等待
@@ -155,10 +144,8 @@ export const setLocalUser = (immediate = false) => (dispatch) => {
     })
     async function callback () {
       deleteCookie('__IMUSIC_ID')
-      const config = await userApi.getUserConfig()
       dispatch({
-        type: 'SET_LOCAL_USER',
-        config
+        type: 'SET_LOCAL_USER'
       })
       resolve()
     }
@@ -337,6 +324,23 @@ export const getSonglistDetail = id => async (dispatch, getState) => {
       status: 'error'
     })
   }
+}
+
+export const getPreferences = (data = {}) => async (dispatch, getState) => {
+  const data = await call.sendToMain('get-preferences')
+  dispatch({
+    type: 'SET_PREFERENCES',
+    data
+  })
+  return Promise.resolve()
+}
+
+export const setPreferences = (data = {}) => async (dispatch, getState) => {
+  await call.sendToMain('set-preferences', data)
+  dispatch({
+    type: 'SET_PREFERENCES',
+    data
+  })
 }
 
 export const setPlaylist = (playlist = []) => ({

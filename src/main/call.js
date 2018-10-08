@@ -34,7 +34,7 @@ function send (event, args, isMain = true) {
 function on (event, callback, isMain = true) {
   const win = isMain ? ipcMain : ipcRenderer
   win.on(event, (e, id, args) => {
-    const result = callback(args)
+    const result = callback(args) || 'ok'
     e.sender.send(id, result)
   })
 }

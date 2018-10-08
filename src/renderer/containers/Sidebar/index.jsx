@@ -20,7 +20,7 @@ const menuData = [{
   icon: 'customer-service'
 }, {
 //   name: '我的音乐',
-//   key: 'userMusicCenter',
+//   key: 'userMusic',
 //   icon: 'edit',
 //   isLocal: false
 // }, {
@@ -46,6 +46,14 @@ class Sidebar extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    const newPath = nextProps.location.pathname
+    if (menuData.every(item => newPath.indexOf(item.key) === -1)) {
+      // 若新的路由不在侧边栏控制的范围内, 则清除激活标签
+      this.setState({
+        activeMenu: null
+      })
+    }
+
     let oldId = this.props.user && this.props.user.profile && this.props.user.profile.userId
     let newId = nextProps.user && nextProps.user.profile && nextProps.user.profile.userId
     if (newId && newId !== oldId) {
@@ -78,8 +86,7 @@ class Sidebar extends Component {
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
-    // TODO: 默认缺省路由
-    // console.log('menuItemClick: ', e, key, keyPath)
+    console.log('menuItemClick: ', e, key, keyPath)
     const { location, history } = this.props
     const newPath = `/${keyPath.reverse().join('/')}`
     if (location.pathname !== newPath) {
