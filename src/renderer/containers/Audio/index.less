@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 60px;
+  padding: 10px 20px 10px 60px;
   z-index: 100;
   background-color: #fff1f6;
   &.lyric-active {
@@ -72,5 +72,16 @@
     transform: translateX(-100%);
     transition: transform .3s linear;
     pointer-events: none;
+  }
+  .control-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 15;
+    font-size: 36px;
+    i {
+      cursor: pointer;
+    }
   }
 }
