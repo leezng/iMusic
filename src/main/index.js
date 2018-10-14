@@ -2,34 +2,23 @@ import config from '../../config'
 import express from 'express'
 import { app, BrowserWindow, session } from 'electron'
 import server from 'NeteaseCloudMusicApi/app.js'
+import window from './window'
 import message from './message'
 import preferences from './preferences'
+import menu from './menu'
 
 if (process.env.NODE_ENV !== 'development') {
   // server除带.的路径, 都当作http请求处理
   server.use('/', express.static(__dirname))
 }
 
-var win // 缓存窗口对象
-var forceQuit // mac下是否强制退出的标识
-
-if (process.platform === 'darwin') {
-  app.on('before-quit', function () {
-    forceQuit = true
-  })
-}
-
+// 创建主窗口
 function createWindow () {
-  if (win) {
-    win.show()
-    return
-  }
+  const url = process.env.NODE_ENV === 'development'
+    ? `http://localhost:${config.dev.devServer.port}`
+    : `http://localhost:${config.build.port}`
 
-  message.listen()
-  preferences.init()
-
-  // 创建浏览器窗口
-  win = new BrowserWindow({
+  const win = window.create('main', url, {
     width: 960,
     minWidth: 800,
     height: 600,
@@ -38,26 +27,6 @@ function createWindow () {
     show: false,
     titleBarStyle: 'hiddenInset'
   })
-
-  if (process.platform !== 'darwin') {
-    // 关闭 window 后销毁窗口对象
-    win.on('closed', () => {
-      win = null
-    })
-  } else {
-    win.on('close', e => {
-      if (forceQuit) return
-      e.preventDefault()
-      win.hide()
-    })
-  }
-
-  // 加载应用
-  win.loadURL(
-    process.env.NODE_ENV === 'development'
-      ? `http://localhost:${config.dev.devServer.port}`
-      : `http://localhost:${config.build.port}`
-  )
 
   win.once('ready-to-show', () => {
     // 显示主窗口
@@ -76,10 +45,16 @@ function handleCookie () {
   })
 }
 
-// Electron 完成初始化
+// 入口
 app.on('ready', () => {
+  // 第一顺序: 创建窗口
   createWindow()
+  // cookies监听并保存到本地
   handleCookie()
+  // 绑定主进程监听事件
+  message.listen()
+  // 创建偏好设置相关文件
+  preferences.init()
 })
 
 // 所有窗口关闭时退出应用

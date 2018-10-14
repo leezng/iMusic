@@ -2,6 +2,7 @@
  * 进程通信模块
  */
 import { ipcMain, ipcRenderer } from 'electron'
+import window from './window'
 
 let id = 0
 
@@ -13,7 +14,7 @@ let id = 0
  * @return {Promise}
  */
 function send (event, args, isMain = true) {
-  const win = isMain ? ipcMain : ipcRenderer
+  const win = isMain ? window.get('main').webContents : ipcRenderer
   return new Promise((resolve, reject) => {
     const eventId = `${++id}`
     win.send(event, eventId, args)
