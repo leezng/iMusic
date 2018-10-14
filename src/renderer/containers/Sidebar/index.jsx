@@ -86,7 +86,7 @@ class Sidebar extends Component {
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
-    console.log('menuItemClick: ', e, key, keyPath)
+    // console.log('menuItemClick: ', e, key, keyPath)
     const { location, history } = this.props
     const newPath = `/${keyPath.reverse().join('/')}`
     if (location.pathname !== newPath) {
