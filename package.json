@@ -1,8 +1,8 @@
 {
   "name": "iMusic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Music App",
-  "author": "leezng <leezng@outlook.com>",
+  "author": "leezng <im.leezng@gmail.com>",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
