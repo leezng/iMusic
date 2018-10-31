@@ -15,6 +15,11 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 class Playlist extends Component {
+  state = {
+    current: 0, // 页码
+    pageSize: 10 // 分页大小
+  }
+
   static propTypes = {
     playlist: PropTypes.array,
     playing: PropTypes.object
@@ -25,7 +30,36 @@ class Playlist extends Component {
     playing: {}
   }
 
+  // 设置当前页码
+  setCurrent = current => {
+    this.setState({ current })
+  }
+
+  // 根据props与playing决定是否设置当前页码
+  handleCurrentFromPlaying = props => {
+    const { pageSize } = this.state
+    const { playlist, playing } = props
+    const idx = playlist.findIndex(item => item.id === playing.id)
+    const current = idx !== -1
+      ? Math.floor((idx + pageSize) / pageSize)
+      : 1
+    // 切换到播放歌曲的页码
+    this.setCurrent(current)
+  }
+
+  componentWillMount () {
+    this.handleCurrentFromPlaying(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    // 只有playing改变才说明是新的歌曲
+    if (nextProps.playing !== this.props.playing) {
+      this.handleCurrentFromPlaying(nextProps)
+    }
+  }
+
   render () {
+    const { current, pageSize } = this.state
     const { playlist, playing, dispatch } = this.props
     const columns = [{
       title: '歌曲',
@@ -64,6 +98,12 @@ class Playlist extends Component {
         size="small"
         columns={columns}
         dataSource={playlist}
+        pagination={{
+          current,
+          pageSize: pageSize,
+          total: playlist && playlist.length,
+          onChange: this.setCurrent
+        }}
         locale={{
           emptyText: '暂无歌曲'
         }}

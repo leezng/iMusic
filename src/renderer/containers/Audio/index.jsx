@@ -4,7 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Icon, Tooltip, Divider, message } from 'antd'
 import Lyric from '../Lyric'
-import { setPlaying } from 'renderer/actions'
+import { setPlaying, setPreferences } from 'renderer/actions'
+import { getRandomIntInclusive } from 'renderer/utils'
+import call from 'main/call'
 import './index.less'
 
 // 时间一位数时加0
@@ -22,9 +24,31 @@ function timeParse (sec) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+  preferences: state.preferences,
   playlist: state.playlist,
   playing: state.playing
 })
+
+// 播放模式列表
+const playModeList = [{
+  label: '顺序播放',
+  value: 'order',
+  icon: 'sync'
+}, {
+  label: '单曲循环',
+  value: 'loop',
+  icon: 'reload'
+}, {
+  label: '随机播放',
+  value: 'random',
+  icon: 'fork'
+}]
+
+// 根据playMode的值找到对应的icon
+function getPlayModeItem (mode) {
+  if (!mode) return playModeList[0]
+  return playModeList.find(item => item.value === mode)
+}
 
 class Audio extends Component {
   static propTypes = {
@@ -38,11 +62,11 @@ class Audio extends Component {
   }
 
   state = {
-    running: false,
-    percent: 0,
-    currentTime: '00:00',
-    mouseoverTime: '00:00',
-    lyricVisible: false
+    running: false, // 是否播放中
+    percent: 0, // 播放进度百分比
+    currentTime: '00:00', // 当前播放时间
+    mouseoverTime: '00:00', // 鼠标悬浮时间
+    lyricVisible: false // 歌词界面是否可见
   }
 
   // 播放/暂停
@@ -57,11 +81,21 @@ class Audio extends Component {
 
   // 下一首
   next = () => {
-    const { dispatch, playlist, playing } = this.props
+    const { dispatch, playlist, playing, preferences } = this.props
     let index = playlist.findIndex(item => item.id === playing.id)
-    // 如果是最后一首, 则回到第一首
-    let newIndex = index !== -1 && playlist.length - 1 !== index ? index + 1 : 0
-    dispatch(setPlaying(playlist[newIndex]))
+    let newIndex
+    if (preferences.playMode === 'random') {
+      // 随机模式, 获取随机数
+      newIndex = getRandomIntInclusive(0, playlist.length - 1)
+    } else if (index === playlist.length - 1) {
+      // 普通模式, 如果是最后一首, 则回到第一首
+      newIndex = 0
+    } else {
+      // 普通模式(包括顺序与单曲循环), 下一首
+      newIndex = index + 1
+    }
+    // 解构拷贝, 避免引用无法判断为新的歌曲
+    dispatch(setPlaying({...playlist[newIndex]}))
   }
 
   // 上一首
@@ -70,7 +104,7 @@ class Audio extends Component {
     let index = playlist.findIndex(item => item.id === playing.id)
     // 如果已经是第一首, 无法继续往前
     let newIndex = index > 0 ? index - 1 : 0
-    dispatch(setPlaying(playlist[newIndex]))
+    dispatch(setPlaying({...playlist[newIndex]}))
   }
 
   /**
@@ -137,10 +171,8 @@ class Audio extends Component {
    */
   componentWillReceiveProps (nextProps) {
     // 只有playing改变才说明是新的歌曲
+    //    注意playing.id可能是一致的, 即切换后的歌曲还是同一首, 但也应重新播放
     if (nextProps.playing !== this.props.playing) {
-      // let newId = nextProps.playing && nextProps.playing.id
-      // let oldId = this.props.playing && this.props.playing.id
-      // if (newId === oldId) return
       this.setState({
         currentTime: '00:00',
         percent: 0,
@@ -148,6 +180,11 @@ class Audio extends Component {
       })
       this.setCurrentTimeByPercent(0)
     }
+  }
+
+  componentDidMount () {
+    // 监听播放暂停
+    call.rendererOn('toggle-play', this.togglePlay)
   }
 
   // 切换歌词界面显示|隐藏
@@ -159,18 +196,39 @@ class Audio extends Component {
     }
   }
 
+  /**
+   * 切换播放模式
+   */
+  togglePlayMode = () => {
+    let { preferences, dispatch } = this.props
+    const oldModeVal = preferences.playMode
+    const oldIndex = playModeList.findIndex(item => item.value === oldModeVal)
+    // 模式按顺序循环切换
+    const newIndex = oldIndex !== -1 && playModeList.length - 1 !== oldIndex ? oldIndex + 1 : 0
+    const newModeVal = playModeList[newIndex].value
+    if (!preferences) preferences = {}
+    preferences.playMode = newModeVal
+    dispatch(setPreferences(preferences))
+    return newModeVal
+  }
+
   render () {
-    const { playing, location } = this.props
+    const { playlist, playing, location, preferences } = this.props
     const { running, percent, currentTime, mouseoverTime, lyricVisible } = this.state
+    // 播放|暂停图标
     const playIcon = running ? 'pause-circle' : 'play-circle'
+    // 当前播放模式
+    const playMode = getPlayModeItem(preferences.playMode)
     const src = playing.url || (playing.id
       ? `http://music.163.com/song/media/outer/url?id=${playing.id}.mp3`
       : '')
     return <div
       className={`audio-controller ${lyricVisible ? 'lyric-active' : ''}`}
       style={{background: location.pathname === '/lyric' ? 'transparent' : ''}}>
+      {/* 若播放列表长度为1, 也应设置loop=true, 否则无法自动切换 */}
       <audio
         autoPlay={running}
+        loop={playMode.value === 'loop' || playlist.length === 1}
         src={src}
         onTimeUpdate={this.onTimeUpdate}
         onEnded={this.next}
@@ -203,6 +261,10 @@ class Audio extends Component {
             <div className="slider-bar" style={{transform: `translateX(-${100 - percent}%)`}}></div>
           </div>
         </Tooltip>
+      </div>
+
+      <div className="control-wrapper" style={{fontSize: '12px'}}>
+        <Icon type={playMode.icon} title={playMode.label} onClick={() => this.togglePlayMode(playMode.value)} />
       </div>
 
       <Lyric

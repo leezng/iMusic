@@ -5,31 +5,38 @@ import {
   djprogramApi,
   userApi
 } from 'renderer/api'
+import call from 'main/call'
+import { deleteCookie } from 'renderer/utils'
 
 // 手机登陆
 export const phoneLogin = (phone, password) => (dispatch, getState) => {
   return new Promise(async (resolve, reject) => {
     const user = getState().user
     if (user && user.status === 'pending') reject(new Error('pending'))
+
+    dispatch({
+      type: 'SET_USER',
+      status: 'pending'
+    })
     try {
-      dispatch({
-        type: 'SET_USER',
-        status: 'pending'
-      })
       const resBody = await userApi.phoneLogin(phone, password) || {}
-      const response = {
-        type: 'SET_USER',
-        status: resBody.code === 200 ? 'resolve' : 'reject',
-        isLocal: resBody.code !== 200,
-        // account: resBody.account,暂时无需使用
-        profile: resBody.profile,
-        code: resBody.code,
-        msg: resBody.msg || '' // 502 = 密码错误
+      if (resBody.code === 200) {
+        dispatch({
+          type: 'SET_USER',
+          status: 'resolve',
+          isLocal: false,
+          // account: resBody.account,暂时无需使用
+          profile: resBody.profile
+        })
+      } else {
+        dispatch({
+          type: 'SET_USER',
+          status: 'reject'
+        })
       }
-      dispatch(response)
-      resolve(response)
+      resolve(resBody)
     } catch (err) {
-      console.warn('phoneLogin: ', err)
+      console.warn('phoneLogin error: ', err)
       dispatch({
         type: 'SET_USER',
         status: 'error'
@@ -47,18 +54,19 @@ export const refreshLogin = id => async (dispatch, getState) => {
       status: 'pending'
     })
     const resBody = await userApi.refreshLogin()
-    dispatch({
-      type: 'SET_USER',
-      status: resBody.code === 200 ? 'resolve' : 'reject'
-    })
-    // 若是已登录状态, 获取用户详情
-    if (resBody.code === 200) dispatch(getUserDetail(id))
+    if (resBody.code === 200) {
+      dispatch({
+        type: 'SET_USER',
+        status: 'resolve'
+      })
+      dispatch(getUserDetail(id))
+    } else {
+      // 登录状态实际已过期
+      dispatch(setLocalUser(true))
+    }
   } catch (err) {
     console.warn('refreshLogin: ', err)
-    dispatch({
-      type: 'SET_USER',
-      status: 'error'
-    })
+    dispatch(setLocalUser(true))
   }
 }
 
@@ -121,6 +129,30 @@ export const getUserSonglistDetail = id => (dispatch, getState) => {
     } catch (err) {
       console.warn('getUserSonglistDetail: ', err)
       reject(err)
+    }
+  })
+}
+
+// 设置为本地用户
+//    默认用于模拟注销，需等待
+//    immediate = true时表示立即执行，不等待
+export const setLocalUser = (immediate = false) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: 'SET_USER',
+      status: 'pending'
+    })
+    async function callback () {
+      deleteCookie('__IMUSIC_ID')
+      dispatch({
+        type: 'SET_LOCAL_USER'
+      })
+      resolve()
+    }
+    if (immediate) {
+      callback()
+    } else {
+      setTimeout(callback, 500)
     }
   })
 }
@@ -294,13 +326,21 @@ export const getSonglistDetail = id => async (dispatch, getState) => {
   }
 }
 
-// 模拟注销
-export const setLocalUser = () => (dispatch) => {
+export const getPreferences = (data = {}) => async (dispatch, getState) => {
+  const data = await call.sendToMain('get-preferences')
   dispatch({
-    type: 'SET_USER',
-    status: 'pending'
+    type: 'SET_PREFERENCES',
+    data
   })
-  setTimeout(() => dispatch({type: 'SET_LOCAL_USER'}), 500)
+  return Promise.resolve()
+}
+
+export const setPreferences = (data = {}) => async (dispatch, getState) => {
+  await call.sendToMain('set-preferences', data)
+  dispatch({
+    type: 'SET_PREFERENCES',
+    data
+  })
 }
 
 export const setPlaylist = (playlist = []) => ({

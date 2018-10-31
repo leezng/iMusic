@@ -7,13 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   ...baseConfig,
 
-  // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
   target: 'electron-renderer',
 
   devtool: 'cheap-module-eval-source-map',
 
   entry: [
-    // `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
+    // hot reload
+    `webpack-hot-middleware/client?path=http://${config.dev.devServer.host}:${config.dev.devServer.port}/__webpack_hmr`,
+    // app
     'src/renderer/index.js'
   ],
 
@@ -24,10 +25,8 @@ module.exports = {
   },
 
   plugins: [
-    // https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
     new webpack.HotModuleReplacementPlugin(),
 
-    // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': config.dev.env
     }),

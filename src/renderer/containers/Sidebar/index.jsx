@@ -20,7 +20,7 @@ const menuData = [{
   icon: 'customer-service'
 }, {
 //   name: '我的音乐',
-//   key: 'userMusicCenter',
+//   key: 'userMusic',
 //   icon: 'edit',
 //   isLocal: false
 // }, {
@@ -46,6 +46,14 @@ class Sidebar extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    const newPath = nextProps.location.pathname
+    if (menuData.every(item => newPath.indexOf(item.key) === -1)) {
+      // 若新的路由不在侧边栏控制的范围内, 则清除激活标签
+      this.setState({
+        activeMenu: null
+      })
+    }
+
     let oldId = this.props.user && this.props.user.profile && this.props.user.profile.userId
     let newId = nextProps.user && nextProps.user.profile && nextProps.user.profile.userId
     if (newId && newId !== oldId) {
@@ -65,13 +73,19 @@ class Sidebar extends Component {
     if (!keywords) return
     const { location, history, dispatch } = this.props
     dispatch(search(keywords, 15, 0))
-    // 跳转到搜索结果页
     const newPath = '/searchlist'
-    if (location.pathname !== newPath) history.push(newPath)
+    // 若在搜索结果页再次搜索, 无需跳转
+    if (location.pathname !== newPath) {
+      // 跳转到搜索结果页
+      history.push(newPath)
+      // 清除侧边栏激活标签
+      this.setState({
+        activeMenu: null
+      })
+    }
   }
 
   menuItemClick = ({ e, key, keyPath }) => {
-    // TODO: 默认缺省路由
     // console.log('menuItemClick: ', e, key, keyPath)
     const { location, history } = this.props
     const newPath = `/${keyPath.reverse().join('/')}`
