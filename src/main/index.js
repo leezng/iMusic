@@ -1,6 +1,6 @@
 import config from '../../config'
 import express from 'express'
-import { app, BrowserWindow, session } from 'electron'
+import { app, session } from 'electron'
 import server from 'NeteaseCloudMusicApi/app.js'
 import window from './window'
 import message from './message'
@@ -53,6 +53,8 @@ app.on('ready', () => {
   handleCookie()
   // 绑定主进程监听事件
   message.listen()
+  // 创建菜单
+  menu.init()
   // 创建偏好设置相关文件
   preferences.init()
 })

@@ -10,7 +10,7 @@ const mapEvents = {
 }
 
 // 初始化监听
-//    将mapEvents中的事件绑定到主进程的监听中 
+//    将mapEvents中的事件绑定到主进程的监听中
 function listen () {
   Object.keys(mapEvents).forEach(eventName => {
     const func = mapEvents[eventName]

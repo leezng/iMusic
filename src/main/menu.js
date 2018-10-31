@@ -151,7 +151,11 @@ if (process.platform === 'darwin') {
   })
 }
 
-app.on('ready', () => {
+function init () {
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
-})
+}
+
+export default {
+  init
+}
