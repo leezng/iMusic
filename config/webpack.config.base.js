@@ -1,97 +1,83 @@
 const path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
-      },
-      {
-        test: /\.jsx?$/,
-        loader: ['babel-loader'],
+        test: /\.(j|t)s[x]?$/,
+        loader: 'babel-loader',
         include: [
           path.resolve(__dirname, '../src'),
           path.resolve(__dirname, '../config'),
           path.resolve(__dirname, '../node_modules/NeteaseCloudMusicApi'),
-          path.resolve(__dirname, '../node_modules/hoek')
-        ]
+          path.resolve(__dirname, '../node_modules/hoek'),
+        ],
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
         use: [
-          require.resolve('style-loader'),
+          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           {
-            loader: require.resolve('css-loader'),
+            loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
+              modules: {
+                auto: true,
+              },
+              sourceMap: false,
+              esModule: false,
+            },
           },
           {
-            loader: require.resolve('less-loader'),
+            loader: 'less-loader',
             options: {
-              javascriptEnabled: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
+              lessOptions: {
+                modifyVars: {
+                  hack: `true; @import "${path.resolve(
+                    __dirname,
+                    '../src/renderer',
+                  )}/themes/var.less";`,
+                },
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.html/,
-        loader: 'html-loader'
+        loader: 'html-loader',
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
       },
-      {
-        test: /\.(eot|woff|woff2|ttf)([?]?.*)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            name: 'fonts/[name].[ext]'
-          }
-        }]
-      },
-      {
-        test: /\.svg$/,
-        use: ['svg-inline-loader'],
-        include: path.resolve(__dirname, '../src'),
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-              mimetype: 'image/svg+xml'
-          }
-        }],
-        include: /node_modules/
-      }
-    ]
+    ],
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, '../'),
       src: path.resolve(__dirname, '../src'),
       main: path.resolve(__dirname, '../src/main'),
-      renderer: path.resolve(__dirname, '../src/renderer')
-    }
-  }
+      renderer: path.resolve(__dirname, '../src/renderer'),
+    },
+  },
+
+  plugins: [
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      emitError: true,
+      emitWarning: true,
+    }),
+  ],
 };

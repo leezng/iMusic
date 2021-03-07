@@ -1,0 +1,90 @@
+@import '~renderer/themes/var.less';
+
+@playing-name-height: 20px; // 底部播放条歌曲名字高度
+
+.lyricActive {
+  color: #efefef;
+}
+
+.audioController {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px 10px 60px;
+  z-index: 100;
+  background-color: #fff1f6;
+  :global {
+    .play-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 15px;
+      width: 200px;
+      z-index: 15;
+      font-size: 36px;
+      svg {
+        margin: 0 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          color: @primary-color;
+          text-shadow: 0 0 4px @primary-color;
+        }
+      }
+    }
+    .slider-wrapper {
+      flex: 1 1 auto;
+      z-index: 15;
+      .meta {
+        display: flex;
+      }
+      .name {
+        padding-right: 30px;
+        flex: 1 1 auto;
+        width: 300px;
+        /* 歌曲名称只显示在一行，超出部分显示为省略号 */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: @playing-name-height;
+        height: @playing-name-height;
+        span:hover {
+          color: @primary-color;
+          cursor: pointer;
+        }
+      }
+      .audio-time {
+        overflow: hidden;
+        font-size: 12px;
+      }
+    }
+    .slider-runway {
+      position: relative;
+      height: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: #d9d9d9;
+    }
+    .slider-bar {
+      width: 100%;
+      height: 100%;
+      background-color: @primary-color;
+      transform: translateX(-100%);
+      transition: transform 0.3s linear;
+      pointer-events: none;
+    }
+    .control-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 15px;
+      z-index: 15;
+      font-size: 36px;
+      svg {
+        cursor: pointer;
+      }
+    }
+  }
+}

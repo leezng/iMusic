@@ -1,0 +1,33 @@
+.listItem {
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    height: 22px;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: normal;
+  height: 44px;
+  flex-wrap: wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+}

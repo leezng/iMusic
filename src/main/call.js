@@ -1,10 +1,10 @@
 /**
  * 进程通信模块
  */
-import { ipcMain, ipcRenderer } from 'electron'
-import window from './window'
+const { ipcMain, ipcRenderer } = require('electron');
+const window = require('./window');
 
-let id = 0
+let id = 0;
 
 /**
  * 发消息
@@ -13,15 +13,15 @@ let id = 0
  * @param  {Boolean} isMain 发送主体, 默认是主进程, 即发往渲染进程
  * @return {Promise}
  */
-function send (event, args, isMain = true) {
-  const win = isMain ? window.get('main').webContents : ipcRenderer
-  return new Promise((resolve, reject) => {
-    const eventId = `${++id}`
-    win.send(event, eventId, args)
+function send(event, args, isMain = true) {
+  const win = isMain ? window.get('main').webContents : ipcRenderer;
+  return new Promise((resolve) => {
+    const eventId = `${++id}`;
+    win.send(event, eventId, args);
     win.on(eventId, (e, res) => {
-      resolve(res)
-    })
-  })
+      resolve(res);
+    });
+  });
 }
 
 /**
@@ -32,37 +32,37 @@ function send (event, args, isMain = true) {
  * @param  {function} callback 收到消息后的执行回调
  * @param  {Boolean} isMain 发送主体, 默认是主进程, 即发往渲染进程
  */
-function on (event, callback, isMain = true) {
-  const win = isMain ? ipcMain : ipcRenderer
+function on(event, callback, isMain = true) {
+  const win = isMain ? ipcMain : ipcRenderer;
   win.on(event, (e, id, args) => {
-    const result = callback(args) || 'ok'
-    e.sender.send(id, result)
-  })
+    const result = callback(args) || 'ok';
+    e.sender.send(id, result);
+  });
 }
 
 // 发消息: 渲染进程 -> 主进程
-function sendToMain (event, args) {
-  return send(event, args, false)
+function sendToMain(event, args) {
+  return send(event, args, false);
 }
 
 // 发消息: 主进程 -> 渲染进程
-function sendToRenderer (event, args) {
-  return send(event, args)
+function sendToRenderer(event, args) {
+  return send(event, args);
 }
 
 // 主进程接收消息
-function mainOn (event, callback) {
-  return on(event, callback)
+function mainOn(event, callback) {
+  return on(event, callback);
 }
 
 // 渲染进程接收消息
-function rendererOn (event, callback) {
-  return on(event, callback, false)
+function rendererOn(event, callback) {
+  return on(event, callback, false);
 }
 
-export default {
+module.exports = {
   mainOn,
   rendererOn,
   sendToMain,
-  sendToRenderer
-}
+  sendToRenderer,
+};

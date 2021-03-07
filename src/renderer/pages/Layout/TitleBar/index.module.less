@@ -1,0 +1,30 @@
+@import '~renderer/themes/var.less';
+
+@title-bar-height: 40px;
+
+.titleBar {
+  padding: 0 15px;
+  height: @title-bar-height;
+  line-height: @title-bar-height;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  -webkit-app-region: drag;
+}
+
+.commonController {
+  float: left;
+  > * {
+    -webkit-app-region: no-drag;
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+    &:hover {
+      color: @primary-color;
+    }
+  }
+}
+
+.winController {
+  float: right;
+  -webkit-app-region: no-drag;
+}

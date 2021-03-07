@@ -13,7 +13,7 @@ const proxyMiddleware = require('http-proxy-middleware');
 const _debug = require('debug');
 
 const config = require('./index');
-const webpackConfig = require('../config/webpack.config.dev');
+const webpackConfig = require('../config/webpack.config.renderer');
 const mainConfig = require('../config/webpack.config.electron');
 
 // var topArtists = require('../mock/topArtists.json')
@@ -25,10 +25,9 @@ const mainConfig = require('../config/webpack.config.electron');
 const debug = _debug('dev:server');
 const app = express();
 const proxyTable = config.dev.proxyTable || {};
-const compiler = webpack(webpackConfig);
 
 function startElectron () {
-  const electronProcess = spawn(electron, [path.join(__dirname, '../dist/main.js')]);
+  const electronProcess = spawn(electron, [path.join(__dirname, '../src/main/index.js')]);
 
   electronProcess.stdout.on('data', function (data) {
     console.log(data.toString());
@@ -44,6 +43,7 @@ function startElectron () {
 }
 
 const mainCompiler = webpack(mainConfig);
+
 mainCompiler.run((err, stats) => {
   startElectron();
 });
@@ -57,15 +57,32 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(options.filter || context, options));
 });
 
-app.use(
-  webpackDevMiddleware(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    stats: {
-      colors: true
-    }
-  })
-);
-app.use(webpackHotMiddleware(compiler));
+const compiler = webpack(webpackConfig);
+
+const wdmInstance = webpackDevMiddleware(compiler, {
+  publicPath: webpackConfig.output.publicPath,
+  quiet: true,
+});
+
+const hotMiddleware = webpackHotMiddleware(compiler, {
+  log: false,
+  heartbeat: 2000,
+});
+
+// force page reload when html-webpack-plugin template changes
+compiler.hooks.compilation.tap('html-webpack-plugin-after-emit', () => {
+  hotMiddleware.publish({
+    action: 'reload',
+  });
+});
+
+// serve webpack bundle output
+app.use(wdmInstance);
+
+// enable hot-reload and state-preserving
+// compilation error display
+app.use(hotMiddleware);
+
 // app.get('/top/artists', async (req, res) => {
 //   await wait(300)
 //   return res.json(topArtists)
@@ -86,10 +103,23 @@ app.use(webpackHotMiddleware(compiler));
 //   await wait(300)
 //   return res.json(search)
 // })
-app.listen(config.dev.devServer.port, config.dev.devServer.host, err => {
-  if (err) {
-    throw err;
-  }
 
-  debug(`Hot reload server is running with port ${config.dev.devServer.port}`);
+module.exports = new Promise(resolve => {
+  console.log('> Starting dev server...');
+  const server = app.listen(config.dev.devServer.port, config.dev.devServer.host, err => {
+    if (err) {
+      throw err;
+    }
+
+    wdmInstance.waitUntilValid(() => {
+      debug(`Hot reload server is running with port ${config.dev.devServer.port}`);
+    });
+  });;
+
+  resolve({
+    port: config.dev.devServer.port,
+    close: () => {
+      server.close();
+    },
+  });
 });
