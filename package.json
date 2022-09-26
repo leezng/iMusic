@@ -115,7 +115,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@umijs/hooks": "^1.9.3",
-    "NeteaseCloudMusicApi": "^3.47.5",
+    "NeteaseCloudMusicApi": "^4.8.2",
     "antd": "^4.10.3",
     "qs": "^6.9.4",
     "react": "^17.0.1",
